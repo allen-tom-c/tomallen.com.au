@@ -1,0 +1,110 @@
+---
+interface Props {
+  activePage?: string;
+}
+
+const { activePage = 'home' } = Astro.props;
+
+const links = [
+  { href: '/celebrant/', label: 'Home', key: 'home' },
+  { href: '/celebrant/pricing/', label: 'Pricing', key: 'pricing' },
+  { href: '/celebrant/how-i-work/', label: 'How I Work', key: 'howIWork' },
+  { href: '/celebrant/faq/', label: 'FAQ', key: 'faq' },
+];
+---
+
+<div class="cel-nav">
+  <div class="cel-nav__inner">
+    <span class="cel-nav__title">Tom Allen Celebrant</span>
+    <div class="cel-nav__links">
+      {links.map((link) => (
+        <a href={link.href} class:list={['cel-nav__link', { active: activePage === link.key }]}>{link.label}</a>
+      ))}
+      <a href="/celebrant/enquire/" class="cel-nav__cta">Enquire</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .cel-nav {
+    position: fixed;
+    top: 40px;
+    left: 0;
+    right: 0;
+    z-index: 190;
+    background: rgba(250, 247, 242, 0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(139, 111, 78, 0.08);
+    padding: 0 32px;
+  }
+
+  .cel-nav__inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .cel-nav__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--cel-text);
+    padding: 14px 0;
+  }
+
+  .cel-nav__links {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .cel-nav__link {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--cel-subtle);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 16px 0;
+    border-bottom: 2px solid transparent;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .cel-nav__link:hover { color: var(--cel-accent); }
+  .cel-nav__link.active {
+    color: var(--cel-accent);
+    font-weight: 600;
+    border-bottom-color: var(--cel-accent);
+  }
+
+  .cel-nav__cta {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: var(--cel-accent);
+    color: #FFF;
+    padding: 8px 18px;
+    border-radius: 3px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+  }
+
+  .cel-nav__cta:hover { opacity: 0.9; }
+
+  @media (max-width: 768px) {
+    .cel-nav { padding: 0 16px; }
+    .cel-nav__title { font-size: 16px; }
+    .cel-nav__links { gap: 14px; }
+    .cel-nav__link { font-size: 11px; padding: 12px 0; }
+  }
+
+  @media (max-width: 580px) {
+    .cel-nav__title { display: none; }
+  }
+</style>

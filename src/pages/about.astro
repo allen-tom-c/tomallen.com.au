@@ -1,0 +1,261 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+---
+
+<BaseLayout title="About — Tom Allen" description="The story behind the portfolio life." section="hub">
+  <Nav section="hub" hubSubPage="about" />
+
+  <main style="padding-top: 80px;">
+    <article class="container" style="padding-top: 80px; padding-bottom: 100px;">
+
+      <!-- Portrait + Opening -->
+      <div class="about-hero">
+        <div class="fade-in">
+          <div class="about-portrait">
+            <!-- Replace src with your actual headshot -->
+            <img src="/images/about/headshot.jpg" alt="Tom Allen" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="placeholder-img placeholder-img--warm" style="width: 240px; height: 320px; border-radius: 8px; display: none;">
+              <span>headshot.jpg</span>
+            </div>
+          </div>
+        </div>
+        <div class="fade-in" data-delay="150">
+          <h1 class="about-title">About Tom</h1>
+          <p class="about-body">
+            Originally from Brunswick, hipster heartland of Melbourne, I've been drawn more and more to regional and rural areas. I moved to Darwin, Northern Territory with my partner Ruby in early 2026 after two years in Warrnambool in Victoria's rugged southwest, and 6 years in Geelong before that.
+          </p>
+          <p class="about-body">
+            When people ask "what do you do?" I often experience a mixture of fatigue and dread. <em>How long have you got?</em> and <em>What <strong>do</strong> I do?</em> are usually the questions that run through my mind. The truth is that no one can easily answer that question. No doctor is the same, no lawyer or firefighter or forklift driver. They all <em>do</em> quite different things with their 168 hours per week, but they are aided in answering that question by a clean, straightforward job title.
+          </p>
+        </div>
+      </div>
+
+      <!-- How I got here -->
+      <div class="fade-in" data-delay="250">
+        <p class="about-body">
+          I've been fortunate to have been in the right place at the right time and <em>in the right mindset</em> on a number of moments, and those moments have led me on a wild ride so far.
+        </p>
+        <p class="about-body">
+          I got to operate a bike shop social enterprise because I was going through a divorce and started work as a bike mechanic because I was too emotionally spent to do the more brainy work I'd studied for at university. Shortly after starting work at a typical bicycle shop I saw a job ad that had been languishing for months that described a "bike mechanic with youth work and not-for-profit management experience" and I had friends in Geelong I could live with.
+        </p>
+        <p class="about-body">
+          I became a mushroom farmer because I was part of an urban farming cooperative in Geelong and someone reached out to us on Facebook wanting to gift us his whole commercial operation. I'd left my job at the bike shop social enterprise a few months earlier, wanting to start my own business, and my ideas hadn't gotten any traction but mushroom farming fit the bill perfectly.
+        </p>
+        <p class="about-body" style="margin-bottom: 40px;">
+          I became a marriage celebrant because two close friends decided they wanted me to marry them so much they would pay for me to go through the Cert IV and get my registration (and told me this far enough in advance for me to actually do it!)
+        </p>
+      </div>
+
+      <!-- The Thread -->
+      <div class="fade-in" data-delay="350">
+        <h2 class="about-section-title">The thread</h2>
+        <p class="about-body">
+          What disturbs me about the question "what do you do" is that none of those short answers really cut it for me, they don't get to the <em>essence</em> of what I do or the thread that connects these seemingly disparate vocations. That's more abstract, but it looks like this: I implement structures that transform people, places and materials. Not structures like houses or gazebos, but structures made of policies, processes, conversations, scripts.
+        </p>
+        <p class="about-body">
+          To create and hold the space for a truly meaningful wedding ceremony is to implement a structure using words and rituals. It involves outlining the boundary of a space: "phones to silent please folks", "we're gathered here today to celebrate…" and then to invite others into that space — "and now it's time for your vows", "I have these rings here for you to exchange" — and hold the space while two people make a commitment to one another in the presence of their community. In so doing, they are transformed, and they have a moment to crystallise a relationship that has been growing from the tiniest "he's cute, maybe I'll say hi" into an "I want to spend my life with you".
+        </p>
+        <p class="about-body">
+          To create a business like a mushroom farm or a bike shop is to implement a structure: this is where we store our substrate, this is how we prepare our substrate, this is the sequence of events on a Monday, a Tuesday, etc. and this is our network of customers and this is how we systematically cultivate relationships with people so that the produce we're growing reaches the mouths that want to eat it. These businesses transform materials (straw into mushrooms; broken bikes into working bikes) and they also transform people as they learn and grow.
+        </p>
+        <p class="about-body">
+          To work with young people who are struggling to find their place in the world is to work with structures too, structures which operate according to narratives. It's to have a conversation that uncovers a belief like "I'm too dumb to do that" and subtly, gradually, through a process of transformative experiences, reach a point of "yeah maybe I'll have a go" or "I've realised this is what I really enjoy doing."
+        </p>
+        <p class="about-body">
+          To manage a government funded employment program is also to work with structures: funding agreements, grant guidelines, timelines, milestones and work plans. And it often involves translating those documents into real action that transforms the world: writing position descriptions that lead to people getting jobs, delivering educational materials or holding events that transform people's ideas about the world or build new relationships.
+        </p>
+        <p class="about-kicker">
+          In this way, I kind of feel I'm a sort of architect and builder, only I don't work with structures made of walls and roofs, I work with structures made of stories, policies, strategies, and, always, people.
+        </p>
+      </div>
+
+      <!-- Timeline -->
+      <div class="fade-in" data-delay="450">
+        <h2 class="about-section-title">Where I've been</h2>
+        <div class="timeline">
+          <div class="timeline__entry">
+            <div class="timeline__meta">
+              <p class="timeline__period">2026–present</p>
+              <p class="timeline__place">Darwin, NT</p>
+            </div>
+            <p class="timeline__desc">Moved to Darwin to explore opportunities in the Top End.</p>
+          </div>
+          <div class="timeline__entry">
+            <div class="timeline__meta">
+              <p class="timeline__period">2024–2026</p>
+              <p class="timeline__place">Warrnambool, VIC</p>
+            </div>
+            <p class="timeline__desc">Supported Worn Gundidj Aboriginal Cooperative to deliver community education programs, a Circular Economy Innovation grant focused on the horticulture industry, a pilot program aiming to increase First Nations employment in the renewable energy industry, and a pilot program to support people experiencing long-term unemployment with 6-month paid placements and wrap-around supports. Continued to support Bellarine Fungi's development and growth, traveling back to the farm two days a week.</p>
+          </div>
+          <div class="timeline__entry">
+            <div class="timeline__meta">
+              <p class="timeline__period">2021–2023</p>
+              <p class="timeline__place">Bellarine Peninsula, VIC</p>
+            </div>
+            <p class="timeline__desc">Established Norlane Gourmet Shroomery in a garage, then upgraded to a shipping container setup in Drysdale, establishing Bellarine Fungi as a partnership.</p>
+          </div>
+          <div class="timeline__entry">
+            <div class="timeline__meta">
+              <p class="timeline__period">2019–2021</p>
+              <p class="timeline__place">Geelong, VIC</p>
+            </div>
+            <p class="timeline__desc">Moved to Geelong to establish Good Cycles' presence there, including: bike shop, Pedal Empowerment pre-employment program, business partnerships offering employment opportunities to program graduates, and a school outreach program.</p>
+          </div>
+          <div class="timeline__entry">
+            <div class="timeline__meta">
+              <p class="timeline__period">2018–2019</p>
+              <p class="timeline__place">USA, Canada, Mexico</p>
+            </div>
+            <p class="timeline__desc">A wild year of travel that saw me volunteering on a social enterprise farm that employed people experiencing homelessness, working in a co-operative bike shop, doing intakes at a homeless shelter and working on a summer camp.</p>
+          </div>
+          <div class="timeline__entry">
+            <div class="timeline__meta">
+              <p class="timeline__period">2017–2018</p>
+              <p class="timeline__place">Melbourne, VIC</p>
+            </div>
+            <p class="timeline__desc">Worked on the fundraising team at Tearfund Australia. Also lived as a volunteer resident at Indigenous Hospitality House, supporting First Nations people visiting Melbourne for hospital business and hosting discussions and learning opportunities for people of Settler backgrounds.</p>
+          </div>
+          <div class="timeline__entry">
+            <div class="timeline__meta">
+              <p class="timeline__period">2013–2016</p>
+              <p class="timeline__place">Melbourne, VIC</p>
+            </div>
+            <p class="timeline__desc">Completed a Bachelor of Arts (International Studies) with Honours (First Class) exploring the impacts of gentrification on low income communities and mitigating strategies for community development.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact CTA -->
+      <div class="fade-in" data-delay="550">
+        <div class="about-cta">
+          <p>Want to work together, collaborate, or just say hello?</p>
+          <a href="mailto:tom@tomallen.com.au" class="btn" style="background: var(--hub-accent); color: var(--hub-bg);">Get in Touch</a>
+        </div>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  .about-hero {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 48px;
+    align-items: start;
+    margin-bottom: 56px;
+  }
+
+  .about-portrait img {
+    width: 240px;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .about-title {
+    font-family: 'Fraunces', serif;
+    font-size: 40px;
+    font-weight: 300;
+    color: var(--hub-text);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+
+  .about-section-title {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 300;
+    color: var(--hub-text);
+    margin-bottom: 16px;
+    margin-top: 48px;
+  }
+
+  .about-body {
+    font-family: 'Source Serif 4', serif;
+    font-size: 17px;
+    line-height: 1.85;
+    color: var(--hub-text);
+    font-weight: 300;
+    margin-bottom: 16px;
+  }
+
+  .about-kicker {
+    font-family: 'Source Serif 4', serif;
+    font-size: 17px;
+    line-height: 1.85;
+    color: var(--hub-subtle);
+    font-weight: 400;
+    font-style: italic;
+    margin-top: 16px;
+    margin-bottom: 48px;
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+
+  .timeline__entry {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid color-mix(in srgb, var(--hub-accent) 6%, transparent);
+  }
+
+  .timeline__period {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--hub-subtle);
+  }
+
+  .timeline__place {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--hub-subtle);
+    font-weight: 300;
+    margin-top: 2px;
+  }
+
+  .timeline__desc {
+    font-family: 'Source Serif 4', serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--hub-text);
+    font-weight: 300;
+  }
+
+  .about-cta {
+    background: color-mix(in srgb, var(--hub-accent) 5%, transparent);
+    border-radius: 10px;
+    padding: 32px;
+    text-align: center;
+  }
+
+  .about-cta p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 16px;
+    color: var(--hub-text);
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 640px) {
+    .about-hero {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .about-portrait img {
+      width: 180px;
+      height: 240px;
+    }
+    .timeline__entry {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+  }
+</style>

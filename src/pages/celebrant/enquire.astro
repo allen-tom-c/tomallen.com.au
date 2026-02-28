@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import CelebrantNav from '../../components/CelebrantNav.astro';
+import CelebrantFooter from '../../components/CelebrantFooter.astro';
+---
+
+<BaseLayout title="Enquire — Tom Allen Celebrant" description="Get in touch about your wedding ceremony." section="celebrant">
+  <Nav section="celebrant" />
+  <CelebrantNav activePage="enquire" />
+
+  <main style="padding-top: 96px;">
+    <section class="container-narrow" style="padding: 60px 32px 80px;">
+      <div class="fade-in">
+        <h1 class="font-heading" style="font-size: 40px; font-weight: 400; font-style: italic; color: var(--cel-text); margin-bottom: 16px;">Get in Touch</h1>
+        <p class="font-body" style="font-size: 17px; line-height: 1.8; color: var(--cel-subtle); font-weight: 300; margin-bottom: 40px;">Tell me a little about you and what you're imagining.</p>
+      </div>
+
+      <form class="fade-in enquiry-form" data-delay="200" name="celebrant-enquiry" method="POST" data-netlify="true" action="/celebrant/enquire/?success=true">
+        <input type="hidden" name="form-name" value="celebrant-enquiry" />
+        <div class="enquiry-form__row">
+          <div class="enquiry-form__field">
+            <label class="form-label" style="color: var(--cel-subtle);">Your name(s)</label>
+            <input type="text" name="names" class="form-input" placeholder="e.g. Sarah & James" required style="border-color: color-mix(in srgb, var(--cel-accent) 15%, transparent); color: var(--cel-text);" />
+          </div>
+          <div class="enquiry-form__field">
+            <label class="form-label" style="color: var(--cel-subtle);">Email</label>
+            <input type="email" name="email" class="form-input" placeholder="you@email.com" required style="border-color: color-mix(in srgb, var(--cel-accent) 15%, transparent); color: var(--cel-text);" />
+          </div>
+        </div>
+        <div class="enquiry-form__field">
+          <label class="form-label" style="color: var(--cel-subtle);">When are you thinking?</label>
+          <input type="text" name="date" class="form-input" placeholder="e.g. June 2026, or 'not sure yet'" style="border-color: color-mix(in srgb, var(--cel-accent) 15%, transparent); color: var(--cel-text);" />
+        </div>
+        <div class="enquiry-form__field">
+          <label class="form-label" style="color: var(--cel-subtle);">Tell me about your day</label>
+          <textarea name="message" rows="5" class="form-input" placeholder="Where you're thinking, how many guests, what vibe — or just say hello." style="border-color: color-mix(in srgb, var(--cel-accent) 15%, transparent); color: var(--cel-text); resize: vertical;"></textarea>
+        </div>
+        <button type="submit" class="btn" style="background: var(--cel-accent); color: #FFF;">Send Enquiry</button>
+      </form>
+    </section>
+
+    <CelebrantFooter />
+  </main>
+</BaseLayout>
+
+<style>
+  .enquiry-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .enquiry-form__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .enquiry-form__field {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (max-width: 540px) {
+    .enquiry-form__row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import CelebrantNav from '../../components/CelebrantNav.astro';
+import CelebrantFooter from '../../components/CelebrantFooter.astro';
+
+const faqs = [
+  { q: "Do you marry same-sex couples?", a: "Yes! Absolutely! Of course! It's 2026! Sadly, however, it's not stupid of you to ask." },
+  { q: "Are you a qualified celebrant?", a: "Yes, I completed a Certificate IV in Celebrancy in 2024 and hold a current registration with the Attorney General of Australia as an Authorised Marriage Celebrant." },
+  { q: "Do you provide your own PA and organise music for the ceremony?", a: "Yes, I can supply a PA and microphone for an additional fee. It's my preference that someone else cues the desired music for the ceremony but I will work closely with them to understand the script and ensure everything goes smoothly. I have copyright cover for any music used in the ceremony as well." },
+  { q: "Can you MC our reception?", a: "Yes! I love MC'ing receptions and all kinds of events. It makes for a wonderful experience for me to facilitate proceedings for the entire day, so I really enjoy it." },
+  { q: "How many meetings can we have with you to plan our ceremony?", a: "That depends. If you're keen to craft a personalised ceremony we will have as many meetings as you need to create an authentic expression of love and commitment that feels like you. If you're after a simpler ceremony we will usually have two meetings to organise paperwork and discuss the ceremony. These can be face-to-face or online." },
+  { q: "How does payment work?", a: "All bookings involve a 50% booking fee with the balance due by the time of the ceremony. The booking fee is refundable until 2 months before the ceremony." },
+  { q: "We want to get married really soon, can you help us?", a: "The Marriage Act stipulates that a Notice of Intended Marriage must be completed, witnessed and submitted to an Authorised Celebrant at least one month prior to the date of intended marriage. There are some circumstances where a shortening of time can be granted, but these are quite specific. Get in touch if you're uncertain and we can talk about it!" },
+  { q: "We just want the minimum legal paperwork for our marriage, can you do that?", a: "Yes, absolutely. All you need for a valid marriage is an Authorised Celebrant and two witnesses. Get in touch and we can talk about the specifics." },
+  { q: "How far are you willing to travel?", a: "I am happy to travel Australia-wide for weddings pending discussion of travel expenses — my first wedding was in Tasmania! While I live in Darwin and mostly practice in the Top End, I know lots of people all over Victoria and beyond, so I can often find people to stay with when working away from home. Overseas weddings are another story, get in touch and we can discuss the details of your situation." },
+];
+---
+
+<BaseLayout title="FAQ — Tom Allen Celebrant" description="Answers to common questions about wedding ceremonies in Darwin." section="celebrant">
+  <Nav section="celebrant" />
+  <CelebrantNav activePage="faq" />
+
+  <main style="padding-top: 96px;">
+    <section class="container-narrow" style="padding: 60px 32px 80px;">
+      <div class="fade-in">
+        <h1 class="font-heading" style="font-size: 40px; font-weight: 400; font-style: italic; color: var(--cel-text); margin-bottom: 16px;">Frequently Asked</h1>
+        <p class="font-body" style="font-size: 17px; line-height: 1.8; color: var(--cel-subtle); font-weight: 300; margin-bottom: 48px;">If your question isn't here, just ask.</p>
+      </div>
+
+      <div class="faq-list">
+        {faqs.map((faq, i) => (
+          <details class="faq-item fade-in" data-delay={String(i * 50)}>
+            <summary class="faq-question">
+              <span>{faq.q}</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <p class="faq-answer">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+
+      <div class="fade-in" data-delay="500" style="text-align: center; margin-top: 56px;">
+        <p class="font-body" style="font-size: 16px; color: var(--cel-subtle); font-weight: 300; margin-bottom: 20px;">Still have questions?</p>
+        <a href="/celebrant/enquire/" class="btn" style="background: var(--cel-accent); color: #FFF;">Get in Touch</a>
+      </div>
+    </section>
+
+    <CelebrantFooter />
+  </main>
+</BaseLayout>
+
+<style>
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid color-mix(in srgb, var(--cel-accent) 7%, transparent);
+  }
+
+  .faq-question {
+    width: 100%;
+    padding: 24px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question span:first-child {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--cel-text);
+    padding-right: 20px;
+  }
+
+  .faq-icon {
+    font-family: 'Source Serif 4', serif;
+    font-size: 22px;
+    color: var(--cel-subtle);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  details[open] .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    font-family: 'Source Serif 4', serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--cel-subtle);
+    font-weight: 300;
+    padding-bottom: 24px;
+  }
+</style>

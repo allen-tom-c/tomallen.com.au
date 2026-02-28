@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+---
+
+<BaseLayout title="Tom Allen — Celebrant. Writer. Grower of things." section="hub">
+  <Nav section="hub" hubSubPage="home" />
+
+  <main class="hub-home" style="padding-top: 80px;">
+    <!-- Hero -->
+    <section class="container-full" style="padding-top: 80px; padding-bottom: 60px;">
+      <div class="fade-in">
+        <p class="label" style="color: var(--hub-subtle); margin-bottom: 24px;">Darwin, Northern Territory</p>
+      </div>
+      <div class="fade-in" data-delay="150">
+        <h1 class="hub-home__title">
+          Celebrant. Writer.<br />Grower of things.
+        </h1>
+      </div>
+      <div class="fade-in" data-delay="300">
+        <p class="hub-home__intro">
+          I have a taste for variety: marrying people, starting businesses, farming, writing and mentoring. This site is an opportunity for me to weave all those various threads into one fabric.
+        </p>
+      </div>
+    </section>
+
+    <!-- Cards -->
+    <section class="container-full" style="padding-bottom: 100px;">
+      <div class="hub-home__grid">
+        <a href="/celebrant/" class="hub-card fade-in" data-delay="450" style="--card-bg: var(--cel-bg); --card-accent: var(--cel-accent); --card-subtle: var(--cel-subtle); --card-text: var(--cel-text);">
+          <h3 class="hub-card__title font-heading" style="font-style: italic;">Wedding Celebrant</h3>
+          <p class="hub-card__desc">I create wedding ceremonies that give pause for reflection, where couples have the chance to express themselves, to reflect on where they've come from and commit to where they're headed.</p>
+          <span class="hub-card__link">tomallen.com.au/celebrant →</span>
+        </a>
+
+        <a href="/writing/" class="hub-card fade-in" data-delay="570" style="--card-bg: var(--wri-bg); --card-accent: var(--wri-accent); --card-subtle: var(--wri-subtle); --card-text: var(--wri-text);">
+          <h3 class="hub-card__title font-body">Writing</h3>
+          <p class="hub-card__desc">Words flow out and I can't stop them. So I organise them in strings and post them on the internet for all to see. Many people have said they enjoy reading what I write, that it helped them think clearly about a subject or created a moment of joy.</p>
+          <span class="hub-card__link">Read on Substack →</span>
+        </a>
+
+        <a href="/work/" class="hub-card fade-in" data-delay="690" style="--card-bg: var(--wrk-bg); --card-accent: var(--wrk-accent); --card-subtle: var(--wrk-subtle); --card-text: var(--wrk-text);">
+          <h3 class="hub-card__title font-ui" style="font-weight: 600;">The Work</h3>
+          <p class="hub-card__desc">I have engaged in many varied projects and this is my portfolio: some wrapped up, some ongoing, all opportunities to create businesses and programs that stretched me and hopefully changed the world a little for the better.</p>
+          <span class="hub-card__link">See the portfolio →</span>
+        </a>
+
+        <a href="/brewing/" class="hub-card hub-card--dashed fade-in" data-delay="810" style="--card-bg: var(--brw-bg); --card-accent: var(--brw-accent); --card-subtle: var(--brw-subtle); --card-text: var(--brw-text);">
+          <h3 class="hub-card__title font-display" style="font-style: italic;">What's Brewing</h3>
+          <p class="hub-card__desc">I love collaboration, and all good collaborations start with the dare to dream. So here are some things I'm dreaming about in various states of aliveness. Maybe you'll find something we can work on together.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .hub-home__title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(42px, 6vw, 72px);
+    font-weight: 300;
+    color: var(--hub-text);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 32px;
+    max-width: 700px;
+  }
+
+  .hub-home__intro {
+    font-family: 'Source Serif 4', serif;
+    font-size: 20px;
+    line-height: 1.7;
+    color: var(--hub-subtle);
+    max-width: 560px;
+    font-weight: 300;
+  }
+
+  .hub-home__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .hub-card {
+    background: var(--card-bg);
+    border: 1px solid color-mix(in srgb, var(--card-accent) 12%, transparent);
+    border-radius: 10px;
+    padding: 40px 32px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .hub-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px color-mix(in srgb, var(--card-accent) 8%, transparent);
+  }
+
+  .hub-card--dashed {
+    border-style: dashed;
+  }
+
+  .hub-card--dashed:hover {
+    border-style: solid;
+  }
+
+  .hub-card__title {
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--card-text);
+    margin-bottom: 12px;
+  }
+
+  .hub-card__desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--card-subtle);
+    font-weight: 300;
+    flex: 1;
+  }
+
+  .hub-card__link {
+    display: inline-block;
+    margin-top: 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--card-accent);
+    font-weight: 500;
+  }
+</style>

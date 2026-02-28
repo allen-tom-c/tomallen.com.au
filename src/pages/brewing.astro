@@ -1,0 +1,213 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import CrossLinks from '../components/CrossLinks.astro';
+
+const ideas = [
+  {
+    name: "Ecstatic Dance",
+    stage: "Dreaming",
+    desc: "Ecstatic dance, conscious movement, moving meditation; call it what you will, I've received so much from a regular practice of listening to and moving my body in tune with something that goes beyond words and thoughts.",
+    thinking: "I love music, I collect and curate playlists like my life depends on it, and I love my work as a marriage celebrant and MC: it feels like a natural fit to begin facilitating a movement practice. The barriers I'm working through at the moment are: I don't know how to DJ, and I'm not trained in a modality like 5Rhythms or Open Floor (both of which take many logged hours all over the world to attain). I'm imagining running fortnightly or monthly dance sessions with clear intentions and strong boundaries: no substances, plenty of natural light, bring everything you're carrying from your day or week with you and dance it through your body. To make this happen I need (at a minimum) to find a space where I can pump a pre-made playlist and start advertising regular events. Over time I'd love to get the DJ skills and equipment to curate the experience live, and to deepen my facilitation skills through a formal training process.",
+  },
+  {
+    name: "Kids' Business School",
+    stage: "Building",
+    desc: "A 6–10 week program, 2 hours after school, one afternoon per week, leading up to a stall at an officially established market on a Saturday or Sunday where the kids will have a stall and can sell whatever they've designed, thought up, created. The program would cover everything from product design and market research to advertising and graphic design, teaching literacy, numeracy and many soft skills along the way.",
+    thinking: "Inquiry-based learning: a bit of a buzzword, but something I've been grounded in from my own time at Fitzroy High School, a pioneer (for a state school) in the area. It's obvious to me that kids learn well when they see the content of their education in context. And it's equally obvious to me from experience that running a small commercial enterprise demands an insanely wide repertoire of skills. I'm currently pondering a pilot program with the homeschool community in Darwin. I would charge on a sliding scale so I could cover costs at a minimum but recognise that parents are supporting my learning by sending their kids to a pilot program. I'd work with up to 10 children between the ages of 9 and 14. I currently have an Ochre card and First Aid certificates. I will need to sort out the requisite insurances and find a venue for the sessions, as well as a stall at a local market (currently thinking Nightcliff Sunday market or Parap Saturday market).",
+  },
+  {
+    name: "Children's Theatre Production",
+    stage: "Dreaming",
+    desc: "A simple, grassroots theatre production of a classic play, put on by your local neighbourhood kids in the park.",
+    thinking: "Theatre and drama bring me to life: from a young age I loved being on stage and dressing up in character. Theatre is a wonderful opportunity for children to participate in community entertainment, rather than being passive consumers of it on an iPad. This doesn't need to be complicated: just a kid-friendly script of a classic story (like A Midsummer Night's Dream or Peter Pan) that can be performed in an hour or so with an intermission, a basic set construction, costumes, and a venue. Darwin during the dry season is perfect for this because there are so many beautiful outdoor public spaces this could be held.",
+  },
+];
+---
+
+<BaseLayout title="What's Brewing — Tom Allen" description="Ideas in progress, open to collaborators." section="brewing">
+  <Nav section="brewing" />
+
+  <main style="padding-top: 80px;">
+    <section class="container-wide" style="padding: 80px 32px 60px;">
+      <div class="fade-in">
+        <h1 class="brewing-title">What's Brewing</h1>
+      </div>
+      <div class="fade-in" data-delay="150">
+        <p class="brewing-intro">
+          I put ideas I'm brewing here because they're not really <em>my</em> ideas (whose are?) and I'd rather attract collaborators than "protect my intellectual property."
+        </p>
+      </div>
+
+      <div class="brewing-ideas">
+        {ideas.map((idea, i) => (
+          <div class="brewing-idea card fade-in" data-delay={String(300 + i * 120)}>
+            <div class="brewing-idea__header">
+              <h3>{idea.name}</h3>
+              <span class="brewing-idea__stage">{idea.stage}</span>
+            </div>
+            <p class="brewing-idea__desc">{idea.desc}</p>
+            <div class="brewing-idea__thinking">
+              <p class="brewing-idea__thinking-label">Where my thinking is at</p>
+              <p class="brewing-idea__thinking-body">{idea.thinking}</p>
+            </div>
+            <a href="mailto:tom@tomallen.com.au?subject=I'm interested in: {idea.name}" class="brewing-idea__btn">I'm interested in this</a>
+          </div>
+        ))}
+      </div>
+
+      <!-- CTA -->
+      <div class="fade-in brewing-cta" data-delay="700">
+        <h2>Want to be part of something?</h2>
+        <p>Whether you want to collaborate, pilot something, share a venue, or just tell me what you think — I'm all ears.</p>
+        <a href="mailto:tom@tomallen.com.au" class="btn" style="background: #FFF; color: var(--brw-accent); font-weight: 600;">Let's Talk</a>
+      </div>
+    </section>
+
+    <CrossLinks current="brewing" />
+  </main>
+</BaseLayout>
+
+<style>
+  .brewing-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(36px, 5vw, 52px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--brw-text);
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  .brewing-intro {
+    font-family: 'Source Serif 4', serif;
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--brw-subtle);
+    max-width: 520px;
+    font-weight: 300;
+    margin-bottom: 60px;
+  }
+
+  .brewing-ideas {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .brewing-idea {
+    border-color: color-mix(in srgb, var(--brw-accent) 8%, transparent);
+    border-radius: 12px;
+  }
+
+  .brewing-idea:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .brewing-idea__header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .brewing-idea__header h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--brw-text);
+  }
+
+  .brewing-idea__stage {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brw-accent);
+    background: color-mix(in srgb, var(--brw-accent) 7%, transparent);
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+  }
+
+  .brewing-idea__desc {
+    font-family: 'Source Serif 4', serif;
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--brw-subtle);
+    font-weight: 300;
+    margin-bottom: 16px;
+  }
+
+  .brewing-idea__thinking {
+    background: color-mix(in srgb, var(--brw-accent) 3%, transparent);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    border-left: 3px solid color-mix(in srgb, var(--brw-accent) 18%, transparent);
+  }
+
+  .brewing-idea__thinking-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--brw-accent);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+
+  .brewing-idea__thinking-body {
+    font-family: 'Source Serif 4', serif;
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--brw-text);
+    font-weight: 300;
+  }
+
+  .brewing-idea__btn {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--brw-accent);
+    border: 1px solid color-mix(in srgb, var(--brw-accent) 25%, transparent);
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .brewing-idea__btn:hover {
+    background: var(--brw-accent);
+    color: #FFF;
+  }
+
+  .brewing-cta {
+    background: var(--brw-accent);
+    border-radius: 12px;
+    padding: 40px 36px;
+    color: #FFF;
+    margin-top: 56px;
+    margin-bottom: 60px;
+  }
+
+  .brewing-cta h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+
+  .brewing-cta p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    opacity: 0.85;
+    font-weight: 300;
+    margin-bottom: 24px;
+    max-width: 460px;
+  }
+</style>

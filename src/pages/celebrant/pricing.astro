@@ -1,0 +1,209 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import CelebrantNav from '../../components/CelebrantNav.astro';
+import CelebrantFooter from '../../components/CelebrantFooter.astro';
+---
+
+<BaseLayout title="Pricing — Tom Allen Celebrant" description="Wedding ceremony packages for Darwin and the Top End." section="celebrant">
+  <Nav section="celebrant" />
+  <CelebrantNav activePage="pricing" />
+
+  <main style="padding-top: 96px;">
+    <!-- Banner -->
+    <section class="pricing-banner">
+      <img src="/images/celebrant/bouquet.jpg" alt="Wedding details" class="pricing-banner__img" onerror="this.style.display='none'" />
+      <div class="pricing-banner__overlay">
+        <div class="container-wide" style="width: 100%;">
+          <h1 class="font-heading" style="font-size: 42px; font-weight: 400; font-style: italic; color: #FFF9F0;">Pricing</h1>
+        </div>
+      </div>
+    </section>
+
+    <section class="container-wide" style="padding: 40px 32px 80px;">
+      <!-- Packages -->
+      <div class="pricing-cards">
+        <div class="pricing-card fade-in">
+          <div class="pricing-card__header">
+            <h3>Elopements</h3>
+            <span class="pricing-card__price">$400</span>
+          </div>
+          <div class="pricing-card__features">
+            <p>— Just you and your two witnesses</p>
+            <p>— Minimum legal ceremony script (approx. 10 minutes)</p>
+            <p>— All legal paperwork</p>
+            <p>— Travel within 50km of Darwin</p>
+          </div>
+        </div>
+
+        <div class="pricing-card fade-in" data-delay="120">
+          <div class="pricing-card__header">
+            <h3>A Simple Wedding</h3>
+            <span class="pricing-card__price">$750</span>
+          </div>
+          <div class="pricing-card__features">
+            <p>— Standard script with one meeting to fine tune</p>
+            <p>— All legal paperwork</p>
+            <p>— Travel within 50km of Darwin</p>
+          </div>
+        </div>
+
+        <div class="pricing-card pricing-card--featured fade-in" data-delay="240">
+          <span class="pricing-card__badge">Most popular</span>
+          <div class="pricing-card__header">
+            <h3>A Crafted Wedding</h3>
+            <span class="pricing-card__price">$1,000</span>
+          </div>
+          <div class="pricing-card__features">
+            <p>— Full ceremony script written from scratch</p>
+            <p>— 3+ meetings to plan and refine</p>
+            <p>— All legal paperwork</p>
+            <p>— Travel within 50km of Darwin</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Extras -->
+      <div class="pricing-extras fade-in" data-delay="400">
+        <h3>Extras — from $50</h3>
+        <div class="pricing-extras__list">
+          <p>— Portable PA</p>
+          <p>— Signing table and chairs</p>
+          <p>— Arbour</p>
+          <p>— Extra travel and accommodation expenses</p>
+        </div>
+      </div>
+
+      <!-- Payment note -->
+      <p class="fade-in pricing-note" data-delay="500">
+        All bookings involve a 50% booking fee with the balance due by the time of the ceremony. The booking fee is refundable until 2 months before the ceremony.
+      </p>
+    </section>
+
+    <CelebrantFooter />
+  </main>
+</BaseLayout>
+
+<style>
+  .pricing-banner {
+    position: relative;
+    height: 280px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #3D352E 0%, #4A4039 40%, #2D2720 100%);
+  }
+
+  .pricing-banner__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .pricing-banner__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(61,46,30,0.1) 0%, rgba(61,46,30,0.6) 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 40px 32px;
+  }
+
+  .pricing-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .pricing-card {
+    background: #FFF;
+    border: 1px solid color-mix(in srgb, var(--cel-accent) 8%, transparent);
+    border-radius: 10px;
+    padding: 36px 32px;
+    position: relative;
+  }
+
+  .pricing-card--featured {
+    border-color: color-mix(in srgb, var(--cel-accent) 25%, transparent);
+    box-shadow: 0 4px 24px color-mix(in srgb, var(--cel-accent) 7%, transparent);
+  }
+
+  .pricing-card__badge {
+    position: absolute;
+    top: -10px;
+    right: 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--cel-accent);
+    color: #FFF;
+    padding: 4px 14px;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+
+  .pricing-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .pricing-card__header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--cel-text);
+  }
+
+  .pricing-card__price {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    color: var(--cel-accent);
+    font-weight: 400;
+  }
+
+  .pricing-card__features p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 14px;
+    line-height: 2;
+    color: var(--cel-text);
+    font-weight: 300;
+  }
+
+  .pricing-extras {
+    background: color-mix(in srgb, var(--cel-accent) 4%, transparent);
+    border-radius: 10px;
+    padding: 28px 32px;
+  }
+
+  .pricing-extras h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--cel-text);
+    margin-bottom: 14px;
+  }
+
+  .pricing-extras__list p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 14px;
+    line-height: 2;
+    color: var(--cel-text);
+    font-weight: 300;
+  }
+
+  .pricing-note {
+    font-family: 'Source Serif 4', serif;
+    font-size: 15px;
+    color: var(--cel-subtle);
+    font-weight: 300;
+    line-height: 1.7;
+    text-align: center;
+    margin-top: 32px;
+  }
+</style>

@@ -1,0 +1,161 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import CelebrantNav from '../../components/CelebrantNav.astro';
+import CelebrantFooter from '../../components/CelebrantFooter.astro';
+
+const steps = [
+  { num: "01", title: "No-obligation discovery call", body: "Finding a celebrant is like dating: you need to find someone you click with, and it's nothing personal if you don't. A 15-minute discovery call is a great way for us to work out if we're a good match." },
+  { num: "02", title: "Getting to know you", body: "You'll complete a questionnaire that gives me plenty of juicy backstory to work with, and also enlightens me about your approach to marriage because no two couples are the same. We'll meet to discuss your wishes for the ceremony and sign the Notice of Intended Marriage at least one month prior to your ceremony." },
+  { num: "03", title: "Fine tuning", body: "A bit of back and forth to fine tune the ceremony is really common. I'll write it out in full and share via Google Docs so you can edit and comment to your heart's content. Once we're settled, it's go-time!" },
+  { num: "04", title: "The rehearsal", body: "No matter how confident you're feeling, a rehearsal always uncovers something none of us had thought of. Maybe the sun's in your eyes at that time of day, or your future mother-in-law doesn't know how many kisses on the cheek she should give. A rehearsal is a must to create a seamless wedding ceremony where you can relax and trust the process." },
+  { num: "05", title: "The day itself", body: "I'll rock up nice and early while you're enjoying the pre-ceremony jitters. I'll speak to the necessary people — venue manager, photographer, reception MC as applicable — and make sure everyone has the same expectations. Then it'll be time for your magic moment with all of your family and friends." },
+];
+---
+
+<BaseLayout title="How I Work — Tom Allen Celebrant" description="From first call to 'I do' — five steps to your perfect ceremony." section="celebrant">
+  <Nav section="celebrant" />
+  <CelebrantNav activePage="howIWork" />
+
+  <main style="padding-top: 96px;">
+    <section class="hiw-banner">
+      <img src="/images/celebrant/how-i-work.jpg" alt="Tom at a ceremony" class="hiw-banner__img" onerror="this.style.display='none'" />
+      <div class="hiw-banner__overlay">
+        <div class="container" style="width: 100%;">
+          <h1 class="font-heading" style="font-size: 42px; font-weight: 400; font-style: italic; color: #FFF9F0;">How I Work</h1>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" style="padding: 48px 32px 80px;">
+      <div class="hiw-steps">
+        {steps.map((step, i) => (
+          <div class="hiw-step fade-in" data-delay={String(i * 100)}>
+            <div class="hiw-step__visual">
+              <div class={`hiw-step__circle placeholder-img placeholder-img--${i % 2 === 0 ? 'warm' : 'dark'}`}>
+                <img src={`/images/celebrant/step-${step.num}.jpg`} alt={step.title} onerror="this.style.display='none'" />
+              </div>
+              <span class="hiw-step__num">{step.num}</span>
+            </div>
+            <div class="hiw-step__content">
+              <h3>{step.title}</h3>
+              <p>{step.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="fade-in" data-delay="600" style="text-align: center; margin-top: 56px;">
+        <a href="/celebrant/enquire/" class="btn" style="background: var(--cel-accent); color: #FFF;">Book a Discovery Call</a>
+      </div>
+    </section>
+
+    <CelebrantFooter />
+  </main>
+</BaseLayout>
+
+<style>
+  .hiw-banner {
+    position: relative;
+    height: 280px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #D4C5B0 0%, #E8D5BE 40%, #C9B89A 100%);
+  }
+
+  .hiw-banner__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hiw-banner__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(61,46,30,0.1) 0%, rgba(61,46,30,0.6) 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 40px 32px;
+  }
+
+  .hiw-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 52px;
+  }
+
+  .hiw-step {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+
+  .hiw-step__visual {
+    position: relative;
+  }
+
+  .hiw-step__circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hiw-step__circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hiw-step__num {
+    position: absolute;
+    bottom: -6px;
+    right: -6px;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: #FFF;
+    background: var(--cel-accent);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hiw-step__content {
+    padding-top: 8px;
+  }
+
+  .hiw-step__content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--cel-text);
+    margin-bottom: 10px;
+  }
+
+  .hiw-step__content p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--cel-subtle);
+    font-weight: 300;
+  }
+
+  @media (max-width: 540px) {
+    .hiw-step {
+      grid-template-columns: 80px 1fr;
+      gap: 16px;
+    }
+    .hiw-step__circle {
+      width: 80px;
+      height: 80px;
+    }
+  }
+</style>

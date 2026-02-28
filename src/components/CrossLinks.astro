@@ -1,0 +1,71 @@
+---
+interface Props {
+  current: string;
+}
+
+const { current } = Astro.props;
+
+const sections = [
+  { key: 'celebrant', label: 'Celebrant', href: '/celebrant/' },
+  { key: 'writing', label: 'Writing', href: '/writing/' },
+  { key: 'work', label: 'The Work', href: '/work/' },
+  { key: 'brewing', label: "What's Brewing", href: '/brewing/' },
+];
+
+const others = sections.filter(s => s.key !== current);
+---
+
+<div class="cross-links">
+  <div class="cross-links__inner">
+    <p class="cross-links__label">Also from Tom</p>
+    <div class="cross-links__buttons">
+      {others.map((sec) => (
+        <a href={sec.href} class="cross-links__btn">{sec.label}</a>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .cross-links {
+    border-top: 1px solid rgba(0,0,0,0.06);
+    padding: 40px 32px;
+  }
+
+  .cross-links__inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .cross-links__label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: #8A8477;
+    font-weight: 300;
+    margin-bottom: 14px;
+  }
+
+  .cross-links__buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .cross-links__btn {
+    background: none;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 6px;
+    padding: 10px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: #2D2A24;
+    font-weight: 400;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .cross-links__btn:hover {
+    border-color: rgba(0,0,0,0.25);
+    background: rgba(0,0,0,0.03);
+  }
+</style>

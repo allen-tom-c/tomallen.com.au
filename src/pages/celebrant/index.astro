@@ -1,0 +1,258 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import CelebrantNav from '../../components/CelebrantNav.astro';
+import CelebrantFooter from '../../components/CelebrantFooter.astro';
+---
+
+<BaseLayout title="Tom Allen — Marriage Celebrant, Darwin NT" description="Wedding ceremonies that feel like you. Marriage celebrant based in Darwin, Northern Territory." section="celebrant">
+  <Nav section="celebrant" />
+  <CelebrantNav activePage="home" />
+
+  <main style="padding-top: 96px;">
+    <!-- Hero -->
+    <section class="cel-hero">
+      <!-- Replace with your hero photo -->
+      <img src="/images/celebrant/hero.jpg" alt="Wedding ceremony" class="cel-hero__img" onerror="this.style.display='none'" />
+      <div class="cel-hero__overlay">
+        <div class="cel-hero__content">
+          <p class="fade-in label" style="color: #FFF9F0; margin-bottom: 24px; opacity: 0.8;">Marriage Celebrant — Darwin, NT</p>
+          <h1 class="fade-in cel-hero__title" data-delay="200">Ceremonies that<br />feel like you</h1>
+          <p class="fade-in cel-hero__desc" data-delay="400">
+            The wedding ceremonies I craft are all about presence. Even despite our best efforts, our wedding days are usually a blur. The opportunity I present to you as your celebrant is not more noise, more chatter, more intensity, but a moment of pause, of presence, to see clearly where you've come from and where you're choosing to go.
+          </p>
+          <div class="fade-in cel-hero__actions" data-delay="550">
+            <a href="/celebrant/enquire/" class="btn" style="background: #FFF9F0; color: var(--cel-accent); font-weight: 600;">Get in Touch</a>
+            <a href="/celebrant/how-i-work/" class="btn btn-outline" style="color: #FFF9F0; border-color: rgba(255,249,240,0.4);">How I Work</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Three Value Props -->
+    <section class="container-wide fade-in" style="padding: 80px 32px 60px;">
+      <div class="cel-values">
+        <div class="cel-values__item">
+          <h3>A Time to Connect</h3>
+          <p>Weddings are about stories, old and new. Weddings bring us together. My role as a celebrant is to help you tell your story and connect with your people authentically.</p>
+        </div>
+        <div class="cel-values__item">
+          <h3>A Time to Celebrate</h3>
+          <p>Weddings should be fun. They are opportunities for us to fill our cup, to be joyful, to share hope, and to share in the wonder and mystery of love. My job is to help you make it fun, whatever that means to you. Introverts, extroverts, big weddings or small: this is a day to remember.</p>
+        </div>
+        <div class="cel-values__item">
+          <h3>A Day to Reflect</h3>
+          <p>Life is full of challenges and mundane moments. A wedding is neither of those. It is a chance to take a deep breath and state what is most true to you, what you feel in your bones. I'm here to hold a little space for you to bring your best selves and have a moment to reflect on the preciousness of life.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section class="container-full fade-in" data-delay="100" style="padding: 0 32px 80px;">
+      <div class="cel-gallery">
+        <div class="cel-gallery__tall">
+          <img src="/images/celebrant/gallery-1.jpg" alt="Wedding moment" onerror="this.parentElement.classList.add('placeholder-img','placeholder-img--warm')" />
+        </div>
+        <div class="cel-gallery__cell">
+          <img src="/images/celebrant/gallery-2.jpg" alt="Wedding moment" onerror="this.parentElement.classList.add('placeholder-img','placeholder-img--dark')" />
+        </div>
+        <div class="cel-gallery__cell">
+          <img src="/images/celebrant/gallery-3.jpg" alt="Wedding moment" onerror="this.parentElement.classList.add('placeholder-img','placeholder-img--warm')" />
+        </div>
+        <div class="cel-gallery__cell">
+          <img src="/images/celebrant/gallery-4.jpg" alt="Wedding moment" onerror="this.parentElement.classList.add('placeholder-img','placeholder-img--cool')" />
+        </div>
+        <div class="cel-gallery__cell">
+          <img src="/images/celebrant/gallery-5.jpg" alt="Wedding moment" onerror="this.parentElement.classList.add('placeholder-img','placeholder-img--warm')" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="cel-testimonials">
+      <div class="container-narrow">
+        {[
+          { quote: "It was Tom's first run as a celebrant and I already had other guests asking if he was available to do their wedding. He was truly a natural; eloquent, witty and personable with real attention to detail and great communication.", who: "Joe and Molly, Quamby Estate, TAS" },
+          { quote: "Tom was interested and interesting, attentive and so kind! He held the most amazing space full of life and energy at our wedding and included our family including two young kids in all we did. We won't forget how much he set the scene and brought us together for our wedding day. My nanna loved him and so did my aunties.", who: "Zoe and Will, Kangaroobie, VIC" },
+          { quote: "What a joy and honour it was to work with Tom to create the marriage ceremony of our dreams. Tom was instrumental in crafting the structure of our ceremony so that the magic could flow so beautifully on the day. He had such a grounding influence on us throughout the whole process, getting things organised well in advance so that we were able to 'let go' as the wedding storm swept us up.", who: "Michaela and Lachie, Stieglitz, VIC" },
+        ].map((t, i) => (
+          <blockquote class="fade-in cel-quote" data-delay={String(i * 150)}>
+            <p class="cel-quote__text">"{t.quote}"</p>
+            <footer class="cel-quote__who">— {t.who}</footer>
+          </blockquote>
+        ))}
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="padding: 80px 32px; text-align: center;">
+      <div class="fade-in">
+        <h2 class="font-heading" style="font-size: 32px; font-weight: 400; font-style: italic; color: var(--cel-text); margin-bottom: 16px;">Let's talk about your day</h2>
+        <p class="font-body" style="font-size: 16px; color: var(--cel-subtle); font-weight: 300; margin-bottom: 28px;">No commitment. Just a conversation.</p>
+        <a href="/celebrant/enquire/" class="btn" style="background: var(--cel-accent); color: #FFF;">Enquire Now</a>
+      </div>
+    </section>
+
+    <CelebrantFooter />
+  </main>
+</BaseLayout>
+
+<style>
+  .cel-hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 75vh;
+    min-height: 500px;
+    background: linear-gradient(135deg, #3D352E 0%, #4A4039 40%, #2D2720 100%);
+  }
+
+  .cel-hero__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cel-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(61,46,30,0.15) 0%, rgba(61,46,30,0.65) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cel-hero__content {
+    text-align: center;
+    padding: 32px;
+    max-width: 700px;
+  }
+
+  .cel-hero__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 6vw, 64px);
+    font-weight: 400;
+    font-style: italic;
+    color: #FFF9F0;
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+
+  .cel-hero__desc {
+    font-family: 'Source Serif 4', serif;
+    font-size: 18px;
+    line-height: 1.7;
+    color: #FFF9F0;
+    font-weight: 300;
+    max-width: 520px;
+    margin: 0 auto 36px;
+    opacity: 0.9;
+  }
+
+  .cel-hero__actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cel-values {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    max-width: 850px;
+    margin: 0 auto;
+  }
+
+  .cel-values__item {
+    text-align: center;
+  }
+
+  .cel-values__item h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--cel-text);
+    margin-bottom: 12px;
+  }
+
+  .cel-values__item p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--cel-subtle);
+    font-weight: 300;
+  }
+
+  .cel-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 200px 200px;
+    gap: 12px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .cel-gallery__tall {
+    grid-row: 1 / 3;
+    overflow: hidden;
+    border-radius: 6px;
+  }
+
+  .cel-gallery__tall img,
+  .cel-gallery__cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cel-gallery__cell {
+    overflow: hidden;
+    border-radius: 6px;
+  }
+
+  .cel-testimonials {
+    background: color-mix(in srgb, var(--cel-accent) 4%, transparent);
+    padding: 70px 32px;
+  }
+
+  .cel-quote {
+    margin: 0 0 36px;
+    padding: 0 0 36px;
+    border-bottom: 1px solid color-mix(in srgb, var(--cel-accent) 8%, transparent);
+  }
+
+  .cel-quote:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .cel-quote__text {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    font-style: italic;
+    line-height: 1.7;
+    color: var(--cel-text);
+    font-weight: 400;
+    margin-bottom: 14px;
+  }
+
+  .cel-quote__who {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--cel-subtle);
+  }
+
+  @media (max-width: 640px) {
+    .cel-gallery {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+    }
+    .cel-gallery__tall {
+      grid-row: auto;
+    }
+  }
+</style>

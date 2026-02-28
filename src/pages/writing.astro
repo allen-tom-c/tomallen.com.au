@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import CrossLinks from '../components/CrossLinks.astro';
+
+// Fetch Substack RSS at build time
+let posts: Array<{ title: string; link: string; pubDate: string; description: string }> = [];
+try {
+  const res = await fetch('https://substack.com/@tomcraigallen/feed');
+  if (res.ok) {
+    const xml = await res.text();
+    // Simple XML parsing for RSS items
+    const items = xml.match(/<item>([\s\S]*?)<\/item>/g) || [];
+    posts = items.slice(0, 8).map(item => {
+      const getTag = (tag: string) => {
+        const match = item.match(new RegExp(`<${tag}>(.*?)</${tag}>`, 's'));
+        return match ? match[1].replace(/<!\[CDATA\[(.*?)\]\]>/s, '$1').trim() : '';
+      };
+      return {
+        title: getTag('title'),
+        link: getTag('link'),
+        pubDate: getTag('pubDate'),
+        description: getTag('description').replace(/<[^>]+>/g, '').slice(0, 200),
+      };
+    });
+  }
+} catch (e) {
+  // RSS fetch failed — will show fallback
+}
+---
+
+<BaseLayout title="Writing — Tom Allen" description="Essays, fiction and poetry on philosophy, politics, economics and life." section="writing">
+  <Nav section="writing" />
+
+  <main style="padding-top: 80px;">
+    <section class="container-narrow" style="padding: 80px 32px 60px;">
+      <div class="fade-in">
+        <h1 class="font-body" style="font-size: clamp(32px, 4.5vw, 48px); font-weight: 300; color: var(--wri-text); line-height: 1.2; margin-bottom: 16px;">Writing</h1>
+      </div>
+      <div class="fade-in" data-delay="150">
+        <p class="font-body" style="font-size: 18px; line-height: 1.8; color: var(--wri-subtle); font-weight: 300; margin-bottom: 32px; max-width: 500px;">
+          I write because I can't help it! And I share what I write because I like conversation. Most of what I write relates broadly to philosophy, politics and economics but I also dabble in fiction and poetry.
+        </p>
+      </div>
+
+      <!-- Subscribe box -->
+      <div class="fade-in writing-subscribe" data-delay="250">
+        <div>
+          <p class="font-body" style="font-size: 15px; color: var(--wri-text); font-weight: 400; margin-bottom: 4px;">Subscribe on Substack</p>
+          <p class="font-ui" style="font-size: 13px; color: var(--wri-subtle); font-weight: 300;">New essays and poems, straight to your inbox.</p>
+        </div>
+        <div class="writing-subscribe__form">
+          <a href="https://substack.com/@tomcraigallen" target="_blank" rel="noopener" class="btn" style="background: var(--wri-accent); color: #FFF; font-size: 12px;">Subscribe on Substack</a>
+        </div>
+      </div>
+
+      <!-- Posts -->
+      {posts.length > 0 ? (
+        <div class="writing-posts">
+          {posts.map((post, i) => (
+            <a href={post.link} target="_blank" rel="noopener" class="writing-post fade-in" data-delay={String(350 + i * 80)}>
+              <h3 class="writing-post__title">{post.title}</h3>
+              {post.pubDate && <time class="writing-post__date">{new Date(post.pubDate).toLocaleDateString('en-AU', { year: 'numeric', month: 'long', day: 'numeric' })}</time>}
+              {post.description && <p class="writing-post__excerpt">{post.description}…</p>}
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div class="fade-in writing-empty" data-delay="350">
+          <p class="font-body" style="font-size: 16px; color: var(--wri-subtle); font-weight: 300; font-style: italic;">
+            Posts from Substack will appear here once the RSS feed is connected.
+          </p>
+          <p class="font-ui" style="font-size: 13px; color: var(--wri-subtle); font-weight: 300; margin-top: 8px;">
+            In the meantime, visit <a href="https://substack.com/@tomcraigallen" style="color: var(--wri-accent); text-decoration: underline; text-underline-offset: 3px;">substack.com/@tomcraigallen</a>
+          </p>
+        </div>
+      )}
+    </section>
+
+    <CrossLinks current="writing" />
+  </main>
+</BaseLayout>
+
+<style>
+  .writing-subscribe {
+    background: color-mix(in srgb, var(--wri-accent) 4%, transparent);
+    border: 1px solid color-mix(in srgb, var(--wri-accent) 7%, transparent);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-bottom: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .writing-subscribe__form {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .writing-posts {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .writing-post {
+    display: block;
+    padding: 28px 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--wri-accent) 7%, transparent);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .writing-post:hover {
+    opacity: 0.75;
+  }
+
+  .writing-post:first-child {
+    border-top: 1px solid color-mix(in srgb, var(--wri-accent) 7%, transparent);
+  }
+
+  .writing-post__title {
+    font-family: 'Source Serif 4', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--wri-text);
+    margin-bottom: 4px;
+  }
+
+  .writing-post__date {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--wri-subtle);
+    font-weight: 300;
+  }
+
+  .writing-post__excerpt {
+    font-family: 'Source Serif 4', serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--wri-subtle);
+    font-weight: 300;
+    margin-top: 8px;
+  }
+
+  .writing-empty {
+    text-align: center;
+    padding: 48px 20px;
+    border: 1px dashed color-mix(in srgb, var(--wri-accent) 12%, transparent);
+    border-radius: 8px;
+  }
+</style>
