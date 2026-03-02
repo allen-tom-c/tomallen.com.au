@@ -10,7 +10,7 @@ const isCelebrant = section === 'celebrant';
 
 const configs: Record<string, { accent: string; bg: string; subtle: string }> = {
   hub: { accent: '#2D2A24', bg: '#F5F0E8', subtle: '#8A8477' },
-  celebrant: { accent: '#8B6F4E', bg: '#FAF7F2', subtle: '#B8A089' },
+  celebrant: { accent: '#1E3A5F', bg: '#EEF4FF', subtle: '#5B7FBF' },
   writing: { accent: '#1A1A2E', bg: '#FAFAFA', subtle: '#7A7A8A' },
   work: { accent: '#0D3B2E', bg: '#F2F7F5', subtle: '#6B8F82' },
   brewing: { accent: '#6B3A5D', bg: '#FBF5F9', subtle: '#A87D97' },
@@ -26,26 +26,50 @@ const navLinks = [
 ];
 ---
 
-<nav class="top-nav" data-section={section}>
+<nav class="top-nav" data-section={section} id="main-nav">
   <a href="/" class="top-nav__logo">
     {isCelebrant ? '← tomallen.com.au' : 'Tom Allen'}
   </a>
   {!isCelebrant && (
-    <div class="top-nav__links">
-      {section === 'hub' && (
-        <>
-          <a href="/" class:list={['top-nav__link', { active: hubSubPage === 'home' }]}>Home</a>
-          <a href="/about/" class:list={['top-nav__link', { active: hubSubPage === 'about' }]}>About</a>
-        </>
-      )}
-      {navLinks.map((link) => (
-        <a href={link.href} class:list={['top-nav__link', { active: section === link.key }]}>{link.label}</a>
-      ))}
-    </div>
+    <>
+      <div class="top-nav__links">
+        {section === 'hub' && (
+          <>
+            <a href="/" class:list={['top-nav__link', { active: hubSubPage === 'home' }]}>Home</a>
+            <a href="/about/" class:list={['top-nav__link', { active: hubSubPage === 'about' }]}>About</a>
+          </>
+        )}
+        {navLinks.map((link) => (
+          <a href={link.href} class:list={['top-nav__link', { active: section === link.key }]}>{link.label}</a>
+        ))}
+      </div>
+      <button class="top-nav__hamburger" id="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </>
   )}
 </nav>
 
-<style define:vars={{ accent: s.accent, bg: s.bg, subtle: s.subtle, isCel: isCelebrant ? '1' : '0' }}>
+<script>
+  const hamburger = document.getElementById('nav-hamburger');
+  const nav = document.getElementById('main-nav');
+
+  hamburger?.addEventListener('click', () => {
+    const isOpen = nav?.classList.toggle('is-open');
+    hamburger?.setAttribute('aria-expanded', String(!!isOpen));
+  });
+
+  document.addEventListener('click', (e) => {
+    if (nav && !nav.contains(e.target as Node)) {
+      nav.classList.remove('is-open');
+      hamburger?.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>
+
+<style define:vars={{ accent: s.accent, bg: s.bg, subtle: s.subtle }}>
   .top-nav {
     position: fixed;
     top: 0;
@@ -55,17 +79,16 @@ const navLinks = [
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
     padding: 14px 32px;
-    background: var(--isCel, 0) == 1 ? color-mix(in srgb, var(--accent) 94%, transparent) : color-mix(in srgb, var(--bg) 93%, transparent);
+    background: color-mix(in srgb, var(--bg) 93%, transparent);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid color-mix(in srgb, var(--accent) 8%, transparent);
   }
 
-  /* Override with actual conditional styles */
-  [data-section="celebrant"] .top-nav,
   .top-nav[data-section="celebrant"] {
     padding: 10px 32px;
-    background: rgba(139, 111, 78, 0.94);
+    background: rgba(30, 58, 95, 0.92);
     border-bottom: none;
   }
 
@@ -78,10 +101,10 @@ const navLinks = [
     text-decoration: none;
   }
 
-  [data-section="celebrant"] .top-nav__logo {
+  .top-nav[data-section="celebrant"] .top-nav__logo {
     font-size: 14px;
-    color: #FFF9F0;
-    opacity: 0.7;
+    color: rgba(238, 244, 255, 0.75);
+    opacity: 1;
   }
 
   .top-nav__links {
@@ -103,9 +126,7 @@ const navLinks = [
     transition: color 0.2s ease;
   }
 
-  .top-nav__link:hover {
-    color: var(--accent);
-  }
+  .top-nav__link:hover { color: var(--accent); }
 
   .top-nav__link.active {
     color: var(--accent);
@@ -113,21 +134,74 @@ const navLinks = [
     border-bottom-color: var(--accent);
   }
 
+  .top-nav__hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: -6px;
+  }
+
+  .top-nav__hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  .top-nav.is-open .top-nav__hamburger span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .top-nav.is-open .top-nav__hamburger span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  .top-nav.is-open .top-nav__hamburger span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
   @media (max-width: 768px) {
-    .top-nav {
-      padding: 12px 16px;
-    }
-    .top-nav__links {
-      gap: 14px;
-    }
-    .top-nav__link {
-      font-size: 11px;
-    }
+    .top-nav { padding: 12px 16px; }
+    .top-nav__links { gap: 14px; }
+    .top-nav__link { font-size: 11px; }
   }
 
   @media (max-width: 580px) {
+    .top-nav__hamburger { display: flex; }
+
     .top-nav__links {
       display: none;
+      width: 100%;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      padding: 6px 0 12px;
+      margin-top: 8px;
+      border-top: 1px solid color-mix(in srgb, var(--accent) 12%, transparent);
+    }
+
+    .top-nav.is-open .top-nav__links {
+      display: flex;
+    }
+
+    .top-nav__link {
+      font-size: 14px;
+      padding: 11px 0;
+      width: 100%;
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 8%, transparent);
+    }
+
+    .top-nav__link:last-child {
+      border-bottom: none;
+    }
+
+    .top-nav__link.active {
+      border-bottom-color: color-mix(in srgb, var(--accent) 8%, transparent);
     }
   }
 </style>

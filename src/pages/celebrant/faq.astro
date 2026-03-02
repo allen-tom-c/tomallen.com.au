@@ -9,15 +9,28 @@ const faqs = [
   { q: "Are you a qualified celebrant?", a: "Yes, I completed a Certificate IV in Celebrancy in 2024 and hold a current registration with the Attorney General of Australia as an Authorised Marriage Celebrant." },
   { q: "Do you provide your own PA and organise music for the ceremony?", a: "Yes, I can supply a PA and microphone for an additional fee. It's my preference that someone else cues the desired music for the ceremony but I will work closely with them to understand the script and ensure everything goes smoothly. I have copyright cover for any music used in the ceremony as well." },
   { q: "Can you MC our reception?", a: "Yes! I love MC'ing receptions and all kinds of events. It makes for a wonderful experience for me to facilitate proceedings for the entire day, so I really enjoy it." },
-  { q: "How many meetings can we have with you to plan our ceremony?", a: "That depends. If you're keen to craft a personalised ceremony we will have as many meetings as you need to create an authentic expression of love and commitment that feels like you. If you're after a simpler ceremony we will usually have two meetings to organise paperwork and discuss the ceremony. These can be face-to-face or online." },
-  { q: "How does payment work?", a: "All bookings involve a 50% booking fee with the balance due by the time of the ceremony. The booking fee is refundable until 2 months before the ceremony." },
+  { q: "How many meetings can we have with you to plan our ceremony?", a: "That depends. If you're keen to craft a personalised ceremony we will have as many meetings as you need to create an authentic expression of love and commitment that feels like you. If you're after a simpler ceremony we will usually have two meetings to organise paperwork and discuss the ceremony. These can be face-to-face or online. You can read more about my full process on the <a href='/celebrant/how-i-work/'>How I Work</a> page." },
+  { q: "How does payment work?", a: "All bookings involve a 50% booking fee with the balance due by the time of the ceremony. The booking fee is refundable until 2 months before the ceremony. See the <a href='/celebrant/pricing/'>Pricing page</a> for full package details." },
   { q: "We want to get married really soon, can you help us?", a: "The Marriage Act stipulates that a Notice of Intended Marriage must be completed, witnessed and submitted to an Authorised Celebrant at least one month prior to the date of intended marriage. There are some circumstances where a shortening of time can be granted, but these are quite specific. Get in touch if you're uncertain and we can talk about it!" },
   { q: "We just want the minimum legal paperwork for our marriage, can you do that?", a: "Yes, absolutely. All you need for a valid marriage is an Authorised Celebrant and two witnesses. Get in touch and we can talk about the specifics." },
   { q: "How far are you willing to travel?", a: "I am happy to travel Australia-wide for weddings pending discussion of travel expenses — my first wedding was in Tasmania! While I live in Darwin and mostly practice in the Top End, I know lots of people all over Victoria and beyond, so I can often find people to stay with when working away from home. Overseas weddings are another story, get in touch and we can discuss the details of your situation." },
 ];
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.a
+    }
+  }))
+};
 ---
 
 <BaseLayout title="FAQ — Tom Allen Celebrant" description="Answers to common questions about wedding ceremonies in Darwin." section="celebrant">
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <Nav section="celebrant" />
   <CelebrantNav activePage="faq" />
 
@@ -35,7 +48,7 @@ const faqs = [
               <span>{faq.q}</span>
               <span class="faq-icon">+</span>
             </summary>
-            <p class="faq-answer">{faq.a}</p>
+            <p class="faq-answer" set:html={faq.a} />
           </details>
         ))}
       </div>
@@ -75,7 +88,7 @@ const faqs = [
   }
 
   .faq-question span:first-child {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cormorant', serif;
     font-size: 18px;
     font-weight: 400;
     color: var(--cel-text);
@@ -101,5 +114,11 @@ const faqs = [
     color: var(--cel-subtle);
     font-weight: 300;
     padding-bottom: 24px;
+  }
+
+  .faq-answer a {
+    color: var(--cel-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 </style>

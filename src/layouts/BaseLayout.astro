@@ -5,16 +5,44 @@ interface Props {
   title: string;
   description?: string;
   section?: 'hub' | 'celebrant' | 'writing' | 'work' | 'brewing';
+  ogImage?: string;
 }
 
-const { title, description = "Celebrant. Writer. Grower of things.", section = 'hub' } = Astro.props;
+const {
+  title,
+  description = "Celebrant. Writer. Grower of things.",
+  section = 'hub',
+  ogImage = '/images/celebrant/hero.jpg',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 
 const bgColors: Record<string, string> = {
   hub: '#F5F0E8',
-  celebrant: '#FAF7F2',
+  celebrant: '#EEF4FF',
   writing: '#FAFAFA',
   work: '#F2F7F5',
   brewing: '#FBF5F9',
+};
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Tom Allen",
+  "url": "https://tomallen.com.au",
+  "jobTitle": "Authorised Marriage Celebrant",
+  "description": "Darwin-based marriage celebrant, writer, and enterprise builder.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Darwin",
+    "addressRegion": "NT",
+    "addressCountry": "AU"
+  },
+  "telephone": "+61421102154",
+  "email": "allen.tom.c@gmail.com",
+  "sameAs": [
+    "https://substack.com/@tomcraigallen"
+  ]
 };
 ---
 
@@ -26,7 +54,25 @@ const bgColors: Record<string, string> = {
   <meta name="description" content={description} />
   <title>{title}</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site).href} />
+  <link rel="canonical" href={canonicalURL} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={new URL(ogImage, Astro.site).href} />
+  <meta property="og:site_name" content="Tom Allen" />
+  <meta property="og:locale" content="en_AU" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={new URL(ogImage, Astro.site).href} />
+
+  <!-- Person schema (site-wide) -->
+  <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
 </head>
 <body style={`background: ${bgColors[section]};`}>
   <slot />
