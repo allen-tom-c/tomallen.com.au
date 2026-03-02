@@ -8,6 +8,7 @@ const projects = [
     name: "Good Cycles Geelong",
     role: "Regional Manager — 2.5 years",
     org: "Good Cycles",
+    url: "https://www.goodcycles.org.au/",
     desc: `When I started at Good Cycles, the groundwork in Geelong had been laid with some seed funding and a lease on a small out-of-the-way space in a derelict shopping arcade. I was the only Geelong-based staff member and took on several aims: to run a bike shop that offered servicing and sold refurbished bikes, to run a 6-week pre-employment program with young people where they fixed up a donated bike and worked on employability skills, and to develop enterprises in the region that could employ young people who had graduated from our program and fund its continuation. I developed a partnership with a local civil engineering firm to take on the management of their in-house nursery and employ trainees there. We nearly established a trial food-waste program that would have supported an entire retail strip to compost organic waste, employing a young person full time to visit hospitality venues and collect waste with an electric cargo bike (this plan was shelved during the COVID lockdowns). By the time I left, we had worked with sixty young people through our programs, moved the retail space to a much more visible spot and achieved profitability, and created six employment positions.`,
     skills: ["Social Enterprise", "Retail Operations", "Youth Work", "Business Development"],
   },
@@ -60,7 +61,11 @@ const projects = [
           <div class="work-project card fade-in" data-delay={String(350 + i * 100)}>
             <h3 class="work-project__name">{project.name}</h3>
             <p class="work-project__role font-mono">{project.role}</p>
-            <p class="work-project__org">{project.org}</p>
+            {project.url ? (
+              <a href={project.url} target="_blank" rel="noopener" class="work-project__org work-project__org--link">{project.org}</a>
+            ) : (
+              <p class="work-project__org">{project.org}</p>
+            )}
             <p class="work-project__desc">{project.desc}</p>
             <div class="work-project__skills">
               {project.skills.map(skill => (
@@ -133,6 +138,11 @@ const projects = [
     font-size: 12px;
     color: var(--wrk-accent);
     margin-bottom: 4px;
+  }
+
+  .work-project__org--link {
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 
   .work-project__org {
