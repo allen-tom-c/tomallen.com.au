@@ -6,6 +6,7 @@ interface Props {
   description?: string;
   section?: 'hub' | 'celebrant' | 'writing' | 'work' | 'brewing';
   ogImage?: string;
+  pageSchema?: object;
 }
 
 const {
@@ -13,6 +14,7 @@ const {
   description = "Celebrant. Writer. Grower of things.",
   section = 'hub',
   ogImage = '/images/celebrant/hero.jpg',
+  pageSchema,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
@@ -73,6 +75,9 @@ const personSchema = {
 
   <!-- Person schema (site-wide) -->
   <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+
+  <!-- Page-specific schema (optional) -->
+  {pageSchema && <script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />}
 </head>
 <body style={`background: ${bgColors[section]};`}>
   <slot />

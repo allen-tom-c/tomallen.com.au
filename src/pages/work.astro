@@ -36,9 +36,46 @@ const projects = [
     skills: ["Volunteer Management", "Grassroots Community Development", "Farming"],
   },
 ];
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Grant Project Management & Capacity Building",
+  "provider": {
+    "@type": "Person",
+    "name": "Tom Allen",
+    "url": "https://tomallen.com.au",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Darwin",
+      "addressRegion": "NT",
+      "addressCountry": "AU"
+    }
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Darwin",
+    "containedInPlace": {
+      "@type": "AdministrativeArea",
+      "name": "Northern Territory, Australia"
+    }
+  },
+  "description": "Darwin-based program manager and capacity builder available to not-for-profit organisations and government agencies in the Northern Territory to run grant-funded projects, support grant applications, and build lasting organisational capacity.",
+  "serviceType": [
+    "Grant Project Management",
+    "Capacity Building",
+    "Grant Application Support",
+    "Community Program Coordination"
+  ]
+};
 ---
 
-<BaseLayout title="The Work — Tom Allen" description="A portfolio of enterprises, programs, and projects." section="work">
+<BaseLayout
+  title="Grant Project Management & Capacity Building — Darwin NT | Tom Allen"
+  description="Darwin-based program manager and capacity builder for not-for-profit organisations and government agencies in the NT. Available to run grant-funded projects, support grant applications, and build lasting organisational capacity."
+  section="work"
+  pageSchema={serviceSchema}
+>
   <Nav section="work" />
 
   <main style="padding-top: 80px;">
