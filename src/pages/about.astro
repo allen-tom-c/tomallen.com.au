@@ -25,9 +25,21 @@ import Nav from '../components/Nav.astro';
             Originally from Brunswick, hipster heartland of Melbourne, I've been drawn more and more to regional and rural areas. I moved to Darwin, Northern Territory with my partner Ruby in early 2026 after two years in Warrnambool in Victoria's rugged southwest, and 6 years in Geelong before that.
           </p>
           <p class="about-body">
-            When people ask "what do you do?" I often experience a mixture of fatigue and dread. <em>How long have you got?</em> and <em>What <strong>do</strong> I do?</em> are usually the questions that run through my mind. The truth is that no one can easily answer that question. No doctor is the same, no lawyer or firefighter or forklift driver. They all <em>do</em> quite different things with their 168 hours per week, but they are aided in answering that question by a clean, straightforward job title.
+            When people ask "what do you do?" I often experience a mixture of fatigue and dread. <em>How long have you got?</em> and <em>What <strong>do</strong> I do?</em> are usually the questions that run through my mind upon fielding that question. The truth is that no one can easily answer that question. No doctor is the same, no lawyer or firefighter or forklift driver. They all <em>do</em> quite different things with their 168 hours per week, but they are aided in answering that question by a clean, straightforward job title. I have no such shortcut, so here are a few short answers for that question:
           </p>
         </div>
+      </div>
+
+      <!-- Short answers list -->
+      <div class="fade-in" data-delay="200">
+        <ul class="about-list">
+          <li>Mushroom farmer</li>
+          <li><a href="/celebrant/" style="color: var(--hub-accent); text-decoration: underline; text-underline-offset: 3px;">Marriage celebrant</a></li>
+          <li>Writer</li>
+          <li>Youth worker</li>
+          <li>Employment consultant</li>
+          <li>Entrepreneur</li>
+        </ul>
       </div>
 
       <!-- How I got here -->
@@ -42,7 +54,7 @@ import Nav from '../components/Nav.astro';
           I became a mushroom farmer because I was part of an urban farming cooperative in Geelong and someone reached out to us on Facebook wanting to gift us his whole commercial operation. I'd left my job at the bike shop social enterprise a few months earlier, wanting to start my own business, and my ideas hadn't gotten any traction but mushroom farming fit the bill perfectly.
         </p>
         <p class="about-body" style="margin-bottom: 40px;">
-          I became a <a href="/celebrant/" style="color: var(--hub-accent); text-decoration: underline; text-underline-offset: 3px;">marriage celebrant</a> because two close friends decided they wanted me to marry them so much they would pay for me to go through the Cert IV and get my registration (and told me this far enough in advance for me to actually do it!)
+          I became a marriage celebrant because two close friends decided they wanted me to marry them so much they would pay for me to go through the Cert IV and get my registration (and told me this far enough in advance for me to actually do it!)
         </p>
       </div>
 
@@ -85,7 +97,7 @@ import Nav from '../components/Nav.astro';
               <p class="timeline__period">2024–2026</p>
               <p class="timeline__place">Warrnambool, VIC</p>
             </div>
-            <p class="timeline__desc">Supported Worn Gundidj Aboriginal Cooperative to deliver community education programs, a Circular Economy Innovation grant focused on the horticulture industry, a pilot program aiming to increase First Nations employment in the renewable energy industry, and a pilot program to support people experiencing long-term unemployment with 6-month paid placements and wrap-around supports. Continued to support Bellarine Fungi's development and growth, traveling back to the farm two days a week.</p>
+            <p class="timeline__desc">Supported Worn Gundidj Aboriginal Cooperative to deliver community education programs, a Circular Economy Innovation grant focused on the horticulture industry, a pilot program aiming to increase First Nations' employment in the renewable energy industry, and a pilot program to support people experiencing long-term unemployment with 6-month paid placements and wrap-around supports. Continued to support Bellarine Fungi's development and growth, traveling back to the farm two days a week.</p>
           </div>
           <div class="timeline__entry">
             <div class="timeline__meta">
@@ -99,7 +111,7 @@ import Nav from '../components/Nav.astro';
               <p class="timeline__period">2019–2021</p>
               <p class="timeline__place">Geelong, VIC</p>
             </div>
-            <p class="timeline__desc">Moved to Geelong to establish Good Cycles' presence there, including: bike shop, Pedal Empowerment pre-employment program, business partnerships offering employment opportunities to program graduates, and a school outreach program.</p>
+            <p class="timeline__desc">Moved to Geelong to establish Good Cycles' presence there, including: bike shop, Pedal Empowerment pre-employment Program, business partnerships offering employment opportunities to program graduates, and a school outreach program.</p>
           </div>
           <div class="timeline__entry">
             <div class="timeline__meta">
@@ -113,14 +125,14 @@ import Nav from '../components/Nav.astro';
               <p class="timeline__period">2017–2018</p>
               <p class="timeline__place">Melbourne, VIC</p>
             </div>
-            <p class="timeline__desc">Worked on the fundraising team at Tearfund Australia. Also lived as a volunteer resident at Indigenous Hospitality House, supporting First Nations people visiting Melbourne for hospital business and hosting discussions and learning opportunities for people of Settler backgrounds.</p>
+            <p class="timeline__desc">Worked on the fundraising team at Tearfund Australia, learning about and supporting their grassroots approach to community development. Also lived as a volunteer resident at Indigenous Hospitality House, supporting First Nations people visiting Melbourne for hospital business and hosting discussions and learning opportunities for people of Settler backgrounds to explore what it means to live on stolen land.</p>
           </div>
           <div class="timeline__entry">
             <div class="timeline__meta">
               <p class="timeline__period">2013–2016</p>
               <p class="timeline__place">Melbourne, VIC</p>
             </div>
-            <p class="timeline__desc">Completed a Bachelor of Arts (International Studies) with Honours (First Class) exploring the impacts of gentrification on low income communities and mitigating strategies for community development.</p>
+            <p class="timeline__desc">Completed a Bachelors Degree in Arts (International Studies) with an Honours (First Class) exploring the impacts of gentrification on low income communities and mitigating strategies for community development.</p>
           </div>
         </div>
       </div>
@@ -177,6 +189,20 @@ import Nav from '../components/Nav.astro';
     color: var(--hub-text);
     font-weight: 300;
     margin-bottom: 16px;
+  }
+
+  .about-list {
+    font-family: 'Source Serif 4', serif;
+    font-size: 17px;
+    line-height: 1.85;
+    color: var(--hub-text);
+    font-weight: 300;
+    padding-left: 24px;
+    margin-bottom: 24px;
+  }
+
+  .about-list li {
+    margin-bottom: 4px;
   }
 
   .about-kicker {
