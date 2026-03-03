@@ -11,13 +11,16 @@ import CelebrantFooter from '../../components/CelebrantFooter.astro';
 
   <main style="padding-top: 96px;">
     <section class="container-narrow" style="padding: 60px 32px 80px;">
-      <div class="fade-in">
+      <div id="enquiry-intro" class="fade-in">
         <h1 class="font-heading" style="font-size: 40px; font-weight: 400; font-style: italic; color: var(--cel-text); margin-bottom: 16px;">Get in Touch</h1>
         <p class="font-body" style="font-size: 17px; line-height: 1.8; color: var(--cel-subtle); font-weight: 300; margin-bottom: 40px;">Tell me a little about you and what you're imagining.</p>
       </div>
 
-      <form class="fade-in enquiry-form" data-delay="200" name="celebrant-enquiry" method="POST" data-netlify="true" action="/celebrant/enquire/?success=true">
-        <input type="hidden" name="form-name" value="celebrant-enquiry" />
+      <div id="enquiry-success" class="enquiry-success" style="display: none;">
+        <p>Thanks — I'll be in touch soon.</p>
+      </div>
+
+      <form id="enquiry-form" class="fade-in enquiry-form" data-delay="200" method="POST" action="https://formspree.io/f/xgoljrve">
         <div class="enquiry-form__row">
           <div class="enquiry-form__field">
             <label class="form-label" style="color: var(--cel-subtle);">Your name(s)</label>
@@ -44,6 +47,26 @@ import CelebrantFooter from '../../components/CelebrantFooter.astro';
   </main>
 </BaseLayout>
 
+<script>
+  const form = document.getElementById('enquiry-form') as HTMLFormElement;
+  const success = document.getElementById('enquiry-success') as HTMLElement;
+  const intro = document.getElementById('enquiry-intro') as HTMLElement;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' },
+    });
+    if (response.ok) {
+      intro.style.display = 'none';
+      form.style.display = 'none';
+      success.style.display = 'block';
+    }
+  });
+</script>
+
 <style>
   .enquiry-form {
     display: flex;
@@ -60,6 +83,17 @@ import CelebrantFooter from '../../components/CelebrantFooter.astro';
   .enquiry-form__field {
     display: flex;
     flex-direction: column;
+  }
+
+  .enquiry-success {
+    background: color-mix(in srgb, var(--cel-accent) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--cel-accent) 25%, transparent);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 32px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--cel-text);
   }
 
   @media (max-width: 540px) {

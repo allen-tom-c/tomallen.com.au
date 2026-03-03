@@ -1,0 +1,464 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import CrossLinks from '../../components/CrossLinks.astro';
+
+const weeks = [
+  {
+    week: 1,
+    themes: ["Finding your \"why\"", "What is success?", "The power of blue sky thinking and tapping into your imagination"],
+  },
+  {
+    week: 2,
+    themes: ["Product development", "The power of structure: vision, goals and targets", "Resource mapping"],
+  },
+  {
+    week: 3,
+    themes: ["Cost-benefit analysis", "Pricing and modelling"],
+  },
+  {
+    week: 4,
+    themes: ["Testing and market research", "Customer profiles and avatars", "Sales and marketing"],
+  },
+  {
+    week: 5,
+    themes: ["It's all in the details: design and presentation"],
+  },
+  {
+    week: 6,
+    themes: ["Follow through and application: the learn > apply > adjust > succeed cycle"],
+    note: "Market stall day",
+  },
+];
+
+const wrapup = {
+  week: 7,
+  themes: ["Wrap-up", "Evaluation", "Data analysis"],
+  note: "After the market",
+};
+
+---
+
+<BaseLayout
+  title="Kids' Business School — Tom Allen"
+  description="A 7-week after-school program for young people aged 9–14, building a real business from idea to market stall."
+  section="brewing"
+>
+  <Nav section="brewing" />
+
+  <main style="padding-top: 80px;">
+    <section class="container-wide" style="padding: 80px 32px 60px;">
+
+      <div class="fade-in">
+        <a href="/brewing/" class="back-link">← What's Brewing</a>
+      </div>
+
+      <div class="fade-in" data-delay="100">
+        <div class="kbs-header">
+          <h1 class="kbs-title">Kids' Business School</h1>
+          <span class="kbs-stage">Building</span>
+        </div>
+      </div>
+
+      <div class="fade-in" data-delay="200">
+        <p class="kbs-intro">
+          I'm looking to run a children's business school where kids aged 9–14 get to develop a real business idea and see it through in the real world. Over six weeks we'll work through a range of themes related to developing a product and running a business, and actually bring our ideas to life. In the sixth week we'll have a stall at a local market where we get to see how our business works in reality. And in the week after the program, we'll unpack the experience together and see what we learned. It's inquiry-based learning that leverages children's desire to play a part in the life of their community.
+        </p>
+        <p class="kbs-intro" style="margin-bottom: 60px;">
+          The program will run for 1.5 hours each week, in an after-school time slot on a weekday, at a local community centre.
+        </p>
+      </div>
+
+      <!-- About -->
+      <div class="fade-in kbs-blurb" data-delay="300">
+        <p>Kids are creative powerhouses: they're brimming with ideas, enthusiasm and energy. They're also looking to sponge up as much information and wisdom from the world around them as they can. Through my experiences in business — working for one of Australia's leading social enterprises and going on to start my own commercial mushroom farm — I've come to appreciate business ownership as a powerful tool for growth and development as a person. I'm not interested in business as a way to get rich; I'm interested in business as a means by which we engage with our society and environment and co-create the world we inhabit together. Running a business brings us up against our fears and our assumptions, and it can help us grow as people as we strive to stay curious, to learn from our setbacks, and to stay focused on a vision.</p>
+        <p>In addition to my business experience, I've worked with children and young people in many different contexts including outdoor education, holiday programs and youth work.</p>
+        <p>It's through a combination of these two passions — for business and for empowering young people — that I'm offering this pilot program. For 1.5 hours each week over 6 weeks, we'll build towards a business offering at a local market where participants will have the chance to serve their community with their skills.</p>
+      </div>
+
+      <!-- Weekly breakdown -->
+      <div class="fade-in" data-delay="400">
+        <h2 class="kbs-section-title">What we cover</h2>
+      </div>
+
+      <div class="kbs-weeks">
+        {weeks.map((w, i) => (
+          <div class="kbs-week fade-in" data-delay={String(450 + i * 60)}>
+            <div class="kbs-week__label">
+              <span class="kbs-week__num">Week {w.week}</span>
+              {w.note && <span class="kbs-week__note">{w.note}</span>}
+            </div>
+            <div class="kbs-week__themes">
+              {w.themes.map(theme => (
+                <span class="kbs-week__theme">{theme}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+        <div class="kbs-week kbs-week--wrapup fade-in" data-delay={String(450 + weeks.length * 60)}>
+          <div class="kbs-week__label">
+            <span class="kbs-week__num">Week {wrapup.week}</span>
+            <span class="kbs-week__note">{wrapup.note}</span>
+          </div>
+          <div class="kbs-week__themes">
+            {wrapup.themes.map(theme => (
+              <span class="kbs-week__theme">{theme}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Details -->
+      <div class="fade-in" data-delay="880">
+        <h2 class="kbs-section-title">The details</h2>
+      </div>
+
+      <dl class="kbs-dl fade-in" data-delay="920">
+        <div class="kbs-dl__row">
+          <dt>Ages</dt>
+          <dd>9–14</dd>
+        </div>
+        <div class="kbs-dl__row">
+          <dt>Format</dt>
+          <dd>1.5 hours per session — weekday afternoons at a local community centre</dd>
+        </div>
+        <div class="kbs-dl__row">
+          <dt>Duration</dt>
+          <dd>6 sessions building to a market stall, plus a wrap-up session the following week</dd>
+        </div>
+        <div class="kbs-dl__row">
+          <dt>Capacity</dt>
+          <dd>10 participants</dd>
+        </div>
+      </dl>
+
+      <!-- CTA / EOI form -->
+      <div class="fade-in kbs-cta" data-delay="960">
+        <div id="kbs-cta-intro">
+          <h2>Interested? Get in touch.</h2>
+          <p>I'd love to hear from market organisers, educators, councils, funders and parents.</p>
+        </div>
+
+        <div id="kbs-success" class="kbs-form-success" style="display: none;">
+          <p>Thanks — I'll be in touch.</p>
+        </div>
+
+        <form id="kbs-form" class="kbs-form" method="POST" action="https://formspree.io/f/xkovlkgo">
+          <div class="kbs-form__field">
+            <label class="kbs-form__label">Name</label>
+            <input type="text" name="name" class="kbs-form__input" required />
+          </div>
+          <div class="kbs-form__field">
+            <label class="kbs-form__label">Email</label>
+            <input type="email" name="email" class="kbs-form__input" required />
+          </div>
+          <div class="kbs-form__field">
+            <label class="kbs-form__label">Tell me about your interest</label>
+            <textarea name="message" rows="4" class="kbs-form__input" style="resize: vertical;"></textarea>
+          </div>
+          <button type="submit" class="btn" style="background: #FFF; color: var(--brw-accent); font-weight: 600;">Send</button>
+        </form>
+      </div>
+
+    </section>
+
+    <CrossLinks current="brewing" />
+  </main>
+</BaseLayout>
+
+<script>
+  const form = document.getElementById('kbs-form') as HTMLFormElement;
+  const success = document.getElementById('kbs-success') as HTMLElement;
+
+  const intro = document.getElementById('kbs-cta-intro') as HTMLElement;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' },
+    });
+    if (response.ok) {
+      intro.style.display = 'none';
+      form.style.display = 'none';
+      success.style.display = 'block';
+    }
+  });
+</script>
+
+<style>
+  .back-link {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--brw-accent);
+    text-decoration: none;
+    margin-bottom: 32px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .back-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .kbs-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+
+  .kbs-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--brw-text);
+    line-height: 1.2;
+  }
+
+  .kbs-stage {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brw-accent);
+    background: color-mix(in srgb, var(--brw-accent) 7%, transparent);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .kbs-intro {
+    font-family: 'Source Serif 4', serif;
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--brw-subtle);
+    max-width: 640px;
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+  .kbs-blurb {
+    font-family: 'Source Serif 4', serif;
+    font-size: 16px;
+    line-height: 1.85;
+    color: var(--brw-text);
+    font-weight: 300;
+    max-width: 640px;
+    margin-bottom: 64px;
+    border-left: 3px solid color-mix(in srgb, var(--brw-accent) 18%, transparent);
+    padding-left: 24px;
+  }
+
+  .kbs-blurb p {
+    margin-bottom: 18px;
+  }
+
+  .kbs-blurb p:last-child {
+    margin-bottom: 0;
+  }
+
+  .kbs-section-title {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--brw-text);
+    margin-bottom: 24px;
+  }
+
+  .kbs-weeks {
+    display: flex;
+    flex-direction: column;
+    max-width: 640px;
+    margin-bottom: 64px;
+  }
+
+  .kbs-week {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 24px;
+    padding: 18px 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--brw-accent) 8%, transparent);
+    align-items: start;
+  }
+
+  .kbs-week:first-child {
+    border-top: 1px solid color-mix(in srgb, var(--brw-accent) 8%, transparent);
+  }
+
+  .kbs-week__label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 2px;
+  }
+
+  .kbs-week__num {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--brw-accent);
+    font-weight: 600;
+  }
+
+  .kbs-week--wrapup .kbs-week__num {
+    color: var(--brw-subtle);
+  }
+
+  .kbs-week__note {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    color: var(--brw-subtle);
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  .kbs-week__themes {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .kbs-week__theme {
+    font-family: 'Source Serif 4', serif;
+    font-size: 15px;
+    color: var(--brw-text);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .kbs-dl {
+    max-width: 640px;
+    margin-bottom: 64px;
+  }
+
+  .kbs-dl__row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 24px;
+    padding: 14px 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--brw-accent) 8%, transparent);
+    align-items: start;
+  }
+
+  .kbs-dl__row:first-child {
+    border-top: 1px solid color-mix(in srgb, var(--brw-accent) 8%, transparent);
+  }
+
+  .kbs-dl dt {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--brw-accent);
+    font-weight: 600;
+    padding-top: 2px;
+  }
+
+  .kbs-dl dd {
+    font-family: 'Source Serif 4', serif;
+    font-size: 15px;
+    color: var(--brw-text);
+    font-weight: 300;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .kbs-cta {
+    background: var(--brw-accent);
+    border-radius: 12px;
+    padding: 40px 36px;
+    color: #FFF;
+    margin-bottom: 60px;
+    max-width: 640px;
+  }
+
+  .kbs-cta h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+
+  .kbs-cta p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    opacity: 0.85;
+    font-weight: 300;
+    margin-bottom: 24px;
+    max-width: 460px;
+  }
+
+  .kbs-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .kbs-form__field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .kbs-form__label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+  }
+
+  .kbs-form__input {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: #FFF;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .kbs-form__input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .kbs-form__input:focus {
+    border-color: rgba(255, 255, 255, 0.6);
+  }
+
+  .kbs-form-success {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    padding: 14px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: #FFF;
+  }
+
+  @media (max-width: 560px) {
+    .kbs-week {
+      grid-template-columns: 90px 1fr;
+      gap: 16px;
+    }
+
+    .kbs-dl__row {
+      grid-template-columns: 90px 1fr;
+      gap: 16px;
+    }
+  }
+</style>

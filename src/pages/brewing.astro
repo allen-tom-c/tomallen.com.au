@@ -5,16 +5,17 @@ import CrossLinks from '../components/CrossLinks.astro';
 
 const ideas = [
   {
+    name: "Kids' Business School",
+    stage: "Building",
+    desc: "A six-week program, 1.5 hours after school, one afternoon per week, leading up to a stall at a local market on a Saturday or Sunday where the kids will have a stall and can sell whatever they've designed, thought up, created. The program would cover everything from product design and market research to advertising and graphic design, teaching literacy, numeracy and many soft skills along the way.",
+    thinking: "It's obvious to me that kids learn well when they see the content of their education in context. And it's equally obvious to me from experience that running a small commercial enterprise demands an insanely wide repertoire of skills. I'm currently pondering a pilot program with the homeschool community in Darwin. I'd work with up to 10 children between the ages of 9 and 14. I have an up to date Working with Children Check and Public Liability Insurance. I will need to find a venue for the sessions, as well as a stall at a local market (currently thinking Nightcliff Sunday market or Parap Saturday market).",
+    page: "/brewing/kids-business-school",
+  },
+  {
     name: "Ecstatic Dance",
     stage: "Dreaming",
     desc: "Ecstatic dance, conscious movement, moving meditation; call it what you will, I've received so much from a regular practice of listening to and moving my body in tune with something that goes beyond words and thoughts.",
     thinking: "I love music, I collect and curate playlists like my life depends on it, and I love my work as a marriage celebrant and MC: it feels like a natural fit to begin facilitating a movement practice. The barriers I'm working through at the moment are: I don't know how to DJ, and I'm not trained in a modality like 5Rhythms or Open Floor (both of which take many logged hours all over the world to attain). I'm imagining running fortnightly or monthly dance sessions with clear intentions and strong boundaries: no substances, plenty of natural light, bring everything you're carrying from your day or week with you and dance it through your body. To make this happen I need (at a minimum) to find a space where I can pump a pre-made playlist and start advertising regular events. Over time I'd love to get the DJ skills and equipment to curate the experience live, and to deepen my facilitation skills through a formal training process.",
-  },
-  {
-    name: "Kids' Business School",
-    stage: "Building",
-    desc: "A 6–10 week program, 2 hours after school, one afternoon per week, leading up to a stall at an officially established market on a Saturday or Sunday where the kids will have a stall and can sell whatever they've designed, thought up, created. The program would cover everything from product design and market research to advertising and graphic design, teaching literacy, numeracy and many soft skills along the way.",
-    thinking: "Inquiry-based learning: a bit of a buzzword, but something I've been grounded in from my own time at Fitzroy High School, a pioneer (for a state school) in the area. It's obvious to me that kids learn well when they see the content of their education in context. And it's equally obvious to me from experience that running a small commercial enterprise demands an insanely wide repertoire of skills. I'm currently pondering a pilot program with the homeschool community in Darwin. I would charge on a sliding scale so I could cover costs at a minimum but recognise that parents are supporting my learning by sending their kids to a pilot program. I'd work with up to 10 children between the ages of 9 and 14. I currently have an Ochre card and First Aid certificates. I will need to sort out the requisite insurances and find a venue for the sessions, as well as a stall at a local market (currently thinking Nightcliff Sunday market or Parap Saturday market).",
   },
   {
     name: "Children's Theatre Production",
@@ -40,7 +41,20 @@ const ideas = [
       </div>
 
       <div class="brewing-ideas">
-        {ideas.map((idea, i) => (
+        {ideas.map((idea, i) => idea.page ? (
+          <a href={idea.page} class="brewing-idea brewing-idea--linked card fade-in" data-delay={String(300 + i * 120)}>
+            <div class="brewing-idea__header">
+              <h3>{idea.name}</h3>
+              <span class="brewing-idea__stage">{idea.stage}</span>
+            </div>
+            <p class="brewing-idea__desc">{idea.desc}</p>
+            <div class="brewing-idea__thinking">
+              <p class="brewing-idea__thinking-label">Where my thinking is at</p>
+              <p class="brewing-idea__thinking-body">{idea.thinking}</p>
+            </div>
+            <span class="brewing-idea__more">More about this →</span>
+          </a>
+        ) : (
           <div class="brewing-idea card fade-in" data-delay={String(300 + i * 120)}>
             <div class="brewing-idea__header">
               <h3>{idea.name}</h3>
@@ -103,6 +117,19 @@ const ideas = [
   .brewing-idea:hover {
     transform: none;
     box-shadow: none;
+  }
+
+  .brewing-idea--linked {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .brewing-idea--linked:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px color-mix(in srgb, var(--brw-accent) 10%, transparent);
   }
 
   .brewing-idea__header {
@@ -182,6 +209,16 @@ const ideas = [
   .brewing-idea__btn:hover {
     background: var(--brw-accent);
     color: #FFF;
+  }
+
+  .brewing-idea__more {
+    margin-top: auto;
+    padding-top: 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--brw-accent);
+    font-weight: 500;
+    letter-spacing: 0.02em;
   }
 
   .brewing-cta {

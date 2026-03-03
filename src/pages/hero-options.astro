@@ -1,0 +1,322 @@
+---
+// Preview page for hero photo options — not linked from the site, for feedback only
+const options = [
+  { key: 'a', label: 'Option A' },
+  { key: 'b', label: 'Option B' },
+  { key: 'c', label: 'Option C' },
+  { key: 'd', label: 'Option D' },
+  { key: 'e', label: 'Option E' },
+];
+
+const positions = [
+  {
+    id: 'e-top-left',
+    label: 'E — top left',
+    heroStyle: 'align-items: flex-start;',
+    contentClass: '',
+    gradient: 'top',
+  },
+  {
+    id: 'e-center-left',
+    label: 'E — centre left',
+    heroStyle: 'align-items: center;',
+    contentClass: '',
+    gradient: 'middle',
+  },
+  {
+    id: 'e-bottom-left',
+    label: 'E — bottom left',
+    heroStyle: 'align-items: flex-end;',
+    contentClass: '',
+    gradient: 'bottom',
+  },
+  {
+    id: 'e-bottom-right',
+    label: 'E — bottom right',
+    heroStyle: 'align-items: flex-end;',
+    contentClass: 'content--right',
+    gradient: 'bottom',
+  },
+  {
+    id: 'e-bottom-center',
+    label: 'E — bottom centre',
+    heroStyle: 'align-items: flex-end;',
+    contentClass: 'content--center',
+    gradient: 'bottom',
+  },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Hero Photo Options — Tom Allen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;1,300&family=Source+Serif+4:wght@300;400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="intro-bar">
+    <p>Hero photo options — <span>tomallen.com.au</span></p>
+    <nav>
+      {options.map(o => (
+        <a href={`#option-${o.key}`}>{o.label}</a>
+      ))}
+      <span class="nav-divider">|</span>
+      {positions.map(p => (
+        <a href={`#${p.id}`}>{p.label}</a>
+      ))}
+    </nav>
+  </div>
+
+  {options.map(o => (
+    <section class="hero hero--e" id={`option-${o.key}`} style={`background-image: url('/images/hero-${o.key}.jpg'); align-items: flex-start;`}>
+      <div class="overlay overlay--top"></div>
+      <div class="content">
+        <span class="label-wrap"><span class="label">Darwin, Northern Territory</span></span>
+        <h1 class="title">Celebrant. Writer.<br />Grower of things.</h1>
+        <span class="intro-wrap"><span class="intro">I have a taste for variety: marrying people, starting businesses, farming, writing and mentoring. This site is an opportunity for me to weave all those various threads into one fabric.</span></span>
+      </div>
+      <span class="badge">{o.label}</span>
+    </section>
+  ))}
+
+  <div class="section-header" id="positioning">
+    Photo E — text positioning options
+  </div>
+
+  {positions.map(p => (
+    <section class="hero" id={p.id} style={`background-image: url('/images/hero-e.jpg'); ${p.heroStyle}`}>
+      <div class={`overlay overlay--${p.gradient}`}></div>
+      <div class={`content ${p.contentClass}`}>
+        <span class="label-wrap"><span class="label">Darwin, Northern Territory</span></span>
+        <h1 class="title">Celebrant. Writer.<br />Grower of things.</h1>
+        <span class="intro-wrap"><span class="intro">I have a taste for variety: marrying people, starting businesses, farming, writing and mentoring. This site is an opportunity for me to weave all those various threads into one fabric.</span></span>
+      </div>
+      <span class="badge">{p.label}</span>
+    </section>
+  ))}
+
+</body>
+</html>
+
+<style is:global>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body { background: #111; }
+
+  /* ── Nav bar ── */
+  .intro-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10, 10, 10, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 12px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    flex-wrap: wrap;
+  }
+
+  .intro-bar p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .intro-bar p span { color: rgba(255,255,255,0.7); }
+
+  .intro-bar nav {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .intro-bar nav a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    padding: 4px 10px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 20px;
+    transition: color 0.15s, border-color 0.15s;
+    white-space: nowrap;
+  }
+
+  .intro-bar nav a:hover {
+    color: #fff;
+    border-color: rgba(255,255,255,0.4);
+  }
+
+  .nav-divider {
+    color: rgba(255,255,255,0.2);
+    font-size: 14px;
+    padding: 0 2px;
+  }
+
+  /* ── Section header ── */
+  .section-header {
+    background: #1a1a1a;
+    color: rgba(255,255,255,0.5);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 48px;
+    border-top: 2px solid #333;
+    border-bottom: 1px solid #333;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 500px;
+    background-size: cover;
+    background-position: center 35%;
+    display: flex;
+  }
+
+  /* ── Overlays ── */
+  .overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+  }
+
+  .overlay--top {
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.45) 0%,
+      rgba(0,0,0,0.15) 50%,
+      rgba(0,0,0,0) 75%
+    );
+  }
+
+  .overlay--middle {
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.1) 0%,
+      rgba(0,0,0,0.42) 50%,
+      rgba(0,0,0,0.1) 100%
+    );
+  }
+
+  .overlay--bottom {
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 25%,
+      rgba(0,0,0,0.15) 55%,
+      rgba(0,0,0,0.52) 100%
+    );
+  }
+
+  /* ── Content block ── */
+  .content {
+    position: relative;
+    z-index: 1;
+    padding: 60px 48px;
+    max-width: 1200px;
+    width: 100%;
+  }
+
+  .content--right {
+    text-align: right;
+    margin-left: auto;
+  }
+
+  .content--center {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  /* ── Text ── */
+  .label-wrap {
+    display: block;
+    margin-bottom: 24px;
+  }
+
+  .label {
+    display: inline;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fff;
+    background: rgba(0,0,0,0.48);
+    padding: 5px 12px;
+    border-radius: 3px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+
+  .title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(42px, 6vw, 72px);
+    font-weight: 300;
+    color: #fff;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 32px;
+    max-width: 700px;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.3);
+  }
+
+  .content--right .title,
+  .content--center .title {
+    max-width: 100%;
+  }
+
+  .intro-wrap {
+    display: block;
+    max-width: 560px;
+  }
+
+  .content--right .intro-wrap,
+  .content--center .intro-wrap {
+    max-width: 100%;
+  }
+
+  .intro {
+    display: inline;
+    font-family: 'Source Serif 4', serif;
+    font-size: 19px;
+    line-height: 2.1;
+    color: #fff;
+    font-weight: 400;
+    background: rgba(0,0,0,0.48);
+    padding: 4px 12px;
+    border-radius: 3px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+
+  .badge {
+    position: absolute;
+    bottom: 24px;
+    right: 32px;
+    background: rgba(0,0,0,0.55);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    padding: 6px 16px;
+    border-radius: 20px;
+    z-index: 2;
+  }
+</style>

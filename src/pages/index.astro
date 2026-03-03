@@ -8,24 +8,25 @@ import Nav from '../components/Nav.astro';
 
   <main class="hub-home" style="padding-top: 80px;">
     <!-- Hero -->
-    <section class="container-full" style="padding-top: 80px; padding-bottom: 60px;">
-      <div class="fade-in">
-        <p class="label" style="color: var(--hub-subtle); margin-bottom: 24px;">Darwin, Northern Territory</p>
-      </div>
-      <div class="fade-in" data-delay="150">
-        <h1 class="hub-home__title">
-          Celebrant. Writer.<br />Grower of things.
-        </h1>
-      </div>
-      <div class="fade-in" data-delay="300">
-        <p class="hub-home__intro">
-          I have a taste for variety: marrying people, starting businesses, farming, writing and mentoring. This site is an opportunity for me to weave all those various threads into one fabric.
-        </p>
+    <section class="hub-hero">
+      <div class="hub-hero__overlay"></div>
+      <div class="hub-hero__content container-full">
+        <div class="fade-in">
+          <span class="hub-home__label-wrap"><span class="hub-home__label">Darwin, Northern Territory</span></span>
+        </div>
+        <div class="fade-in" data-delay="150">
+          <h1 class="hub-home__title">
+            Celebrant. Writer.<br />Grower of things.
+          </h1>
+        </div>
+        <div class="fade-in" data-delay="300">
+          <span class="hub-home__intro-wrap"><span class="hub-home__intro">I have a taste for variety: marrying people, starting businesses, farming, writing and mentoring. This site is an opportunity for me to weave all those various threads into one fabric.</span></span>
+        </div>
       </div>
     </section>
 
     <!-- Cards -->
-    <section class="container-full" style="padding-bottom: 100px;">
+    <section class="container-full" style="padding-top: 60px; padding-bottom: 100px;">
       <div class="hub-home__grid">
         <a href="/celebrant/" class="hub-card hub-card--animate" style="--card-bg: var(--cel-bg); --card-accent: var(--cel-accent); --card-subtle: var(--cel-subtle); --card-text: var(--cel-text); animation-delay: 450ms;">
           <h3 class="hub-card__title font-heading" style="font-style: italic;">Wedding Celebrant</h3>
@@ -40,7 +41,7 @@ import Nav from '../components/Nav.astro';
         </a>
 
         <a href="/work/" class="hub-card hub-card--animate" style="--card-bg: var(--wrk-bg); --card-accent: var(--wrk-accent); --card-subtle: var(--wrk-subtle); --card-text: var(--wrk-text); animation-delay: 690ms;">
-          <h3 class="hub-card__title font-ui" style="font-weight: 600;">The Work</h3>
+          <h3 class="hub-card__title font-ui" style="font-weight: 600;">Enterprise Propagator</h3>
           <p class="hub-card__desc">I have engaged in many varied projects and this is my portfolio: some wrapped up, some ongoing, all opportunities to create businesses and programs that stretched me and hopefully changed the world a little for the better.</p>
           <span class="hub-card__link">See the portfolio →</span>
         </a>
@@ -55,26 +56,92 @@ import Nav from '../components/Nav.astro';
 </BaseLayout>
 
 <style>
+  /* Hero */
+  .hub-hero {
+    position: relative;
+    height: calc(100vh - 80px);
+    min-height: 500px;
+    background-image: url('/images/hero-e.jpg');
+    background-size: cover;
+    background-position: center 35%;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .hub-hero__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.45) 0%,
+      rgba(0, 0, 0, 0.15) 55%,
+      rgba(0, 0, 0, 0) 75%
+    );
+    pointer-events: none;
+  }
+
+  .hub-hero__content {
+    position: relative;
+    z-index: 1;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    width: 100%;
+  }
+
+  /* Text */
   .hub-home__title {
     font-family: 'Fraunces', serif;
     font-size: clamp(42px, 6vw, 72px);
     font-weight: 300;
-    color: var(--hub-text);
+    color: #fff;
     line-height: 1.1;
     letter-spacing: -0.03em;
     margin-bottom: 32px;
     max-width: 700px;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .hub-home__label-wrap {
+    display: block;
+    margin-bottom: 24px;
+  }
+
+  .hub-home__label {
+    display: inline;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.48);
+    padding: 5px 12px;
+    border-radius: 3px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+
+  .hub-home__intro-wrap {
+    display: block;
+    max-width: 560px;
   }
 
   .hub-home__intro {
+    display: inline;
     font-family: 'Source Serif 4', serif;
-    font-size: 20px;
-    line-height: 1.7;
-    color: var(--hub-subtle);
-    max-width: 560px;
-    font-weight: 300;
+    font-size: 19px;
+    line-height: 2.1;
+    color: #fff;
+    font-weight: 400;
+    background: rgba(0, 0, 0, 0.48);
+    padding: 4px 12px;
+    border-radius: 3px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
   }
 
+  /* Cards */
   .hub-home__grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
