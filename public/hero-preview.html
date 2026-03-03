@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hero Photo Options</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;1,300&family=Source+Serif+4:wght@300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #111;
+      font-family: sans-serif;
+    }
+
+    .option {
+      position: relative;
+      height: 100vh;
+      min-height: 500px;
+      background-size: cover;
+      background-position: center 35%;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .option--b { background-image: url('/images/hero-b.jpg'); }
+    .option--e { background-image: url('/images/hero-e.jpg'); }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.35) 0%,
+        rgba(0, 0, 0, 0.1) 50%,
+        rgba(0, 0, 0, 0) 75%
+      );
+      pointer-events: none;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: 60px 48px;
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    /* Shared title — large enough without highlight */
+    .title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(42px, 6vw, 72px);
+      font-weight: 300;
+      color: #fff;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 32px;
+      max-width: 700px;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+    }
+
+    /* ── Variant 1: subtle (lighter touch) ── */
+    .label--subtle {
+      display: inline;
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.28);
+      padding: 4px 10px;
+      border-radius: 3px;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
+    .label-wrap--subtle {
+      margin-bottom: 28px;
+      display: block;
+    }
+
+    .intro--subtle {
+      display: inline;
+      font-family: 'Source Serif 4', serif;
+      font-size: 19px;
+      line-height: 2;
+      color: rgba(255, 255, 255, 0.95);
+      font-weight: 300;
+      background: rgba(0, 0, 0, 0.28);
+      padding: 3px 10px;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+      border-radius: 3px;
+    }
+    .intro-wrap--subtle {
+      max-width: 560px;
+      display: block;
+    }
+
+    /* ── Variant 2: stronger ── */
+    .label--strong {
+      display: inline;
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.48);
+      padding: 4px 10px;
+      border-radius: 3px;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
+    .label-wrap--strong {
+      margin-bottom: 28px;
+      display: block;
+    }
+
+    .intro--strong {
+      display: inline;
+      font-family: 'Source Serif 4', serif;
+      font-size: 19px;
+      line-height: 2;
+      color: #fff;
+      font-weight: 300;
+      background: rgba(0, 0, 0, 0.48);
+      padding: 3px 10px;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+      border-radius: 3px;
+    }
+    .intro-wrap--strong {
+      max-width: 560px;
+      display: block;
+    }
+
+    .badge {
+      position: absolute;
+      bottom: 24px;
+      right: 32px;
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 6px 14px;
+      border-radius: 20px;
+      z-index: 2;
+    }
+
+    .divider {
+      height: 4px;
+      background: #111;
+    }
+
+    .section-label {
+      background: #222;
+      color: #999;
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 10px 48px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="section-label">Option B — subtle highlight</div>
+  <div class="option option--b">
+    <div class="overlay"></div>
+    <div class="content">
+      <span class="label-wrap--subtle"><span class="label--subtle">Darwin, Northern Territory</span></span>
+      <h1 class="title">Celebrant. Writer.<br />Grower of things.</h1>
+      <span class="intro-wrap--subtle"><span class="intro--subtle">I have a taste for variety: marrying people, starting businesses, farming, writing and mentoring. This site is an opportunity for me to weave all those various threads into one fabric.</span></span>
+    </div>
+    <span class="badge">B — subtle</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-label">Option B — stronger highlight</div>
+  <div class="option option--b">
+    <div class="overlay"></div>
+    <div class="content">
+      <span class="label-wrap--strong"><span class="label--strong">Darwin, Northern Territory</span></span>
+      <h1 class="title">Celebrant. Writer.<br />Grower of things.</h1>
+      <span class="intro-wrap--strong"><span class="intro--strong">I have a taste for variety: marrying people, starting businesses, farming, writing and mentoring. This site is an opportunity for me to weave all those various threads into one fabric.</span></span>
+    </div>
+    <span class="badge">B — stronger</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-label">Option E — subtle highlight</div>
+  <div class="option option--e">
+    <div class="overlay"></div>
+    <div class="content">
+      <span class="label-wrap--subtle"><span class="label--subtle">Darwin, Northern Territory</span></span>
+      <h1 class="title">Celebrant. Writer.<br />Grower of things.</h1>
+      <span class="intro-wrap--subtle"><span class="intro--subtle">I have a taste for variety: marrying people, starting businesses, farming, writing and mentoring. This site is an opportunity for me to weave all those various threads into one fabric.</span></span>
+    </div>
+    <span class="badge">E — subtle</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-label">Option E — stronger highlight</div>
+  <div class="option option--e">
+    <div class="overlay"></div>
+    <div class="content">
+      <span class="label-wrap--strong"><span class="label--strong">Darwin, Northern Territory</span></span>
+      <h1 class="title">Celebrant. Writer.<br />Grower of things.</h1>
+      <span class="intro-wrap--strong"><span class="intro--strong">I have a taste for variety: marrying people, starting businesses, farming, writing and mentoring. This site is an opportunity for me to weave all those various threads into one fabric.</span></span>
+    </div>
+    <span class="badge">E — stronger</span>
+  </div>
+
+</body>
+</html>
