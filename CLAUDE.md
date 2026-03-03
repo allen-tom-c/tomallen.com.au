@@ -2,7 +2,7 @@
 
 ## Project overview
 
-Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connecting multiple ventures: wedding celebrancy, writing (via Substack), past project portfolio ("The Work"), and emerging ideas ("What's Brewing"). Built with Astro, hosted on Vercel, domain managed through VentraIP.
+Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connecting multiple ventures: wedding celebrancy, writing (via Substack), past project portfolio ("Enterprises"), and emerging ideas ("What's Brewing"). Built with Astro, hosted on Vercel, domain managed through VentraIP.
 
 ## Architecture
 
@@ -12,23 +12,25 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 - **Domain:** tomallen.com.au (primary), tomallen.au (redirect), tomallencelebrant.com (redirects to /celebrant)
 - **DNS:** VentraIP — using Vercel's nameservers (ns1/ns2.vercel-dns.com), not individual DNS records
 - **SSL:** Provided automatically by Vercel — no paid certificate needed
-- **Forms:** Formspree or similar — enquiry forms on celebrant and What's Brewing sections
+- **Forms:** Formspree — celebrant enquiry (`xgoljrve`) and KBS EOI (`xkovlkgo`), both forwarding to allen.tom.c@gmail.com
 - **Blog:** Substack integration via RSS feed — the Writing section pulls posts automatically
 - **Content workflow:** Write in Notion → export Markdown → drop into project
 
 ## Site sections
 
 ```
-/                   → Hub home page (portfolio life narrative, 2×2 section cards)
-/about              → Single About page (lives on hub, not duplicated across sections)
-/celebrant          → Wedding celebrant section (has its own sub-navigation)
-/celebrant/pricing  → 4 tiers: Elopements, Simple, Crafted, Extras
-/celebrant/how-i-work → 5 steps with circular photo icons
-/celebrant/faq      → Accordion-style FAQ with internal links to pricing/how-i-work
-/celebrant/enquire  → Enquiry form
-/the-work           → Past projects: Good Cycles, Bellarine Fungi, Aboriginal co-op, The Farm Next Door
-/whats-brewing      → Emerging ideas: Ecstatic Dance, Children's Theatre, Kids' Business School
-/writing            → Substack RSS feed integration with subscribe widget
+/                         → Hub home page (full-bleed hero + 2×2 section cards)
+/about                    → Single About page (lives on hub, not duplicated across sections)
+/celebrant                → Wedding celebrant section (has its own sub-navigation)
+/celebrant/pricing        → 4 tiers: Elopements, Simple, Crafted, Extras
+/celebrant/how-i-work     → 5 steps with circular photo icons
+/celebrant/faq            → Accordion-style FAQ with internal links to pricing/how-i-work
+/celebrant/enquire        → Enquiry form (Formspree xgoljrve)
+/work/                    → Past projects: Good Cycles, Bellarine Fungi, Aboriginal co-op, The Farm Next Door
+/brewing/                 → Emerging ideas: Ecstatic Dance, Children's Theatre, Kids' Business School
+/brewing/kids-business-school → Dedicated KBS page with EOI form (Formspree xkovlkgo)
+/writing                  → Substack RSS feed integration with subscribe widget
+/hero-options             → Photo preview page (noindex) — for feedback on home hero options
 ```
 
 ## Current design system
@@ -54,6 +56,22 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 - Celebrant hero: full viewport height (`100vh`), `object-position: center 70%`
 - How I Work banner: `500px` height, `object-position: 65% 25%`
 - Both navs have hamburger menus for mobile
+- Home page hero: full-bleed `calc(100vh - 80px)`, `background-position: center 35%`, photo `hero-e.jpg`
+
+### Home page hero
+- Full-bleed background image (`hero-e.jpg` — beach/landscape, landscape orientation)
+- Text sits top-left with `align-items: flex-start`
+- Gradient overlay: `rgba(0,0,0,0.45)` at top fading to transparent at 75%
+- "Darwin, Northern Territory" label and intro paragraph use `box-decoration-break: clone` inline highlight (`rgba(0,0,0,0.48)`) for legibility over the photo
+- Title uses `text-shadow` only (large enough without highlight)
+- Intro font-weight bumped to 400 (300 disappears on textured backgrounds)
+- `/hero-options` page exists with all 5 candidate photos (hero-a through hero-e) for ongoing feedback
+
+### Forms pattern
+- Formspree handles all form submissions (no server-side code needed on Vercel)
+- Forms use `fetch` + `Accept: application/json` header for AJAX submission — no page redirect
+- On success: heading/intro and form are hidden via JS, inline success message shown
+- `box-decoration-break: clone` technique used for per-line text highlights on photo backgrounds
 
 ## Key design rules
 
@@ -62,6 +80,7 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 - **All body text is written by Tom.** Use `[Tom to write: description]` for any missing content. Never generate placeholder marketing copy.
 - **Don't overcorrect.** When Tom flags something, fix the specific issue. Don't introduce deliberate imperfections or asymmetry to "look less AI" — that's worse than the original problem.
 - **External org links open in new tab** (Good Cycles, Bellarine Fungi, Worn Gundidj, Tearfund).
+- **Nav label for /work/ is "Enterprises"** (not "The Work"). Home card heading is "Enterprise Propagator".
 
 ## SEO (implemented)
 
@@ -88,19 +107,24 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 - Avoid duplicate CSS property declarations (caused a bug where two `min-height` values on the hero meant the second overrode the first)
 - Semantic HTML throughout
 - Image paths relative to `public/images/`
+- For full-bleed hero backgrounds use CSS `background-image` on the section (not `<img>` with `position: absolute`) — more reliable across browsers
+- For text legibility over photos: combine a gradient overlay on the section + `box-decoration-break: clone` inline highlight on individual text elements
 
 ## File structure
 
 ```
 public/
   images/
-    about/        → headshot.jpeg (note: .jpeg not .jpg)
+    about/        → headshot.jpg
     celebrant/    → hero.jpg, bouquet.jpg, how-i-work.jpg, gallery-1..5.jpg, step-01..05.jpg
+    hero-a.jpg through hero-e.jpg  → home hero candidates (hero-e.jpg is live)
   favicon.svg
   robots.txt
 src/
   layouts/        → BaseLayout.astro (includes OG tags, JSON-LD)
   pages/          → All routes
+    brewing/      → kids-business-school.astro
+    hero-options.astro  → photo feedback preview (noindex)
   components/     → Nav.astro, CelebrantNav.astro, Footer.astro
 ```
 
@@ -122,7 +146,7 @@ git add . && git commit -m "description" && git push   # Deploy (Vercel auto-bui
 - **Browser caching causes confusion.** When CSS changes don't appear, suggest Cmd+Shift+R or an incognito window before debugging further.
 - **npm permission issues** on his Mac are common. Fix with `sudo chown -R $(whoami) ~/.npm` — but Claude Code can't run sudo, so instruct Tom to run it himself.
 - **Values authenticity.** Dislikes anything that feels templated, corporate, or AI-generated. His best celebrant clients are the ones drawn to the full picture of who he is.
-- **Visual previews help.** When comparing design options (like fonts), create a preview HTML page at localhost rather than describing options in text.
+- **Visual previews help.** When comparing design options (like fonts or photos), build a dedicated preview page at localhost rather than describing options in text. For photos, `hero-options.astro` is the established pattern.
 
 ## Tom's background (for tone context)
 
