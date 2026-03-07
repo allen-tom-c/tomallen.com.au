@@ -43,14 +43,13 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 - Overlays: clean white text on semi-transparent gradients (not warm cream)
 
 ### Typography
-- Celebrant headings: **Cormorant** (replaced Playfair Display — Tom wanted less "stereotypically wedding-y", more grounded and strong)
-- Writing section: Source Serif
-- The Work: DM Sans
-- What's Brewing: Fraunces
-- Hub card headings each use their section's typeface
+- **All headings and body content:** Source Serif 4 (unified across all sections)
+- **UI elements** (nav, labels, buttons, dates, small caps): DM Sans
+- Previously each section had its own typeface (Cormorant for celebrant, Fraunces for brewing/hub) — these were removed in favour of consistency with the writing section
 
 ### Layout decisions
 - Hub grid: `repeat(2, 1fr)` — always 2×2 on desktop, single column below 560px
+- All four home page cards use the writing palette (`--wri-*` variables) — `#FAFAFA` background, `#1A1A2E` text/accent, `#7A7A8A` subtle
 - What's Brewing card has a dashed border (signals it's still forming), same size as others
 - Gallery: flexbox layout — gallery-5 (portrait, 1126×2000) drives height in left column, four landscape images split across two right columns
 - Celebrant hero: full viewport height (`100vh`), `object-position: center 70%`
@@ -66,6 +65,10 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 - Title uses `text-shadow` only (large enough without highlight)
 - Intro font-weight bumped to 400 (300 disappears on textured backgrounds)
 - `/hero-options` page exists with all 5 candidate photos (hero-a through hero-e) for ongoing feedback
+
+### Font loading
+- Google Fonts import in `global.css` loads: Source Serif 4 (ital, 300/400/600), DM Sans (ital, 300/400/500/600), Space Mono (400/700)
+- Cormorant and Fraunces are no longer loaded — do not re-add them
 
 ### Forms pattern
 - Formspree handles all form submissions (no server-side code needed on Vercel)
