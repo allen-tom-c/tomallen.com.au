@@ -5,33 +5,70 @@ import CrossLinks from '../components/CrossLinks.astro';
 
 const projects = [
   {
-    name: "Good Cycles Geelong",
-    role: "Regional Manager — 2.5 years",
-    org: "Good Cycles",
-    url: "https://www.goodcycles.org.au/",
-    desc: `When I started at Good Cycles, the groundwork in Geelong had been laid with some seed funding and a lease on a small out-of-the-way space in a derelict shopping arcade. I was the only Geelong-based staff member and took on several aims: to run a bike shop that offered servicing and sold refurbished bikes, to run a 6-week pre-employment program with young people where they fixed up a donated bike and worked on employability skills, and to develop enterprises in the region that could employ young people who had graduated from our program and fund its continuation. I developed a partnership with a local civil engineering firm to take on the management of their in-house nursery and employ trainees there. We nearly established a trial food-waste program that would have supported an entire retail strip to compost organic waste, employing a young person full time to visit hospitality venues and collect waste with an electric cargo bike (this plan was shelved during the COVID lockdowns). By the time I left, we had worked with sixty young people through our programs, moved the retail space to a much more visible spot and achieved profitability, and created six employment positions.`,
-    skills: ["Social Enterprise", "Retail Operations", "Youth Work", "Business Development"],
-  },
-  {
+    id: "fungi",
     name: "Bellarine Fungi Mushroom Farm",
     role: "Founder and Co-Owner — 4.5 years",
     org: "Bellarine Fungi",
     url: "https://bellarinefungi.com.au/",
+    cover: "/images/work/fungi/cover.jpg",
+    coverAlt: "Tom Allen and co-founder holding a crate of freshly harvested oyster mushrooms and exotic varieties",
+    coverPosition: "top",
+    gallery: [
+      { src: "/images/work/fungi/gallery-1.jpg", alt: "Tom in the Bellarine Fungi workshop holding an inoculated mushroom log" },
+      { src: "/images/work/fungi/gallery-2.jpg", alt: "A cluster of pearl oyster mushrooms ready for harvest" },
+      { src: "/images/work/fungi/gallery-3.jpg", alt: "Tom checking the mushroom racks inside the growing facility", tall: true },
+      { src: "/images/work/fungi/gallery-4.jpg", alt: "Shiitake mushrooms growing on a log outdoors, shot on film" },
+      { src: "/images/work/fungi/gallery-5.jpg", alt: "Rows of inoculated growing buckets inside the Bellarine Fungi production space" },
+    ],
     desc: `I got into mushroom farming by following my curiosity and being engaged in projects I felt passionately about. I lived as part of The Farm Next Door community in Norlane, Victoria, growing veggies in our backyards and supplying them to our neighbourhood through weekly front-door markets. Having left Good Cycles with the desire to start my own business, I was knocking on doors and finding many of them closed. After about four months of trying to figure out exactly how stupid I'd been to leave my job and think about starting a business, The Farm Next Door got a message on Facebook from a mushroom farmer who wanted to give us his whole business. Two days later, I had a rental truck full of mushroom growing gear and was setting it up in a friend's garage. 18 months after that, we were moving into three modified shipping containers on another friend's property in Drysdale and that's where we are today: growing and selling gourmet mushrooms across the Bellarine, Geelong and the Surf Coast. Primarily we serve restaurants, wineries and function centres, but we also serve the public through a couple of local outlets. My favourite part about running this business has been all the wonderful friends made along the way: the local farmers and growers groups who want to see each other thrive; the restaurateurs and chefs who want to create incredible spaces and experiences; and all the workshop attendees who've been so keen to come along to our workshops and learn about mushroom cultivation and the role fungi play in the environment.`,
     skills: ["Entrepreneurship", "Farming", "Food Systems", "Marketing & Sales", "Finance", "Operations & Logistics"],
   },
   {
+    id: "worn-gundidj",
     name: "Community Education, Circular Economy, and Employment Programs",
     role: "Program Delivery Coordinator — 2 years",
     org: "Worn Gundidj Aboriginal Cooperative",
     url: "https://worngundidj.org.au/",
+    cover: "/images/work/worn-gundidj/cover.jpg",
+    coverAlt: "Program participants standing under wind turbine blades on an industry site visit",
+    coverPosition: "center 40%",
+    gallery: [
+      { src: "/images/work/worn-gundidj/gallery-1.jpg", alt: "Program participants visiting an electrical substation as part of the First Nations renewable energy employment pathway" },
+      { src: "/images/work/worn-gundidj/gallery-2.jpg", alt: "An elevated work platform against a vivid blue sky during an industry site visit", position: "center 25%" },
+      { src: "/images/work/worn-gundidj/gallery-3.jpg", alt: "A program participant examining native grass species in the Worn Gundidj nursery" },
+    ],
     desc: `I initially started working with Worn Gundidj as a "Learn Local" Facilitator, running community education programs like an "Intro to Horticulture" which involved learning practical skills in Worn Gundidj's social enterprise nursery, or visiting local horticulture businesses. I then took on a Circular Economy project funded by Sustainability Victoria which sought to improve CE outcomes in the horticulture industry. In collaboration with CE consultants Coreo, we delivered six modules of online content and held two events to brainstorm and develop CE initiatives for our region. I simultaneously took on a project funded by Solar Victoria and DEECA seeking to improve First Nations employment outcomes in the renewable energy industry. I engaged with over 20 young people and provided basic supports like driving lessons and White Cards, as well as supportive conversations around career planning and goal setting. Following this I took the lead on a federal DEWR pilot program called WorkFoundations — a six-month work placement and wrap-around support program aimed at people who had been unemployed for over 12 months. I set up the initial structures for reporting and case management, and onboarded a Partnerships and Pathways Coordinator at Worn Gundidj to take on this project going forward.`,
     skills: ["Grant & Project Management", "Team Leadership", "Youth Work & Mentoring", "Education & Curriculum Development", "Events Management", "Circular Economy"],
   },
   {
+    id: "good-cycles",
+    name: "Good Cycles Geelong",
+    role: "Regional Manager — 2.5 years",
+    org: "Good Cycles",
+    url: "https://www.goodcycles.org.au/",
+    cover: "/images/work/good-cycles/cover.jpg",
+    coverAlt: "Tom Allen with a young visitor at the Good Cycles Community Bike Hub in Geelong",
+    coverPosition: "center 25%",
+    gallery: [],
+    desc: `When I started at Good Cycles, the groundwork in Geelong had been laid with some seed funding and a lease on a small out-of-the-way space in a derelict shopping arcade. I was the only Geelong-based staff member and took on several aims: to run a bike shop that offered servicing and sold refurbished bikes, to run a 6-week pre-employment program with young people where they fixed up a donated bike and worked on employability skills, and to develop enterprises in the region that could employ young people who had graduated from our program and fund its continuation. I developed a partnership with a local civil engineering firm to take on the management of their in-house nursery and employ trainees there. We nearly established a trial food-waste program that would have supported an entire retail strip to compost organic waste, employing a young person full time to visit hospitality venues and collect waste with an electric cargo bike (this plan was shelved during the COVID lockdowns). By the time I left, we had worked with sixty young people through our programs, moved the retail space to a much more visible spot and achieved profitability, and created six employment positions.`,
+    skills: ["Social Enterprise", "Retail Operations", "Youth Work", "Business Development"],
+  },
+  {
+    id: "farm",
     name: "Urban Farming in Post-Industrial Suburbia",
     role: "Volunteer — 4.5 years",
     org: "The Farm Next Door",
+    cover: "/images/work/farm/cover.jpg",
+    coverAlt: "Tom and a neighbour breaking up the front lawn to make way for vegetable beds in Norlane, Geelong",
+    coverPosition: "center 35%",
+    gallery: [
+      { src: "/images/work/farm/gallery-1.jpg", alt: "Tom on a cargo bike delivering fresh produce from The Farm Next Door" },
+      { src: "/images/work/farm/gallery-2.jpg", alt: "Geelong Advertiser coverage of The Farm Next Door vegie delivery project during COVID lockdowns" },
+      { src: "/images/work/farm/gallery-3.jpg", alt: "Tom at the Saturday morning market stall with seasonal produce on display" },
+      { src: "/images/work/farm/gallery-4.jpg", alt: "A seasonal abundance of home-grown vegetables at The Farm Next Door market" },
+      { src: "/images/work/farm/gallery-6.jpg", alt: "The Farm Next Door van, photographed on film" },
+      { src: "/images/work/farm/gallery-7.jpg", alt: "A harvest basket of tomatoes, purple beans and tomatillos" },
+    ],
     desc: `When I moved to Geelong to work for Good Cycles, I contacted some friends who live in Norlane and moved in with them. Since the 50s Norlane had been home to a lot of the workers at large industrial sites like Ford Motor Company, Pilkington Glass, Incitec Pivot and International Harvester. As these major multinationals moved overseas in search of cheaper labour, Norlane became a challenging place to be: unemployment skyrocketed, along with crime, violence and substance abuse. Among many challenges, it's an area underserved with quality, healthy food. My friends started The Farm Next Door to do something about that: getting permission from their landlord to rip up the front and back lawns and grow as much veg as they could. They ran markets every Saturday morning and sold produce at rock-bottom prices to locals. It was as much a community gathering space as a fresh produce outlet, and it introduced many people to the joys of growing your own food. It went beyond the trope of self-sufficiency and demonstrated the power of community sufficiency. I joined by moving into a property two doors down and my housemate Clarrie and I replicated the project, ripping up our lawns and planting veggies.`,
     skills: ["Volunteer Management", "Grassroots Community Development", "Farming"],
   },
@@ -94,28 +131,70 @@ const serviceSchema = {
         </p>
       </div>
 
-      <!-- Project cards -->
       <div class="work-projects">
         {projects.map((project, i) => (
           <div class="work-project card fade-in" data-delay={String(350 + i * 100)}>
-            <h3 class="work-project__name">{project.name}</h3>
-            <p class="work-project__role font-mono">{project.role}</p>
-            {project.url ? (
-              <a href={project.url} target="_blank" rel="noopener" class="work-project__org work-project__org--link">{project.org}</a>
-            ) : (
-              <p class="work-project__org">{project.org}</p>
-            )}
-            <p class="work-project__desc">{project.desc}</p>
-            <div class="work-project__skills">
-              {project.skills.map(skill => (
-                <span class="work-skill">{skill}</span>
-              ))}
+
+            <div class="project-cover">
+              <img
+                src={project.cover}
+                alt={project.coverAlt}
+                style={`object-position: ${project.coverPosition}`}
+              />
             </div>
+
+            <div class="project-meta">
+              <div class="project-meta__info">
+                <h3 class="work-project__name">{project.name}</h3>
+                <div class="project-meta__sub">
+                  <span class="work-project__role font-mono">{project.role}</span>
+                  {project.url ? (
+                    <a href={project.url} target="_blank" rel="noopener" class="work-project__org work-project__org--link">{project.org}</a>
+                  ) : (
+                    <span class="work-project__org">{project.org}</span>
+                  )}
+                </div>
+              </div>
+              <button
+                class="project-toggle"
+                data-target={`detail-${project.id}`}
+                aria-expanded="false"
+                aria-label={`Expand ${project.name}`}
+              >
+                <span class="toggle-icon" aria-hidden="true">+</span>
+              </button>
+            </div>
+
+            <div class="project-detail" id={`detail-${project.id}`}>
+              <div class="project-detail__inner">
+                <p class="work-project__desc">{project.desc}</p>
+
+                {project.gallery.length > 0 && (
+                  <div class="project-gallery">
+                    {project.gallery.map(img => (
+                      <img
+                        src={img.src}
+                        alt={img.alt}
+                        class={`gallery-img${img.tall ? ' gallery-img--tall' : ''}`}
+                        style={img.position ? `object-position: ${img.position}` : undefined}
+                        loading="lazy"
+                      />
+                    ))}
+                  </div>
+                )}
+
+                <div class="work-project__skills">
+                  {project.skills.map(skill => (
+                    <span class="work-skill">{skill}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
           </div>
         ))}
       </div>
 
-      <!-- CTA -->
       <div class="fade-in work-cta" data-delay="750">
         <h2>Building something?</h2>
         <p>If you're building something or looking to expand the capacity of your organisation to deliver on its purpose, I'd love to hear from you and see where I can help. I bring a founder's passion to everything I do and I never see myself as an employee but rather a collaborator on a mission.</p>
@@ -126,6 +205,20 @@ const serviceSchema = {
     <CrossLinks current="work" />
   </main>
 </BaseLayout>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.project-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.getAttribute('data-target')!;
+      const detail = document.getElementById(targetId)!;
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+
+      btn.setAttribute('aria-expanded', String(!isExpanded));
+      btn.querySelector('.toggle-icon')!.textContent = isExpanded ? '+' : '−';
+      detail.classList.toggle('open', !isExpanded);
+    });
+  });
+</script>
 
 <style>
   .work-title {
@@ -149,15 +242,18 @@ const serviceSchema = {
     margin-bottom: 20px;
   }
 
+  /* ── Project list ── */
   .work-projects {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 24px;
     margin-bottom: 60px;
   }
 
   .work-project {
-    border-color: color-mix(in srgb, var(--wrk-accent) 8%, transparent);
+    padding: 0;
+    overflow: hidden;
+    border-color: color-mix(in srgb, var(--wrk-accent) 10%, transparent);
   }
 
   .work-project:hover {
@@ -165,23 +261,53 @@ const serviceSchema = {
     box-shadow: none;
   }
 
+  /* ── Cover image ── */
+  .project-cover {
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+  }
+
+  .project-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .work-project:hover .project-cover img {
+    transform: scale(1.02);
+  }
+
+  /* ── Card header ── */
+  .project-meta {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 22px 28px 20px;
+  }
+
   .work-project__name {
     font-family: 'DM Sans', sans-serif;
-    font-size: 20px;
+    font-size: 19px;
     font-weight: 600;
     color: var(--wrk-text);
     margin-bottom: 6px;
+    line-height: 1.3;
+  }
+
+  .project-meta__sub {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px 14px;
   }
 
   .work-project__role {
-    font-size: 12px;
+    font-size: 11px;
     color: var(--wrk-accent);
-    margin-bottom: 4px;
-  }
-
-  .work-project__org--link {
-    text-decoration: underline;
-    text-underline-offset: 3px;
   }
 
   .work-project__org {
@@ -190,18 +316,96 @@ const serviceSchema = {
     color: var(--wrk-subtle);
     font-weight: 300;
     font-style: italic;
-    margin-bottom: 16px;
+  }
+
+  .work-project__org--link {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* ── Toggle button ── */
+  .project-toggle {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1.5px solid color-mix(in srgb, var(--wrk-accent) 25%, transparent);
+    background: transparent;
+    color: var(--wrk-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    margin-top: 2px;
+  }
+
+  .toggle-icon {
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 300;
+    user-select: none;
+  }
+
+  .project-toggle:hover,
+  .project-toggle[aria-expanded="true"] {
+    background: var(--wrk-accent);
+    border-color: var(--wrk-accent);
+    color: #fff;
+  }
+
+  /* ── Expandable detail ── */
+  .project-detail {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.38s ease;
+  }
+
+  .project-detail.open {
+    grid-template-rows: 1fr;
+  }
+
+  .project-detail__inner {
+    overflow: hidden;
+    padding: 0 28px;
+    transition: padding 0.38s ease;
+  }
+
+  .project-detail.open .project-detail__inner {
+    padding: 4px 28px 28px;
   }
 
   .work-project__desc {
     font-family: 'DM Sans', sans-serif;
     font-size: 14px;
-    line-height: 1.75;
+    line-height: 1.8;
     color: var(--wrk-text);
     font-weight: 300;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
+    opacity: 0.85;
   }
 
+  /* ── Photo gallery ── */
+  .project-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 180px;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+
+  .gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+  }
+
+  .gallery-img--tall {
+    grid-row: span 2;
+  }
+
+  /* ── Skill tags ── */
   .work-project__skills {
     display: flex;
     gap: 8px;
@@ -217,6 +421,7 @@ const serviceSchema = {
     border-radius: 3px;
   }
 
+  /* ── CTA block ── */
   .work-cta {
     background: var(--wrk-accent);
     border-radius: 10px;
@@ -240,5 +445,28 @@ const serviceSchema = {
     font-weight: 300;
     margin-bottom: 28px;
     max-width: 520px;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .project-cover {
+      height: 200px;
+    }
+
+    .project-meta {
+      padding: 18px 20px 16px;
+    }
+
+    .project-detail__inner {
+      padding: 0 20px;
+    }
+
+    .project-detail.open .project-detail__inner {
+      padding: 4px 20px 22px;
+    }
+
+    .project-gallery {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 </style>

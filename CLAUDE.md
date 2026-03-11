@@ -51,11 +51,35 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 - Hub grid: `repeat(2, 1fr)` — always 2×2 on desktop, single column below 560px
 - All four home page cards use the writing palette (`--wri-*` variables) — `#FAFAFA` background, `#1A1A2E` text/accent, `#7A7A8A` subtle
 - What's Brewing card has a dashed border (signals it's still forming), same size as others
-- Gallery: flexbox layout — gallery-5 (portrait, 1126×2000) drives height in left column, four landscape images split across two right columns
 - Celebrant hero: full viewport height (`100vh`), `object-position: center 70%`
 - How I Work banner: `500px` height, `object-position: 65% 25%`
+- Celebrant pricing banner: `500px` height, image `bouquet.jpg`
 - Both navs have hamburger menus for mobile
 - Home page hero: full-bleed `calc(100vh - 80px)`, `background-position: center 35%`, photo `hero-e.jpg`
+
+### Work page (`/work/`) — accordion layout
+- Each project card has a cover image (260px height) + expand/collapse toggle revealing a photo gallery + text
+- Project order: Bellarine Fungi → Worn Gundidj → Good Cycles → Farm Next Door
+- Data array per project: `id`, `cover`, `coverAlt`, `coverPosition`, `gallery[]` (each with `src`, `alt`, optional `tall: true`, optional `position`), `desc`, `skills`
+- Gallery grid: `grid-template-columns: repeat(3, 1fr); grid-auto-rows: 180px` — portrait images use `tall: true` → `grid-row: span 2`
+- Accordion uses CSS `grid-template-rows: 0fr → 1fr` transition; JS toggles `.open` class and `aria-expanded`
+- fungi cover: `coverPosition: "top"` (faces at very top of portrait image)
+- worn-gundidj gallery-2: `position: "center 25%"` (cherry picker)
+
+### Brewing page (`/brewing/`) — cover images
+- Each idea card has `.idea-cover { height: 240px }` above `.idea-body` wrapper; `padding: 0; overflow: hidden` on the card
+- KBS card renders as `<a>` (links to `/brewing/kids-business-school`), others are `<div>`
+- Hover: subtle cover image zoom (scale 1.02) on linked cards only
+
+### About page (`/about/`) — alternating editorial layout
+- Row 1 (240px | 1fr): headshot | "About Tom" h1 + intro paragraph
+- Full width: "When people ask..." paragraph + centred bullet list (list-style: none, text-align: center)
+- Row 2 flipped (1fr | 240px): two paragraphs | about-2.jpg
+- Full width: mushroom farmer + celebrant paragraphs
+- Row 3 (240px | 1fr): about-3.jpg | "The thread" h2 + first Thread paragraph
+- Full width: "To create and hold space..." + remaining Thread paragraphs + kicker + Timeline + CTA
+- Missing images collapse gracefully via `onerror="this.closest('.about-col').style.display='none'"`
+- Bullet list links: Mushroom farmer → bellarinefungi.com.au, Writer → allentomc.wordpress.com (update to Substack when content is ready)
 
 ### Home page hero
 - Full-bleed background image (`hero-e.jpg` — beach/landscape, landscape orientation)
@@ -118,8 +142,17 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 ```
 public/
   images/
-    about/        → headshot.jpg
+    about/        → headshot.jpg, about-2.jpg, about-3.jpg
     celebrant/    → hero.jpg, bouquet.jpg, how-i-work.jpg, gallery-1..5.jpg, step-01..05.jpg
+    work/
+      fungi/      → cover.jpg, gallery-1..5.jpg (gallery-3 is portrait — tall:true in data)
+      worn-gundidj/ → cover.jpg, gallery-1..3.jpg
+      good-cycles/  → cover.jpg
+      farm/       → cover.jpg, gallery-1..7.jpg (gallery-5 excluded from code as weakest)
+    brewing/
+      kbs/        → cover.jpg
+      ecstatic-dance/ → cover.jpg
+      childrens-theatre/ → cover.jpg
     hero-a.jpg through hero-e.jpg  → home hero candidates (hero-e.jpg is live)
   favicon.svg
   robots.txt

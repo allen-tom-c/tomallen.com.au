@@ -9,61 +9,74 @@ import Nav from '../components/Nav.astro';
   <main style="padding-top: 80px;">
     <article class="container" style="padding-top: 80px; padding-bottom: 100px;">
 
-      <!-- Portrait + Opening -->
-      <div class="about-hero">
-        <div class="fade-in">
-          <div class="about-portrait">
-              <img src="/images/about/headshot.jpg" alt="Tom Allen" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-            <div class="placeholder-img placeholder-img--warm" style="width: 240px; height: 320px; border-radius: 8px; display: none;">
-              <span>headshot.jpg</span>
-            </div>
-          </div>
+      <!-- Row 1: [headshot] | ["About Tom" + intro] -->
+      <div class="about-row fade-in">
+        <div class="about-col">
+          <img src="/images/about/headshot.jpg" alt="Tom Allen" class="about-img" />
         </div>
-        <div class="fade-in" data-delay="150">
+        <div class="about-col fade-in" data-delay="150">
           <h1 class="about-title">About Tom</h1>
           <p class="about-body">
             Originally from Brunswick, hipster heartland of Melbourne, I've been drawn more and more to regional and rural areas. I moved to Darwin, Northern Territory with my partner Ruby in early 2026 after two years in Warrnambool in Victoria's rugged southwest, and 6 years in Geelong before that.
           </p>
-          <p class="about-body">
-            When people ask "what do you do?" I often experience a mixture of fatigue and dread. <em>How long have you got?</em> and <em>What <strong>do</strong> I do?</em> are usually the questions that run through my mind upon fielding that question. The truth is that no one can easily answer that question. No doctor is the same, no lawyer or firefighter or forklift driver. They all <em>do</em> quite different things with their 168 hours per week, but they are aided in answering that question by a clean, straightforward job title. I have no such shortcut, so here are a few short answers for that question:
-          </p>
         </div>
       </div>
 
-      <!-- Short answers list -->
-      <div class="fade-in" data-delay="200">
-        <ul class="about-list">
-          <li>Mushroom farmer</li>
+      <!-- Full width: "When people ask..." + centred list -->
+      <div class="fade-in" data-delay="150">
+        <p class="about-body">
+          When people ask "what do you do?" I often experience a mixture of fatigue and dread. <em>How long have you got?</em> and <em>What <strong>do</strong> I do?</em> are usually the questions that run through my mind upon fielding that question. The truth is that no one can easily answer that question. No doctor is the same, no lawyer or firefighter or forklift driver. They all <em>do</em> quite different things with their 168 hours per week, but they are aided in answering that question by a clean, straightforward job title. I have no such shortcut, so here are a few short answers for that question:
+        </p>
+        <ul class="about-list about-list--centred">
+          <li><a href="https://bellarinefungi.com.au/" target="_blank" rel="noopener" style="color: var(--hub-accent); text-decoration: underline; text-underline-offset: 3px;">Mushroom farmer</a></li>
           <li><a href="/celebrant/" style="color: var(--hub-accent); text-decoration: underline; text-underline-offset: 3px;">Marriage celebrant</a></li>
-          <li>Writer</li>
+          <li><a href="https://allentomc.wordpress.com" target="_blank" rel="noopener" style="color: var(--hub-accent); text-decoration: underline; text-underline-offset: 3px;">Writer</a></li>
           <li>Youth worker</li>
           <li>Employment consultant</li>
           <li>Entrepreneur</li>
         </ul>
       </div>
 
-      <!-- How I got here -->
+      <!-- Row 2 flipped: ["I've been fortunate..." + bike shop para] | [about-2.jpg] -->
+      <div class="about-row about-row--flip fade-in" data-delay="200">
+        <div class="about-col">
+          <p class="about-body">
+            I've been fortunate to have been in the right place at the right time and <em>in the right mindset</em> on a number of moments, and those moments have led me on a wild ride so far.
+          </p>
+          <p class="about-body">
+            I got to operate a bike shop social enterprise because I was going through a divorce and started work as a bike mechanic because I was too emotionally spent to do the more brainy work I'd studied for at university. Shortly after starting work at a typical bicycle shop I saw a job ad that had been languishing for months that described a "bike mechanic with youth work and not-for-profit management experience" and I had friends in Geelong I could live with.
+          </p>
+        </div>
+        <div class="about-col">
+          <img src="/images/about/about-2.jpg" alt="Tom Allen" class="about-img" onerror="this.closest('.about-col').style.display='none'" />
+        </div>
+      </div>
+
+      <!-- Full width: mushroom + celebrant paragraphs -->
       <div class="fade-in" data-delay="250">
-        <p class="about-body">
-          I've been fortunate to have been in the right place at the right time and <em>in the right mindset</em> on a number of moments, and those moments have led me on a wild ride so far.
-        </p>
-        <p class="about-body">
-          I got to operate a bike shop social enterprise because I was going through a divorce and started work as a bike mechanic because I was too emotionally spent to do the more brainy work I'd studied for at university. Shortly after starting work at a typical bicycle shop I saw a job ad that had been languishing for months that described a "bike mechanic with youth work and not-for-profit management experience" and I had friends in Geelong I could live with.
-        </p>
         <p class="about-body">
           I became a mushroom farmer because I was part of an urban farming cooperative in Geelong and someone reached out to us on Facebook wanting to gift us his whole commercial operation. I'd left my job at the bike shop social enterprise a few months earlier, wanting to start my own business, and my ideas hadn't gotten any traction but mushroom farming fit the bill perfectly.
         </p>
-        <p class="about-body" style="margin-bottom: 40px;">
+        <p class="about-body" style="margin-bottom: 52px;">
           I became a marriage celebrant because two close friends decided they wanted me to marry them so much they would pay for me to go through the Cert IV and get my registration (and told me this far enough in advance for me to actually do it!)
         </p>
       </div>
 
-      <!-- The Thread -->
-      <div class="fade-in" data-delay="350">
-        <h2 class="about-section-title">The thread</h2>
-        <p class="about-body">
-          What disturbs me about the question "what do you do" is that none of those short answers really cut it for me, they don't get to the <em>essence</em> of what I do or the thread that connects these seemingly disparate vocations. That's more abstract, but it looks like this: I implement structures that transform people, places and materials. Not structures like houses or gazebos, but structures made of policies, processes, conversations, scripts.
-        </p>
+      <!-- Row 3: [about-3.jpg] | [The Thread opening] -->
+      <div class="about-row fade-in" data-delay="350">
+        <div class="about-col">
+          <img src="/images/about/about-3.jpg" alt="Tom Allen" class="about-img" onerror="this.closest('.about-col').style.display='none'" />
+        </div>
+        <div class="about-col">
+          <h2 class="about-section-title" style="margin-top: 0;">The thread</h2>
+          <p class="about-body">
+            What disturbs me about the question "what do you do" is that none of those short answers really cut it for me, they don't get to the <em>essence</em> of what I do or the thread that connects these seemingly disparate vocations. That's more abstract, but it looks like this: I implement structures that transform people, places and materials. Not structures like houses or gazebos, but structures made of policies, processes, conversations, scripts.
+          </p>
+        </div>
+      </div>
+
+      <!-- Full width: Thread continued -->
+      <div class="fade-in" data-delay="400">
         <p class="about-body">
           To create and hold the space for a truly meaningful wedding ceremony is to implement a structure using words and rituals. It involves outlining the boundary of a space: "phones to silent please folks", "we're gathered here today to celebrate…" and then to invite others into that space — "and now it's time for your vows", "I have these rings here for you to exchange" — and hold the space while two people make a commitment to one another in the presence of their community. In so doing, they are transformed, and they have a moment to crystallise a relationship that has been growing from the tiniest "he's cute, maybe I'll say hi" into an "I want to spend my life with you".
         </p>
@@ -144,26 +157,35 @@ import Nav from '../components/Nav.astro';
           <a href="mailto:allen.tom.c@gmail.com" class="btn" style="background: var(--hub-accent); color: var(--hub-bg);">Get in Touch</a>
         </div>
       </div>
+
     </article>
   </main>
 </BaseLayout>
 
 <style>
-  .about-hero {
+  /* ── Alternating rows ── */
+  .about-row {
     display: grid;
     grid-template-columns: 240px 1fr;
     gap: 48px;
     align-items: start;
-    margin-bottom: 56px;
+    margin-bottom: 52px;
   }
 
-  .about-portrait img {
-    width: 240px;
-    height: 320px;
+  .about-row--flip {
+    grid-template-columns: 1fr 240px;
+  }
+
+  /* ── Images ── */
+  .about-img {
+    width: 100%;
+    aspect-ratio: 3/4;
     object-fit: cover;
     border-radius: 8px;
+    display: block;
   }
 
+  /* ── Typography ── */
   .about-title {
     font-family: 'Source Serif 4', serif;
     font-size: 40px;
@@ -205,6 +227,14 @@ import Nav from '../components/Nav.astro';
     margin-bottom: 4px;
   }
 
+  .about-list--centred {
+    list-style: none;
+    padding-left: 0;
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 52px;
+  }
+
   .about-kicker {
     font-family: 'Source Serif 4', serif;
     font-size: 17px;
@@ -213,9 +243,10 @@ import Nav from '../components/Nav.astro';
     font-weight: 400;
     font-style: italic;
     margin-top: 16px;
-    margin-bottom: 48px;
+    margin-bottom: 52px;
   }
 
+  /* ── Timeline ── */
   .timeline {
     display: flex;
     flex-direction: column;
@@ -259,6 +290,7 @@ import Nav from '../components/Nav.astro';
     font-weight: 300;
   }
 
+  /* ── CTA ── */
   .about-cta {
     background: color-mix(in srgb, var(--hub-accent) 5%, transparent);
     border-radius: 10px;
@@ -275,15 +307,22 @@ import Nav from '../components/Nav.astro';
     margin-bottom: 20px;
   }
 
+  /* ── Responsive ── */
   @media (max-width: 640px) {
-    .about-hero {
+    .about-row,
+    .about-row--flip {
       grid-template-columns: 1fr;
-      gap: 32px;
+      gap: 28px;
     }
-    .about-portrait img {
-      width: 180px;
-      height: 240px;
+
+    .about-row--flip .about-col:last-child {
+      order: -1;
     }
+
+    .about-img {
+      aspect-ratio: 4/3;
+    }
+
     .timeline__entry {
       grid-template-columns: 1fr;
       gap: 6px;
