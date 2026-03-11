@@ -9,74 +9,57 @@ import Nav from '../components/Nav.astro';
   <main style="padding-top: 80px;">
     <article class="container" style="padding-top: 80px; padding-bottom: 100px;">
 
-      <!-- Row 1: [headshot] | ["About Tom" + intro] -->
-      <div class="about-row fade-in">
-        <div class="about-col">
-          <img src="/images/about/headshot.webp" alt="Tom Allen" class="about-img" width="480" height="640" loading="eager" decoding="async" />
+      <!-- Portrait + Opening -->
+      <div class="about-hero">
+        <div class="fade-in">
+          <div class="about-portrait">
+            <img
+              src="/images/about/headshot.jpg"
+              alt="Tom Allen"
+              width="480"
+              height="640"
+              loading="eager"
+              decoding="async"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="placeholder-img placeholder-img--warm" style="width: 240px; height: 320px; border-radius: 8px; display: none;">
+              <span>headshot.jpg</span>
+            </div>
+          </div>
         </div>
-        <div class="about-col fade-in" data-delay="150">
+        <div class="fade-in" data-delay="150">
           <h1 class="about-title">About Tom</h1>
           <p class="about-body">
             Originally from Brunswick, hipster heartland of Melbourne, I've been drawn more and more to regional and rural areas. I moved to Darwin, Northern Territory with my partner Ruby in early 2026 after two years in Warrnambool in Victoria's rugged southwest, and 6 years in Geelong before that.
           </p>
-        </div>
-      </div>
-
-      <!-- Full width: "When people ask..." + centred list -->
-      <div class="fade-in" data-delay="150">
-        <p class="about-body">
-          When people ask "what do you do?" I often experience a mixture of fatigue and dread. <em>How long have you got?</em> and <em>What <strong>do</strong> I do?</em> are usually the questions that run through my mind upon fielding that question. The truth is that no one can easily answer that question. No doctor is the same, no lawyer or firefighter or forklift driver. They all <em>do</em> quite different things with their 168 hours per week, but they are aided in answering that question by a clean, straightforward job title. I have no such shortcut, so here are a few short answers for that question:
-        </p>
-        <ul class="about-list about-list--centred">
-          <li><a href="https://bellarinefungi.com.au/" target="_blank" rel="noopener" style="color: var(--hub-accent); text-decoration: underline; text-underline-offset: 3px;">Mushroom farmer</a></li>
-          <li><a href="/celebrant/" style="color: var(--hub-accent); text-decoration: underline; text-underline-offset: 3px;">Marriage celebrant</a></li>
-          <li><a href="https://allentomc.wordpress.com" target="_blank" rel="noopener" style="color: var(--hub-accent); text-decoration: underline; text-underline-offset: 3px;">Writer</a></li>
-          <li>Youth worker</li>
-          <li>Employment consultant</li>
-          <li>Entrepreneur</li>
-        </ul>
-      </div>
-
-      <!-- Row 2 flipped: ["I've been fortunate..." + bike shop para] | [about-2.jpg] -->
-      <div class="about-row about-row--flip fade-in" data-delay="200">
-        <div class="about-col">
           <p class="about-body">
-            I've been fortunate to have been in the right place at the right time and <em>in the right mindset</em> on a number of moments, and those moments have led me on a wild ride so far.
-          </p>
-          <p class="about-body">
-            I got to operate a bike shop social enterprise because I was going through a divorce and started work as a bike mechanic because I was too emotionally spent to do the more brainy work I'd studied for at university. Shortly after starting work at a typical bicycle shop I saw a job ad that had been languishing for months that described a "bike mechanic with youth work and not-for-profit management experience" and I had friends in Geelong I could live with.
+            When people ask "what do you do?" I often experience a mixture of fatigue and dread. <em>How long have you got?</em> and <em>What <strong>do</strong> I do?</em> are usually the questions that run through my mind. The truth is that no one can easily answer that question. No doctor is the same, no lawyer or firefighter or forklift driver. They all <em>do</em> quite different things with their 168 hours per week, but they are aided in answering that question by a clean, straightforward job title.
           </p>
         </div>
-        <div class="about-col">
-          <img src="/images/about/about-2.webp" alt="Tom Allen" class="about-img" width="480" height="640" loading="lazy" decoding="async" onerror="this.closest('.about-col').style.display='none'" />
-        </div>
       </div>
 
-      <!-- Full width: mushroom + celebrant paragraphs -->
+      <!-- How I got here -->
       <div class="fade-in" data-delay="250">
+        <p class="about-body">
+          I've been fortunate to have been in the right place at the right time and <em>in the right mindset</em> on a number of moments, and those moments have led me on a wild ride so far.
+        </p>
+        <p class="about-body">
+          I got to operate a bike shop social enterprise because I was going through a divorce and started work as a bike mechanic because I was too emotionally spent to do the more brainy work I'd studied for at university. Shortly after starting work at a typical bicycle shop I saw a job ad that had been languishing for months that described a "bike mechanic with youth work and not-for-profit management experience" and I had friends in Geelong I could live with.
+        </p>
         <p class="about-body">
           I became a mushroom farmer because I was part of an urban farming cooperative in Geelong and someone reached out to us on Facebook wanting to gift us his whole commercial operation. I'd left my job at the bike shop social enterprise a few months earlier, wanting to start my own business, and my ideas hadn't gotten any traction but mushroom farming fit the bill perfectly.
         </p>
-        <p class="about-body" style="margin-bottom: 52px;">
+        <p class="about-body" style="margin-bottom: 40px;">
           I became a marriage celebrant because two close friends decided they wanted me to marry them so much they would pay for me to go through the Cert IV and get my registration (and told me this far enough in advance for me to actually do it!)
         </p>
       </div>
 
-      <!-- Row 3: [about-3.jpg] | [The Thread opening] -->
-      <div class="about-row fade-in" data-delay="350">
-        <div class="about-col">
-          <img src="/images/about/about-3.webp" alt="Tom Allen" class="about-img" width="480" height="640" loading="lazy" decoding="async" onerror="this.closest('.about-col').style.display='none'" />
-        </div>
-        <div class="about-col">
-          <h2 class="about-section-title" style="margin-top: 0;">The thread</h2>
-          <p class="about-body">
-            What disturbs me about the question "what do you do" is that none of those short answers really cut it for me, they don't get to the <em>essence</em> of what I do or the thread that connects these seemingly disparate vocations. That's more abstract, but it looks like this: I implement structures that transform people, places and materials. Not structures like houses or gazebos, but structures made of policies, processes, conversations, scripts.
-          </p>
-        </div>
-      </div>
-
-      <!-- Full width: Thread continued -->
-      <div class="fade-in" data-delay="400">
+      <!-- The Thread -->
+      <div class="fade-in" data-delay="350">
+        <h2 class="about-section-title">The thread</h2>
+        <p class="about-body">
+          What disturbs me about the question "what do you do" is that none of those short answers really cut it for me, they don't get to the <em>essence</em> of what I do or the thread that connects these seemingly disparate vocations. That's more abstract, but it looks like this: I implement structures that transform people, places and materials. Not structures like houses or gazebos, but structures made of policies, processes, conversations, scripts.
+        </p>
         <p class="about-body">
           To create and hold the space for a truly meaningful wedding ceremony is to implement a structure using words and rituals. It involves outlining the boundary of a space: "phones to silent please folks", "we're gathered here today to celebrate…" and then to invite others into that space — "and now it's time for your vows", "I have these rings here for you to exchange" — and hold the space while two people make a commitment to one another in the presence of their community. In so doing, they are transformed, and they have a moment to crystallise a relationship that has been growing from the tiniest "he's cute, maybe I'll say hi" into an "I want to spend my life with you".
         </p>
@@ -110,21 +93,21 @@ import Nav from '../components/Nav.astro';
               <p class="timeline__period">2024–2026</p>
               <p class="timeline__place">Warrnambool, VIC</p>
             </div>
-            <p class="timeline__desc">Supported <a href="https://worngundidj.org.au/" target="_blank" rel="noopener" class="timeline__link">Worn Gundidj Aboriginal Cooperative</a> to deliver community education programs, a Circular Economy Innovation grant focused on the horticulture industry, a pilot program aiming to increase First Nations' employment in the renewable energy industry, and a pilot program to support people experiencing long-term unemployment with 6-month paid placements and wrap-around supports. Continued to support <a href="https://bellarinefungi.com.au/" target="_blank" rel="noopener" class="timeline__link">Bellarine Fungi</a>'s development and growth, traveling back to the farm two days a week.</p>
+            <p class="timeline__desc">Supported Worn Gundidj Aboriginal Cooperative to deliver community education programs, a Circular Economy Innovation grant focused on the horticulture industry, a pilot program aiming to increase First Nations employment in the renewable energy industry, and a pilot program to support people experiencing long-term unemployment with 6-month paid placements and wrap-around supports. Continued to support Bellarine Fungi's development and growth, traveling back to the farm two days a week.</p>
           </div>
           <div class="timeline__entry">
             <div class="timeline__meta">
               <p class="timeline__period">2021–2023</p>
               <p class="timeline__place">Bellarine Peninsula, VIC</p>
             </div>
-            <p class="timeline__desc">Established Norlane Gourmet Shroomery in a garage, then upgraded to a shipping container setup in Drysdale, establishing <a href="https://bellarinefungi.com.au/" target="_blank" rel="noopener" class="timeline__link">Bellarine Fungi</a> as a partnership.</p>
+            <p class="timeline__desc">Established Norlane Gourmet Shroomery in a garage, then upgraded to a shipping container setup in Drysdale, establishing Bellarine Fungi as a partnership.</p>
           </div>
           <div class="timeline__entry">
             <div class="timeline__meta">
               <p class="timeline__period">2019–2021</p>
               <p class="timeline__place">Geelong, VIC</p>
             </div>
-            <p class="timeline__desc">Moved to Geelong to establish <a href="https://www.goodcycles.org.au/" target="_blank" rel="noopener" class="timeline__link">Good Cycles</a>' presence there, including: bike shop, Pedal Empowerment pre-employment Program, business partnerships offering employment opportunities to program graduates, and a school outreach program.</p>
+            <p class="timeline__desc">Moved to Geelong to establish Good Cycles' presence there, including: bike shop, Pedal Empowerment pre-employment program, business partnerships offering employment opportunities to program graduates, and a school outreach program.</p>
           </div>
           <div class="timeline__entry">
             <div class="timeline__meta">
@@ -138,14 +121,14 @@ import Nav from '../components/Nav.astro';
               <p class="timeline__period">2017–2018</p>
               <p class="timeline__place">Melbourne, VIC</p>
             </div>
-            <p class="timeline__desc">Worked on the fundraising team at <a href="https://www.tearfund.org.au/" target="_blank" rel="noopener" class="timeline__link">Tearfund Australia</a>, learning about and supporting their grassroots approach to community development. Also lived as a volunteer resident at Indigenous Hospitality House, supporting First Nations people visiting Melbourne for hospital business and hosting discussions and learning opportunities for people of Settler backgrounds to explore what it means to live on stolen land.</p>
+            <p class="timeline__desc">Worked on the fundraising team at Tearfund Australia. Also lived as a volunteer resident at Indigenous Hospitality House, supporting First Nations people visiting Melbourne for hospital business and hosting discussions and learning opportunities for people of Settler backgrounds.</p>
           </div>
           <div class="timeline__entry">
             <div class="timeline__meta">
               <p class="timeline__period">2013–2016</p>
               <p class="timeline__place">Melbourne, VIC</p>
             </div>
-            <p class="timeline__desc">Completed a Bachelors Degree in Arts (International Studies) with an Honours (First Class) exploring the impacts of gentrification on low income communities and mitigating strategies for community development.</p>
+            <p class="timeline__desc">Completed a Bachelor of Arts (International Studies) with Honours (First Class) exploring the impacts of gentrification on low income communities and mitigating strategies for community development.</p>
           </div>
         </div>
       </div>
@@ -154,40 +137,31 @@ import Nav from '../components/Nav.astro';
       <div class="fade-in" data-delay="550">
         <div class="about-cta">
           <p>Want to work together, collaborate, or just say hello?</p>
-          <a href="mailto:allen.tom.c@gmail.com" class="btn" style="background: var(--hub-accent); color: var(--hub-bg);">Get in Touch</a>
+          <a href="mailto:tom@tomallen.com.au" class="btn" style="background: var(--hub-accent); color: var(--hub-bg);">Get in Touch</a>
         </div>
       </div>
-
     </article>
   </main>
 </BaseLayout>
 
 <style>
-  /* ── Alternating rows ── */
-  .about-row {
+  .about-hero {
     display: grid;
     grid-template-columns: 240px 1fr;
     gap: 48px;
     align-items: start;
-    margin-bottom: 52px;
+    margin-bottom: 56px;
   }
 
-  .about-row--flip {
-    grid-template-columns: 1fr 240px;
-  }
-
-  /* ── Images ── */
-  .about-img {
-    width: 100%;
-    aspect-ratio: 3/4;
+  .about-portrait img {
+    width: 240px;
+    height: 320px;
     object-fit: cover;
     border-radius: 8px;
-    display: block;
   }
 
-  /* ── Typography ── */
   .about-title {
-    font-family: 'Source Serif 4', serif;
+    font-family: 'Fraunces', serif;
     font-size: 40px;
     font-weight: 300;
     color: var(--hub-text);
@@ -196,7 +170,7 @@ import Nav from '../components/Nav.astro';
   }
 
   .about-section-title {
-    font-family: 'Source Serif 4', serif;
+    font-family: 'Fraunces', serif;
     font-size: 26px;
     font-weight: 300;
     color: var(--hub-text);
@@ -213,28 +187,6 @@ import Nav from '../components/Nav.astro';
     margin-bottom: 16px;
   }
 
-  .about-list {
-    font-family: 'Source Serif 4', serif;
-    font-size: 17px;
-    line-height: 1.85;
-    color: var(--hub-text);
-    font-weight: 300;
-    padding-left: 24px;
-    margin-bottom: 24px;
-  }
-
-  .about-list li {
-    margin-bottom: 4px;
-  }
-
-  .about-list--centred {
-    list-style: none;
-    padding-left: 0;
-    text-align: center;
-    margin-top: 8px;
-    margin-bottom: 52px;
-  }
-
   .about-kicker {
     font-family: 'Source Serif 4', serif;
     font-size: 17px;
@@ -243,10 +195,9 @@ import Nav from '../components/Nav.astro';
     font-weight: 400;
     font-style: italic;
     margin-top: 16px;
-    margin-bottom: 52px;
+    margin-bottom: 48px;
   }
 
-  /* ── Timeline ── */
   .timeline {
     display: flex;
     flex-direction: column;
@@ -276,12 +227,6 @@ import Nav from '../components/Nav.astro';
     margin-top: 2px;
   }
 
-  .timeline__link {
-    color: var(--hub-accent);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-  }
-
   .timeline__desc {
     font-family: 'Source Serif 4', serif;
     font-size: 15px;
@@ -290,7 +235,6 @@ import Nav from '../components/Nav.astro';
     font-weight: 300;
   }
 
-  /* ── CTA ── */
   .about-cta {
     background: color-mix(in srgb, var(--hub-accent) 5%, transparent);
     border-radius: 10px;
@@ -307,22 +251,15 @@ import Nav from '../components/Nav.astro';
     margin-bottom: 20px;
   }
 
-  /* ── Responsive ── */
   @media (max-width: 640px) {
-    .about-row,
-    .about-row--flip {
+    .about-hero {
       grid-template-columns: 1fr;
-      gap: 28px;
+      gap: 32px;
     }
-
-    .about-row--flip .about-col:last-child {
-      order: -1;
+    .about-portrait img {
+      width: 180px;
+      height: 240px;
     }
-
-    .about-img {
-      aspect-ratio: 4/3;
-    }
-
     .timeline__entry {
       grid-template-columns: 1fr;
       gap: 6px;

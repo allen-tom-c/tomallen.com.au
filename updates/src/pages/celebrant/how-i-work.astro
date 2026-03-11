@@ -19,10 +19,19 @@ const steps = [
 
   <main style="padding-top: 96px;">
     <section class="hiw-banner">
-      <img src="/images/celebrant/how-i-work.webp" alt="Tom at a ceremony" class="hiw-banner__img" width="1920" height="600" loading="eager" decoding="async" onerror="this.style.display='none'" />
+      <img
+        src="/images/celebrant/how-i-work.jpg"
+        alt="Tom at a ceremony"
+        class="hiw-banner__img"
+        width="1920"
+        height="600"
+        loading="eager"
+        decoding="async"
+        onerror="this.style.display='none'"
+      />
       <div class="hiw-banner__overlay">
         <div class="container" style="width: 100%;">
-          <h1 class="font-heading" style="font-size: 42px; font-weight: 400; font-style: italic; color: #FFFFFF;">How I Work</h1>
+          <h1 class="font-heading" style="font-size: 42px; font-weight: 400; font-style: italic; color: #FFF9F0;">How I Work</h1>
         </div>
       </div>
     </section>
@@ -33,7 +42,16 @@ const steps = [
           <div class="hiw-step fade-in" data-delay={String(i * 100)}>
             <div class="hiw-step__visual">
               <div class={`hiw-step__circle placeholder-img placeholder-img--${i % 2 === 0 ? 'warm' : 'dark'}`}>
-                <img src={`/images/celebrant/step-${step.num}.jpg`} alt={step.title} width="240" height="240" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
+                <img
+                  src={`/images/celebrant/step-${step.num}.jpg`}
+                  alt={step.title}
+                  width="240"
+                  height="240"
+                  loading="lazy"
+                  decoding="async"
+                  onload="this.classList.add('loaded')"
+                  onerror="this.style.display='none'"
+                />
               </div>
               <span class="hiw-step__num">{step.num}</span>
             </div>
@@ -57,9 +75,9 @@ const steps = [
 <style>
   .hiw-banner {
     position: relative;
-    height: 500px;
+    height: 280px;
     overflow: hidden;
-    background: linear-gradient(135deg, #B8CFEE 0%, #C8DCFA 40%, #A0BEE0 100%);
+    background: linear-gradient(135deg, #D4C5B0 0%, #E8D5BE 40%, #C9B89A 100%);
   }
 
   .hiw-banner__img {
@@ -68,13 +86,12 @@ const steps = [
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 65% 25%;
   }
 
   .hiw-banner__overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(15,25,60,0.1) 0%, rgba(15,25,60,0.6) 100%);
+    background: linear-gradient(to bottom, rgba(61,46,30,0.1) 0%, rgba(61,46,30,0.6) 100%);
     display: flex;
     align-items: flex-end;
     padding: 40px 32px;
@@ -117,7 +134,7 @@ const steps = [
     position: absolute;
     bottom: -6px;
     right: -6px;
-    font-family: 'Source Serif 4', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 16px;
     color: #FFF;
     background: var(--cel-accent);
@@ -134,7 +151,7 @@ const steps = [
   }
 
   .hiw-step__content h3 {
-    font-family: 'Source Serif 4', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 22px;
     font-weight: 600;
     color: var(--cel-text);

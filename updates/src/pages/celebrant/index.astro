@@ -3,71 +3,37 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Nav from '../../components/Nav.astro';
 import CelebrantNav from '../../components/CelebrantNav.astro';
 import CelebrantFooter from '../../components/CelebrantFooter.astro';
-
-const localBusinessSchema = {
-  "@context": "https://schema.org",
-  "@type": ["LocalBusiness", "ProfessionalService"],
-  "name": "Tom Allen — Marriage Celebrant",
-  "description": "Wedding ceremonies that feel like you. Darwin-based Authorised Marriage Celebrant serving the Northern Territory and Australia-wide.",
-  "url": "https://tomallen.com.au/celebrant/",
-  "telephone": "+61421102154",
-  "email": "allen.tom.c@gmail.com",
-  "image": "https://tomallen.com.au/images/celebrant/hero.webp",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Darwin",
-    "addressRegion": "Northern Territory",
-    "addressCountry": "AU"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": -12.4634,
-    "longitude": 130.8456
-  },
-  "areaServed": [
-    { "@type": "City", "name": "Darwin" },
-    { "@type": "AdministrativeArea", "name": "Northern Territory" },
-    { "@type": "Country", "name": "Australia" }
-  ],
-  "priceRange": "$$",
-  "hasCredential": {
-    "@type": "EducationalOccupationalCredential",
-    "credentialCategory": "Certificate IV in Celebrancy",
-    "recognizedBy": {
-      "@type": "Organization",
-      "name": "Attorney-General's Department of Australia"
-    }
-  },
-  "knowsAbout": ["wedding ceremonies", "marriage ceremonies", "same-sex weddings", "civil ceremonies", "elopements"]
-};
 ---
 
-<BaseLayout title="Tom Allen — Marriage Celebrant, Darwin NT" description="Wedding ceremonies that feel like you. Marriage celebrant based in Darwin, Northern Territory." section="celebrant" preloadImage="/images/celebrant/hero.webp">
-  <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+<BaseLayout title="Tom Allen — Marriage Celebrant, Darwin NT" description="Wedding ceremonies that feel like you. Marriage celebrant based in Darwin, Northern Territory." section="celebrant" preloadImage="/images/celebrant/hero.jpg">
   <Nav section="celebrant" />
   <CelebrantNav activePage="home" />
 
   <main style="padding-top: 96px;">
     <!-- Hero -->
     <section class="cel-hero">
-      <img src="/images/celebrant/hero.webp" alt="Wedding ceremony" class="cel-hero__img" width="1920" height="1280" loading="eager" fetchpriority="high" decoding="async" onerror="this.style.display='none'" />
+      <img
+        src="/images/celebrant/hero.jpg"
+        alt="Wedding ceremony"
+        class="cel-hero__img"
+        width="1920"
+        height="1280"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        onerror="this.style.display='none'"
+      />
       <div class="cel-hero__overlay">
         <div class="cel-hero__content">
-          <p class="fade-in label" style="color: #FFFFFF; margin-bottom: 16px; opacity: 0.8;">Marriage Celebrant — Darwin, NT</p>
+          <p class="fade-in label" style="color: #FFF9F0; margin-bottom: 24px; opacity: 0.8;">Marriage Celebrant — Darwin, NT</p>
           <h1 class="fade-in cel-hero__title" data-delay="200">Ceremonies that<br />feel like you</h1>
-        </div>
-      </div>
-    </section>
-
-    <!-- Hero Intro -->
-    <section class="cel-intro">
-      <div class="cel-intro__content fade-in">
-        <p class="cel-intro__desc">
-          The wedding ceremonies I craft are all about presence. Even despite our best efforts, our wedding days are usually a blur. The opportunity I present to you as your celebrant is not more noise, more chatter, more intensity, but a moment of pause, of presence, to see clearly where you've come from and where you're choosing to go.
-        </p>
-        <div class="cel-intro__actions">
-          <a href="/celebrant/enquire/" class="btn" style="background: var(--cel-accent); color: #FFFFFF; font-weight: 600;">Get in Touch</a>
-          <a href="/celebrant/how-i-work/" class="btn btn-outline">How I Work</a>
+          <p class="fade-in cel-hero__desc" data-delay="400">
+            The wedding ceremonies I craft are all about presence. Even despite our best efforts, our wedding days are usually a blur. The opportunity I present to you as your celebrant is not more noise, more chatter, more intensity, but a moment of pause, of presence, to see clearly where you've come from and where you're choosing to go.
+          </p>
+          <div class="fade-in cel-hero__actions" data-delay="550">
+            <a href="/celebrant/enquire/" class="btn" style="background: #FFF9F0; color: var(--cel-accent); font-weight: 600;">Get in Touch</a>
+            <a href="/celebrant/how-i-work/" class="btn btn-outline" style="color: #FFF9F0; border-color: rgba(255,249,240,0.4);">How I Work</a>
+          </div>
         </div>
       </div>
     </section>
@@ -93,24 +59,20 @@ const localBusinessSchema = {
     <!-- Photo Gallery -->
     <section class="container-full fade-in" data-delay="100" style="padding: 0 32px 80px;">
       <div class="cel-gallery">
-        <div class="cel-gallery__portrait">
-          <img src="/images/celebrant/gallery-5.webp" alt="Tom Allen officiating a same-sex wedding ceremony, two grooms holding hands at an intimate indoor venue" width="600" height="900" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.parentElement.classList.add('placeholder-img','placeholder-img--warm')" />
+        <div class="cel-gallery__tall">
+          <img src="/images/celebrant/gallery-1.jpg" alt="Wedding moment" width="600" height="900" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.parentElement.classList.add('placeholder-img','placeholder-img--warm')" />
         </div>
-        <div class="cel-gallery__col">
-          <div class="cel-gallery__cell">
-            <img src="/images/celebrant/gallery-1.webp" alt="Newlyweds walking back up the aisle as guests shower them with confetti at an outdoor garden wedding" width="600" height="400" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.parentElement.classList.add('placeholder-img','placeholder-img--warm')" />
-          </div>
-          <div class="cel-gallery__cell">
-            <img src="/images/celebrant/gallery-2.webp" alt="Tom Allen officiating an outdoor garden wedding ceremony as the groom and groomsmen smile" width="600" height="400" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.parentElement.classList.add('placeholder-img','placeholder-img--dark')" />
-          </div>
+        <div class="cel-gallery__cell">
+          <img src="/images/celebrant/gallery-2.jpg" alt="Wedding moment" width="600" height="400" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.parentElement.classList.add('placeholder-img','placeholder-img--dark')" />
         </div>
-        <div class="cel-gallery__col">
-          <div class="cel-gallery__cell">
-            <img src="/images/celebrant/gallery-3.webp" alt="Tom Allen and a couple celebrating after an intimate outdoor bush ceremony among Australian gum trees" width="600" height="400" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.parentElement.classList.add('placeholder-img','placeholder-img--warm')" />
-          </div>
-          <div class="cel-gallery__cell">
-            <img src="/images/celebrant/gallery-4.webp" alt="Tom Allen watching as a newly married couple embrace at a relaxed bohemian bush wedding ceremony" width="600" height="400" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.parentElement.classList.add('placeholder-img','placeholder-img--cool')" />
-          </div>
+        <div class="cel-gallery__cell">
+          <img src="/images/celebrant/gallery-3.jpg" alt="Wedding moment" width="600" height="400" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.parentElement.classList.add('placeholder-img','placeholder-img--warm')" />
+        </div>
+        <div class="cel-gallery__cell">
+          <img src="/images/celebrant/gallery-4.jpg" alt="Wedding moment" width="600" height="400" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.parentElement.classList.add('placeholder-img','placeholder-img--cool')" />
+        </div>
+        <div class="cel-gallery__cell">
+          <img src="/images/celebrant/gallery-5.jpg" alt="Wedding moment" width="600" height="400" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.parentElement.classList.add('placeholder-img','placeholder-img--warm')" />
         </div>
       </div>
     </section>
@@ -148,8 +110,9 @@ const localBusinessSchema = {
   .cel-hero {
     position: relative;
     overflow: hidden;
-    min-height: max(100vh, 650px);
-    background: linear-gradient(135deg, #1E3A5F 0%, #2A4F80 40%, #0F2040 100%);
+    min-height: 75vh;
+    min-height: 500px;
+    background: linear-gradient(135deg, #3D352E 0%, #4A4039 40%, #2D2720 100%);
   }
 
   .cel-hero__img {
@@ -158,17 +121,15 @@ const localBusinessSchema = {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 70%;
   }
 
   .cel-hero__overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(15,25,60,0.05) 0%, rgba(15,25,60,0.55) 100%);
+    background: linear-gradient(to bottom, rgba(61,46,30,0.15) 0%, rgba(61,46,30,0.65) 100%);
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    padding-top: 48px;
   }
 
   .cel-hero__content {
@@ -178,36 +139,27 @@ const localBusinessSchema = {
   }
 
   .cel-hero__title {
-    font-family: 'Source Serif 4', serif;
+    font-family: 'Playfair Display', serif;
     font-size: clamp(40px, 6vw, 64px);
     font-weight: 400;
     font-style: italic;
-    color: #FFFFFF;
+    color: #FFF9F0;
     line-height: 1.1;
-    margin-bottom: 0;
+    margin-bottom: 24px;
   }
 
-  .cel-intro {
-    padding: 60px 32px;
-    border-bottom: 1px solid color-mix(in srgb, var(--cel-accent) 12%, transparent);
-  }
-
-  .cel-intro__content {
-    max-width: 620px;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .cel-intro__desc {
+  .cel-hero__desc {
     font-family: 'Source Serif 4', serif;
     font-size: 18px;
-    line-height: 1.8;
-    color: var(--cel-text);
+    line-height: 1.7;
+    color: #FFF9F0;
     font-weight: 300;
-    margin-bottom: 36px;
+    max-width: 520px;
+    margin: 0 auto 36px;
+    opacity: 0.9;
   }
 
-  .cel-intro__actions {
+  .cel-hero__actions {
     display: flex;
     gap: 16px;
     justify-content: center;
@@ -227,7 +179,7 @@ const localBusinessSchema = {
   }
 
   .cel-values__item h3 {
-    font-family: 'Source Serif 4', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 18px;
     font-weight: 600;
     font-style: italic;
@@ -244,45 +196,30 @@ const localBusinessSchema = {
   }
 
   .cel-gallery {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 200px 200px;
     gap: 12px;
     max-width: 1000px;
     margin: 0 auto;
-    align-items: stretch;
   }
 
-  .cel-gallery__portrait {
-    flex: 1;
-    border-radius: 6px;
+  .cel-gallery__tall {
+    grid-row: 1 / 3;
     overflow: hidden;
-  }
-
-  .cel-gallery__portrait img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .cel-gallery__col {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .cel-gallery__cell {
-    flex: 1;
     border-radius: 6px;
-    overflow: hidden;
-    min-height: 0;
   }
 
+  .cel-gallery__tall img,
   .cel-gallery__cell img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
+  }
+
+  .cel-gallery__cell {
+    overflow: hidden;
+    border-radius: 6px;
   }
 
   .cel-testimonials {
@@ -303,7 +240,7 @@ const localBusinessSchema = {
   }
 
   .cel-quote__text {
-    font-family: 'Source Serif 4', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 19px;
     font-style: italic;
     line-height: 1.7;
@@ -320,10 +257,11 @@ const localBusinessSchema = {
 
   @media (max-width: 640px) {
     .cel-gallery {
-      flex-direction: column;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
     }
-    .cel-gallery__col {
-      flex-direction: row;
+    .cel-gallery__tall {
+      grid-row: auto;
     }
   }
 </style>

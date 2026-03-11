@@ -1,0 +1,61 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  section?: 'hub' | 'celebrant' | 'writing' | 'work' | 'brewing';
+  preloadImage?: string;
+}
+
+const { title, description = "Celebrant. Writer. Grower of things.", section = 'hub', preloadImage } = Astro.props;
+
+const bgColors: Record<string, string> = {
+  hub: '#F5F0E8',
+  celebrant: '#FAF7F2',
+  writing: '#FAFAFA',
+  work: '#F2F7F5',
+  brewing: '#FBF5F9',
+};
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <title>{title}</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site).href} />
+
+  <!-- Performance: preconnect to font servers -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Preload hero image if specified -->
+  {preloadImage && <link rel="preload" as="image" href={preloadImage} />}
+</head>
+<body style={`background: ${bgColors[section]};`}>
+  <slot />
+
+  <!-- Fade-in observer -->
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            const delay = parseInt(el.dataset.delay || '0');
+            setTimeout(() => el.classList.add('visible'), delay);
+            observer.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
