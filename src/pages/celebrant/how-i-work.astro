@@ -19,7 +19,7 @@ const steps = [
 
   <main style="padding-top: 96px;">
     <section class="hiw-banner">
-      <img src="/images/celebrant/how-i-work.jpg" alt="Tom at a ceremony" class="hiw-banner__img" onerror="this.style.display='none'" />
+      <img src="/images/celebrant/how-i-work.jpg" alt="Tom at a ceremony" class="hiw-banner__img" width="1920" height="600" loading="eager" decoding="async" onerror="this.style.display='none'" />
       <div class="hiw-banner__overlay">
         <div class="container" style="width: 100%;">
           <h1 class="font-heading" style="font-size: 42px; font-weight: 400; font-style: italic; color: #FFFFFF;">How I Work</h1>
@@ -33,7 +33,7 @@ const steps = [
           <div class="hiw-step fade-in" data-delay={String(i * 100)}>
             <div class="hiw-step__visual">
               <div class={`hiw-step__circle placeholder-img placeholder-img--${i % 2 === 0 ? 'warm' : 'dark'}`}>
-                <img src={`/images/celebrant/step-${step.num}.jpg`} alt={step.title} onerror="this.style.display='none'" />
+                <img src={`/images/celebrant/step-${step.num}.jpg`} alt={step.title} width="240" height="240" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
               </div>
               <span class="hiw-step__num">{step.num}</span>
             </div>

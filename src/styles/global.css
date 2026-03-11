@@ -275,3 +275,23 @@ button {
     padding-right: 16px;
   }
 }
+
+/* ============================================================
+   IMAGE PERFORMANCE
+   ============================================================ */
+
+/* Smooth fade-in when lazy images load */
+img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+img[loading="lazy"].loaded {
+  opacity: 1;
+}
+
+/* Force hardware acceleration for smoother scrolling with many images */
+.cel-hero__img,
+.cel-gallery img {
+  will-change: auto;
+}

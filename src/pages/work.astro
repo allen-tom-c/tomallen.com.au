@@ -178,6 +178,8 @@ const serviceSchema = {
                         class={`gallery-img${img.tall ? ' gallery-img--tall' : ''}`}
                         style={img.position ? `object-position: ${img.position}` : undefined}
                         loading="lazy"
+                        decoding="async"
+                        onload="this.classList.add('loaded')"
                       />
                     ))}
                   </div>
@@ -216,6 +218,13 @@ const serviceSchema = {
       btn.setAttribute('aria-expanded', String(!isExpanded));
       btn.querySelector('.toggle-icon')!.textContent = isExpanded ? '+' : '−';
       detail.classList.toggle('open', !isExpanded);
+
+      // When opening, mark any already-loaded lazy images as visible
+      if (!isExpanded) {
+        detail.querySelectorAll<HTMLImageElement>('img[loading="lazy"]').forEach(img => {
+          if (img.complete) img.classList.add('loaded');
+        });
+      }
     });
   });
 </script>

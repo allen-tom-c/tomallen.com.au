@@ -7,6 +7,7 @@ interface Props {
   section?: 'hub' | 'celebrant' | 'writing' | 'work' | 'brewing';
   ogImage?: string;
   pageSchema?: object;
+  preloadImage?: string;
 }
 
 const {
@@ -15,6 +16,7 @@ const {
   section = 'hub',
   ogImage = '/images/celebrant/hero.jpg',
   pageSchema,
+  preloadImage,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
@@ -58,6 +60,13 @@ const personSchema = {
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="canonical" href={canonicalURL} />
 
+  <!-- Performance: preconnect to font servers -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Preload hero image if specified -->
+  {preloadImage && <link rel="preload" as="image" href={preloadImage} />}
+
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content={canonicalURL} />
@@ -99,6 +108,11 @@ const personSchema = {
     );
 
     document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+
+    // Mark any lazy images already loaded from cache
+    document.querySelectorAll<HTMLImageElement>('img[loading="lazy"]').forEach((img) => {
+      if (img.complete) img.classList.add('loaded');
+    });
   </script>
 </body>
 </html>

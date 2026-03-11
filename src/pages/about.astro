@@ -12,7 +12,7 @@ import Nav from '../components/Nav.astro';
       <!-- Row 1: [headshot] | ["About Tom" + intro] -->
       <div class="about-row fade-in">
         <div class="about-col">
-          <img src="/images/about/headshot.jpg" alt="Tom Allen" class="about-img" />
+          <img src="/images/about/headshot.jpg" alt="Tom Allen" class="about-img" width="480" height="640" loading="eager" decoding="async" />
         </div>
         <div class="about-col fade-in" data-delay="150">
           <h1 class="about-title">About Tom</h1>
@@ -48,7 +48,7 @@ import Nav from '../components/Nav.astro';
           </p>
         </div>
         <div class="about-col">
-          <img src="/images/about/about-2.jpg" alt="Tom Allen" class="about-img" onerror="this.closest('.about-col').style.display='none'" />
+          <img src="/images/about/about-2.jpg" alt="Tom Allen" class="about-img" width="480" height="640" loading="lazy" decoding="async" onerror="this.closest('.about-col').style.display='none'" />
         </div>
       </div>
 
@@ -65,7 +65,7 @@ import Nav from '../components/Nav.astro';
       <!-- Row 3: [about-3.jpg] | [The Thread opening] -->
       <div class="about-row fade-in" data-delay="350">
         <div class="about-col">
-          <img src="/images/about/about-3.jpg" alt="Tom Allen" class="about-img" onerror="this.closest('.about-col').style.display='none'" />
+          <img src="/images/about/about-3.jpg" alt="Tom Allen" class="about-img" width="480" height="640" loading="lazy" decoding="async" onerror="this.closest('.about-col').style.display='none'" />
         </div>
         <div class="about-col">
           <h2 class="about-section-title" style="margin-top: 0;">The thread</h2>

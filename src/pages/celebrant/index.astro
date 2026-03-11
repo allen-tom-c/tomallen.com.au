@@ -42,7 +42,7 @@ const localBusinessSchema = {
 };
 ---
 
-<BaseLayout title="Tom Allen — Marriage Celebrant, Darwin NT" description="Wedding ceremonies that feel like you. Marriage celebrant based in Darwin, Northern Territory." section="celebrant">
+<BaseLayout title="Tom Allen — Marriage Celebrant, Darwin NT" description="Wedding ceremonies that feel like you. Marriage celebrant based in Darwin, Northern Territory." section="celebrant" preloadImage="/images/celebrant/hero.jpg">
   <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
   <Nav section="celebrant" />
   <CelebrantNav activePage="home" />
@@ -50,7 +50,7 @@ const localBusinessSchema = {
   <main style="padding-top: 96px;">
     <!-- Hero -->
     <section class="cel-hero">
-      <img src="/images/celebrant/hero.jpg" alt="Wedding ceremony" class="cel-hero__img" onerror="this.style.display='none'" />
+      <img src="/images/celebrant/hero.jpg" alt="Wedding ceremony" class="cel-hero__img" width="1920" height="1280" loading="eager" fetchpriority="high" decoding="async" onerror="this.style.display='none'" />
       <div class="cel-hero__overlay">
         <div class="cel-hero__content">
           <p class="fade-in label" style="color: #FFFFFF; margin-bottom: 16px; opacity: 0.8;">Marriage Celebrant — Darwin, NT</p>
@@ -94,22 +94,22 @@ const localBusinessSchema = {
     <section class="container-full fade-in" data-delay="100" style="padding: 0 32px 80px;">
       <div class="cel-gallery">
         <div class="cel-gallery__portrait">
-          <img src="/images/celebrant/gallery-5.jpg" alt="Tom Allen officiating a same-sex wedding ceremony, two grooms holding hands at an intimate indoor venue" onerror="this.parentElement.classList.add('placeholder-img','placeholder-img--warm')" />
+          <img src="/images/celebrant/gallery-5.jpg" alt="Tom Allen officiating a same-sex wedding ceremony, two grooms holding hands at an intimate indoor venue" width="600" height="900" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.parentElement.classList.add('placeholder-img','placeholder-img--warm')" />
         </div>
         <div class="cel-gallery__col">
           <div class="cel-gallery__cell">
-            <img src="/images/celebrant/gallery-1.jpg" alt="Newlyweds walking back up the aisle as guests shower them with confetti at an outdoor garden wedding" onerror="this.parentElement.classList.add('placeholder-img','placeholder-img--warm')" />
+            <img src="/images/celebrant/gallery-1.jpg" alt="Newlyweds walking back up the aisle as guests shower them with confetti at an outdoor garden wedding" width="600" height="400" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.parentElement.classList.add('placeholder-img','placeholder-img--warm')" />
           </div>
           <div class="cel-gallery__cell">
-            <img src="/images/celebrant/gallery-2.jpg" alt="Tom Allen officiating an outdoor garden wedding ceremony as the groom and groomsmen smile" onerror="this.parentElement.classList.add('placeholder-img','placeholder-img--dark')" />
+            <img src="/images/celebrant/gallery-2.jpg" alt="Tom Allen officiating an outdoor garden wedding ceremony as the groom and groomsmen smile" width="600" height="400" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.parentElement.classList.add('placeholder-img','placeholder-img--dark')" />
           </div>
         </div>
         <div class="cel-gallery__col">
           <div class="cel-gallery__cell">
-            <img src="/images/celebrant/gallery-3.jpg" alt="Tom Allen and a couple celebrating after an intimate outdoor bush ceremony among Australian gum trees" onerror="this.parentElement.classList.add('placeholder-img','placeholder-img--warm')" />
+            <img src="/images/celebrant/gallery-3.jpg" alt="Tom Allen and a couple celebrating after an intimate outdoor bush ceremony among Australian gum trees" width="600" height="400" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.parentElement.classList.add('placeholder-img','placeholder-img--warm')" />
           </div>
           <div class="cel-gallery__cell">
-            <img src="/images/celebrant/gallery-4.jpg" alt="Tom Allen watching as a newly married couple embrace at a relaxed bohemian bush wedding ceremony" onerror="this.parentElement.classList.add('placeholder-img','placeholder-img--cool')" />
+            <img src="/images/celebrant/gallery-4.jpg" alt="Tom Allen watching as a newly married couple embrace at a relaxed bohemian bush wedding ceremony" width="600" height="400" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.parentElement.classList.add('placeholder-img','placeholder-img--cool')" />
           </div>
         </div>
       </div>
