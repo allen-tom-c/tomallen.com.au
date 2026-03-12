@@ -1,0 +1,177 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import CelebrantNav from '../../components/CelebrantNav.astro';
+import CelebrantFooter from '../../components/CelebrantFooter.astro';
+---
+
+<BaseLayout title="MC & Other Ceremonies — Tom Allen Celebrant" description="Master of ceremonies, baby namings, funerals, memorial services and rites of passage in Darwin and beyond." section="celebrant">
+  <Nav section="celebrant" />
+  <CelebrantNav activePage="mcAndCeremonies" />
+
+  <main style="padding-top: 96px;">
+    <!-- Banner -->
+    <section class="mc-banner">
+      <img
+        src="/images/celebrant/gallery-5.webp"
+        alt="Tom speaking at a ceremony"
+        class="mc-banner__img"
+        width="1920"
+        height="600"
+        loading="eager"
+        decoding="async"
+        onerror="this.style.display='none'"
+      />
+      <div class="mc-banner__overlay">
+        <div class="container" style="width: 100%;">
+          <h1 class="font-heading" style="font-size: 42px; font-weight: 400; font-style: italic; color: #FFF9F0;">I'm a Master of Ceremonies by nature</h1>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" style="padding: 48px 32px 80px;">
+
+      <!-- Intro -->
+      <div class="fade-in mc-intro">
+        <p>I became a celebrant in part because I was always being asked to MC my friends' wedding receptions. Is it because I don't drink? Maybe. But it's also something I feel very comfortable doing and thoroughly enjoy.</p>
+      </div>
+
+      <!-- Services -->
+      <div class="mc-services">
+
+        <div class="mc-service fade-in" data-delay="100">
+          <h2>Reception MC</h2>
+          <p>Why not take the weight off Uncle Frank's shoulders and have me guide things from the moment you walk down the aisle to the moment you drive off into the night, cans clanging and all.</p>
+        </div>
+
+        <div class="mc-service fade-in" data-delay="200">
+          <h2>Event MC</h2>
+          <p>Whether it's a corporate event, graduation or music festival, I'll be happy to work with you and your team to create a memorable and seamless event.</p>
+        </div>
+
+        <div class="mc-service fade-in" data-delay="300">
+          <h2>Funerals & Memorial Services</h2>
+          <p>Loss is the yin to romance's yang, and I am here to help you honour and cherish the precious gift of life at every stage, including its end. The grieving process is perhaps the most powerful experience any of us will ever go through, and a ceremony that facilitates grief in all its forms will serve and nourish you for the journey that lies ahead.</p>
+        </div>
+
+        <div class="mc-service fade-in" data-delay="400">
+          <h2>Rites of Passage</h2>
+          <p>Rites of passage are a personal love of mine. I've completed a nature solo, also known as a vision quest, and would be more than happy to discuss your needs with you or your community. Rites of passage are sorely needed in our society right now, and creating a container for transformative encounters is what I'm all about.</p>
+        </div>
+
+        <div class="mc-service fade-in" data-delay="500">
+          <h2>Baby Namings</h2>
+          <p>Do you want to celebrate the profound arrival of a new human into your life with a special ceremony? I would be honoured to help you craft an opportunity to step into what this change means for you, your family and your community.</p>
+        </div>
+
+      </div>
+
+      <!-- CTA -->
+      <div class="fade-in mc-cta" data-delay="600">
+        <h2>Have something in mind?</h2>
+        <p>Every event and ceremony is different. Get in touch and let's talk about yours.</p>
+        <a href="/celebrant/enquire/" class="btn" style="background: var(--cel-accent); color: #FFF;">Get in Touch</a>
+      </div>
+
+    </section>
+
+    <CelebrantFooter />
+  </main>
+</BaseLayout>
+
+<style>
+  .mc-banner {
+    position: relative;
+    height: 340px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #3D352E 0%, #4A4039 40%, #2D2720 100%);
+  }
+
+  .mc-banner__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
+  }
+
+  .mc-banner__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(61,46,30,0.1) 0%, rgba(61,46,30,0.65) 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 40px 32px;
+  }
+
+  .mc-intro {
+    max-width: 600px;
+    margin-bottom: 48px;
+  }
+
+  .mc-intro p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 18px;
+    line-height: 1.85;
+    color: var(--cel-text);
+    font-weight: 300;
+  }
+
+  .mc-services {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    margin-bottom: 56px;
+  }
+
+  .mc-service {
+    padding-bottom: 36px;
+    border-bottom: 1px solid color-mix(in srgb, var(--cel-accent) 10%, transparent);
+  }
+
+  .mc-service:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .mc-service h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--cel-text);
+    margin-bottom: 12px;
+  }
+
+  .mc-service p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 16px;
+    line-height: 1.85;
+    color: var(--cel-subtle);
+    font-weight: 300;
+    max-width: 600px;
+  }
+
+  .mc-cta {
+    text-align: center;
+    padding: 48px 32px;
+    background: color-mix(in srgb, var(--cel-accent) 4%, transparent);
+    border-radius: 10px;
+  }
+
+  .mc-cta h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--cel-text);
+    margin-bottom: 12px;
+  }
+
+  .mc-cta p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 16px;
+    color: var(--cel-subtle);
+    font-weight: 300;
+    margin-bottom: 24px;
+  }
+</style>

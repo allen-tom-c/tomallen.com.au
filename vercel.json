@@ -63,14 +63,14 @@
     {
       "source": "/other-services/",
       "has": [{ "type": "host", "value": "tomallencelebrant.com" }],
-      "destination": "https://tomallen.com.au/celebrant/",
-      "permanent": false
+      "destination": "https://tomallen.com.au/celebrant/mc-and-ceremonies/",
+      "permanent": true
     },
     {
       "source": "/other-services",
       "has": [{ "type": "host", "value": "tomallencelebrant.com" }],
-      "destination": "https://tomallen.com.au/celebrant/",
-      "permanent": false
+      "destination": "https://tomallen.com.au/celebrant/mc-and-ceremonies/",
+      "permanent": true
     },
     {
       "source": "/pricing-and-faq/",

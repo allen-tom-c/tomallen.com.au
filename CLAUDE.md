@@ -9,7 +9,8 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 - **Framework:** Astro (static site generation)
 - **Hosting:** Vercel (auto-deploys from GitHub on push)
 - **GitHub:** `allen-tom-c/tomallen.com.au`
-- **Domain:** tomallen.com.au (primary), tomallen.au (redirect), tomallencelebrant.com (redirects to /celebrant)
+- **Domain:** tomallen.com.au (primary), tomallen.au (redirect), tomallencelebrant.com (page-level redirects to matching celebrant pages)
+- **vercel.json:** Page-level redirects for tomallencelebrant.com — `/about` → `/about/`, `/contact-me` → `/celebrant/enquire/`, `/faq` → `/celebrant/faq/`, `/how-i-work` → `/celebrant/how-i-work/`, `/food-for-thought` → `/celebrant/how-i-work/`, `/pricing-and-faq` → `/celebrant/pricing/`, `/other-services` → `/celebrant/mc-and-ceremonies/` (301), root `/` → `/celebrant/`, catch-all `/:path*` → `/celebrant/:path*`. www subdomain also handled.
 - **DNS:** VentraIP — using Vercel's nameservers (ns1/ns2.vercel-dns.com), not individual DNS records
 - **SSL:** Provided automatically by Vercel — no paid certificate needed
 - **Forms:** Formspree — celebrant enquiry (`xgoljrve`) and KBS EOI (`xkovlkgo`), both forwarding to allen.tom.c@gmail.com
@@ -24,6 +25,7 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 /celebrant                → Wedding celebrant section (has its own sub-navigation)
 /celebrant/pricing        → 4 tiers: Elopements, Simple, Crafted, Extras
 /celebrant/how-i-work     → 5 steps with circular photo icons
+/celebrant/mc-and-ceremonies → MC, baby namings, funerals, memorial services, rites of passage
 /celebrant/faq            → Accordion-style FAQ with internal links to pricing/how-i-work
 /celebrant/enquire        → Enquiry form (Formspree xgoljrve)
 /work/                    → Past projects: Good Cycles, Bellarine Fungi, Aboriginal co-op, The Farm Next Door
@@ -43,9 +45,9 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 - Overlays: clean white text on semi-transparent gradients (not warm cream)
 
 ### Typography
-- **All headings and body content:** Source Serif 4 (unified across all sections)
-- **UI elements** (nav, labels, buttons, dates, small caps): DM Sans
-- Previously each section had its own typeface (Cormorant for celebrant, Fraunces for brewing/hub) — these were removed in favour of consistency with the writing section
+- **Headings and body text** (site-wide): Source Serif 4
+- **UI elements** (nav links, labels, tags, buttons): DM Sans
+- **Small metadata** (timeline dates, project durations): Space Mono
 
 ### Layout decisions
 - Hub grid: `repeat(2, 1fr)` — always 2×2 on desktop, single column below 560px
@@ -93,6 +95,11 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 ### Font loading
 - Google Fonts import in `global.css` loads: Source Serif 4 (ital, 300/400/600), DM Sans (ital, 300/400/500/600), Space Mono (400/700)
 - Cormorant and Fraunces are no longer loaded — do not re-add them
+
+### Images
+- All images are converted to WebP format and compressed for performance
+- `<img>` tags use `loading="lazy"` (except above-the-fold images which use `loading="eager"`)
+- `work/fungi/gallery-3.webp` needs rotation fix — currently displays sideways
 
 ### Forms pattern
 - Formspree handles all form submissions (no server-side code needed on Vercel)
@@ -142,18 +149,18 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 ```
 public/
   images/
-    about/        → headshot.jpg, about-2.jpg, about-3.jpg
-    celebrant/    → hero.jpg, bouquet.jpg, how-i-work.jpg, gallery-1..5.jpg, step-01..05.jpg
+    about/        → headshot.webp, about-2.webp, about-3.webp
+    celebrant/    → hero.webp, bouquet.webp, how-i-work.webp, gallery-1..5.webp, step-01..05.webp
     work/
-      fungi/      → cover.jpg, gallery-1..5.jpg (gallery-3 is portrait — tall:true in data)
-      worn-gundidj/ → cover.jpg, gallery-1..3.jpg
-      good-cycles/  → cover.jpg
-      farm/       → cover.jpg, gallery-1..7.jpg (gallery-5 excluded from code as weakest)
+      fungi/      → cover.webp, gallery-1..5.webp (gallery-3 is portrait — tall:true in data; NEEDS ROTATION FIX)
+      worn-gundidj/ → cover.webp, gallery-1..3.webp
+      good-cycles/  → cover.webp
+      farm/       → cover.webp, gallery-1..7.webp (gallery-5 excluded from code as weakest)
     brewing/
-      kbs/        → cover.jpg
-      ecstatic-dance/ → cover.jpg
-      childrens-theatre/ → cover.jpg
-    hero-a.jpg through hero-e.jpg  → home hero candidates (hero-e.jpg is live)
+      kbs/        → cover.webp
+      ecstatic-dance/ → cover.webp
+      childrens-theatre/ → cover.webp
+    hero-a.webp through hero-e.webp  → home hero candidates (hero-e.webp is live)
   favicon.svg
   robots.txt
 src/
