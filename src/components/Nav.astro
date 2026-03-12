@@ -23,6 +23,7 @@ const navLinks = [
   { href: '/writing/', label: 'Writing', key: 'writing' },
   { href: '/work/', label: 'Enterprises', key: 'work' },
   { href: '/brewing/', label: "What's Brewing", key: 'brewing' },
+  { href: '/about/', label: 'About', key: 'about' },
 ];
 ---
 
@@ -34,13 +35,10 @@ const navLinks = [
     <>
       <div class="top-nav__links">
         {section === 'hub' && (
-          <>
-            <a href="/" class:list={['top-nav__link', { active: hubSubPage === 'home' }]}>Home</a>
-            <a href="/about/" class:list={['top-nav__link', { active: hubSubPage === 'about' }]}>About</a>
-          </>
+          <a href="/" class:list={['top-nav__link', { active: hubSubPage === 'home' }]}>Home</a>
         )}
         {navLinks.map((link) => (
-          <a href={link.href} class:list={['top-nav__link', { active: section === link.key }]}>{link.label}</a>
+          <a href={link.href} class:list={['top-nav__link', { active: section === link.key || (link.key === 'about' && hubSubPage === 'about') }]}>{link.label}</a>
         ))}
       </div>
       <button class="top-nav__hamburger" id="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
