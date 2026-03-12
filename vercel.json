@@ -1,0 +1,112 @@
+{
+  "redirects": [
+    {
+      "source": "/about/",
+      "has": [{ "type": "host", "value": "tomallencelebrant.com" }],
+      "destination": "https://tomallen.com.au/about/",
+      "permanent": true
+    },
+    {
+      "source": "/about",
+      "has": [{ "type": "host", "value": "tomallencelebrant.com" }],
+      "destination": "https://tomallen.com.au/about/",
+      "permanent": true
+    },
+    {
+      "source": "/contact-me/",
+      "has": [{ "type": "host", "value": "tomallencelebrant.com" }],
+      "destination": "https://tomallen.com.au/celebrant/enquire/",
+      "permanent": true
+    },
+    {
+      "source": "/contact-me",
+      "has": [{ "type": "host", "value": "tomallencelebrant.com" }],
+      "destination": "https://tomallen.com.au/celebrant/enquire/",
+      "permanent": true
+    },
+    {
+      "source": "/faq/",
+      "has": [{ "type": "host", "value": "tomallencelebrant.com" }],
+      "destination": "https://tomallen.com.au/celebrant/faq/",
+      "permanent": true
+    },
+    {
+      "source": "/faq",
+      "has": [{ "type": "host", "value": "tomallencelebrant.com" }],
+      "destination": "https://tomallen.com.au/celebrant/faq/",
+      "permanent": true
+    },
+    {
+      "source": "/how-i-work/",
+      "has": [{ "type": "host", "value": "tomallencelebrant.com" }],
+      "destination": "https://tomallen.com.au/celebrant/how-i-work/",
+      "permanent": true
+    },
+    {
+      "source": "/how-i-work",
+      "has": [{ "type": "host", "value": "tomallencelebrant.com" }],
+      "destination": "https://tomallen.com.au/celebrant/how-i-work/",
+      "permanent": true
+    },
+    {
+      "source": "/food-for-thought/",
+      "has": [{ "type": "host", "value": "tomallencelebrant.com" }],
+      "destination": "https://tomallen.com.au/celebrant/how-i-work/",
+      "permanent": true
+    },
+    {
+      "source": "/food-for-thought",
+      "has": [{ "type": "host", "value": "tomallencelebrant.com" }],
+      "destination": "https://tomallen.com.au/celebrant/how-i-work/",
+      "permanent": true
+    },
+    {
+      "source": "/other-services/",
+      "has": [{ "type": "host", "value": "tomallencelebrant.com" }],
+      "destination": "https://tomallen.com.au/celebrant/",
+      "permanent": false
+    },
+    {
+      "source": "/other-services",
+      "has": [{ "type": "host", "value": "tomallencelebrant.com" }],
+      "destination": "https://tomallen.com.au/celebrant/",
+      "permanent": false
+    },
+    {
+      "source": "/pricing-and-faq/",
+      "has": [{ "type": "host", "value": "tomallencelebrant.com" }],
+      "destination": "https://tomallen.com.au/celebrant/pricing/",
+      "permanent": true
+    },
+    {
+      "source": "/pricing-and-faq",
+      "has": [{ "type": "host", "value": "tomallencelebrant.com" }],
+      "destination": "https://tomallen.com.au/celebrant/pricing/",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "tomallencelebrant.com" }],
+      "destination": "https://tomallen.com.au/celebrant/",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "www.tomallencelebrant.com" }],
+      "destination": "https://tomallen.com.au/celebrant/",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.tomallencelebrant.com" }],
+      "destination": "https://tomallen.com.au/celebrant/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "tomallencelebrant.com" }],
+      "destination": "https://tomallen.com.au/celebrant/:path*",
+      "permanent": true
+    }
+  ]
+}
