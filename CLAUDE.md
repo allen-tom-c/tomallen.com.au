@@ -25,6 +25,7 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 /celebrant                → Wedding celebrant section (has its own sub-navigation)
 /celebrant/pricing        → 4 tiers: Elopements, Simple, Crafted, Extras
 /celebrant/how-i-work     → 5 steps with circular photo icons
+/celebrant/about          → Celebrant-styled duplicate of /about — same content, cel-* variables, CelebrantFooter, CTA → /celebrant/enquire/
 /celebrant/mc-and-ceremonies → MC, baby namings, funerals, memorial services, rites of passage
 /celebrant/faq            → Accordion-style FAQ with internal links to pricing/how-i-work
 /celebrant/enquire        → Enquiry form (Formspree xgoljrve)
@@ -66,14 +67,30 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 - Gallery grid: `grid-template-columns: repeat(3, 1fr); grid-auto-rows: 180px` — portrait images use `tall: true` → `grid-row: span 2`
 - Accordion uses CSS `grid-template-rows: 0fr → 1fr` transition; JS toggles `.open` class and `aria-expanded`
 - fungi cover: `coverPosition: "top"` (faces at very top of portrait image)
+- fungi video: Little Food Festival highlights reel YouTube Short (`xBDGmaTUieA`), shown in expanded detail after description, before gallery. Max-width 260px, aspect-ratio 9/16.
 - worn-gundidj gallery-2: `position: "center 25%"` (cherry picker)
+
+### Celebrant About page (`/celebrant/about/`) — layout
+- Full duplicate of `/about/` content, styled with `--cel-*` variables throughout
+- Nav key: `about` in CelebrantNav — sits after FAQ
+- CelebrantNav points to `/celebrant/about/` (not `/about/`)
+- CTA links to `/celebrant/enquire/` with celebrant-appropriate copy
+- Includes the "Fungi Come From Spores" YouTube Short and Seal Prince caption/link
+- Hub Nav.astro: "About" added to navLinks array (visible on all hub sections); active when `hubSubPage === 'about'` or `section === 'about'`
+
+### MC & Other Ceremonies page (`/celebrant/mc-and-ceremonies/`) — layout
+- Banner: 340px height, `gallery-5.webp`, `object-position: center 15%`, warm dark overlay gradient
+- Intro paragraph (max-width 600px) followed by service list: Reception MC, Event MC, Funerals & Memorial Services, Rites of Passage, Baby Namings
+- Each service: h2 + paragraph, separated by faint pink-tinted border; last item has no border
+- CTA block at bottom: centred, faint accent background, links to `/celebrant/enquire/`
+- Nav key: `mcAndCeremonies` — "MC & More" sits between "How I Work" and "FAQ" in CelebrantNav
 
 ### Brewing page (`/brewing/`) — cover images
 - Each idea card has `.idea-cover { height: 240px }` above `.idea-body` wrapper; `padding: 0; overflow: hidden` on the card
 - KBS card renders as `<a>` (links to `/brewing/kids-business-school`), others are `<div>`
 - Hover: subtle cover image zoom (scale 1.02) on linked cards only
 
-### About page (`/about/`) — alternating editorial layout
+### About page (`/about/` and `/celebrant/about/`) — alternating editorial layout
 - Row 1 (240px | 1fr): headshot | "About Tom" h1 + intro paragraph
 - Full width: "When people ask..." paragraph + centred bullet list (list-style: none, text-align: center)
 - Row 2 flipped (1fr | 240px): two paragraphs | about-2.jpg
@@ -82,6 +99,8 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 - Full width: "To create and hold space..." + remaining Thread paragraphs + kicker + Timeline + CTA
 - Missing images collapse gracefully via `onerror="this.closest('.about-col').style.display='none'"`
 - Bullet list links: Mushroom farmer → bellarinefungi.com.au, Writer → allentomc.wordpress.com (update to Substack when content is ready)
+- Video: "Fungi Come From Spores" YouTube Short (`gDtLRcp_w_s`), centred, max-width 280px, aspect-ratio 9/16. Caption links "Seal Prince" to https://www.instagram.com/sealprinsta/
+- When editing about content, update BOTH `/about/` and `/celebrant/about/` to keep them in sync
 
 ### Home page hero
 - Full-bleed background image (`hero-e.jpg` — beach/landscape, landscape orientation)
@@ -166,6 +185,7 @@ public/
 src/
   layouts/        → BaseLayout.astro (includes OG tags, JSON-LD)
   pages/          → All routes
+    celebrant/    → about.astro, mc-and-ceremonies.astro
     brewing/      → kids-business-school.astro
     hero-options.astro  → photo feedback preview (noindex)
   components/     → Nav.astro, CelebrantNav.astro, Footer.astro
@@ -194,3 +214,7 @@ git add . && git commit -m "description" && git push   # Deploy (Vercel auto-bui
 ## Tom's background (for tone context)
 
 Based in Darwin, NT. Wedding celebrant, writer (Substack + poetry/essays), and someone who embeds in organisations to build capacity — not a consultant who advises from outside. Past work: social enterprise bike shop with youth programs (Good Cycles, Geelong), mushroom farm (Bellarine Fungi), grant-funded programs at an Aboriginal co-operative (Worn Gundidj). His framing: "I listen and learn, and build the capacity your organisation most needs." The unifying thread: building structures that transform people, places, and materials.
+
+## Session protocol
+
+At the end of every session where code changes are made, update this CLAUDE.md file to reflect any changes to: site structure, routes, design system, colour schemes, typography, file structure, coding patterns, or key decisions. Commit the updated CLAUDE.md as part of the final push.
