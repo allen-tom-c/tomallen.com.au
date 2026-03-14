@@ -91,23 +91,39 @@ const photos = [
     let current = 0;
     const total = slides.length;
 
-    function updateHeight() {
-      const h = (slides[current] as HTMLElement).offsetHeight;
-      if (h > 0) carousel!.style.height = h + 'px';
+    function updateWidth() {
+      const img = (slides[current] as HTMLElement).querySelector('img') as HTMLImageElement;
+      if (!img || img.naturalWidth === 0) return;
+      const maxW = carousel!.parentElement?.offsetWidth ?? window.innerWidth;
+      const targetH = carousel!.offsetHeight;
+      const naturalW = Math.round((img.naturalWidth / img.naturalHeight) * targetH);
+      if (naturalW <= maxW) {
+        carousel!.style.width = naturalW + 'px';
+      } else {
+        carousel!.style.width = maxW + 'px';
+        carousel!.style.height = Math.round((img.naturalHeight / img.naturalWidth) * maxW) + 'px';
+      }
     }
 
     function goTo(index: number) {
+      (slides[current] as HTMLElement).classList.remove('is-active');
       current = ((index % total) + total) % total;
-      track!.style.transform = `translateX(-${current * 100}%)`;
+      (slides[current] as HTMLElement).classList.add('is-active');
       currentDisplay!.textContent = String(current + 1);
-      updateHeight();
+      updateWidth();
     }
 
-    // Set height once first image loads, and watch all slides for late-loading images
-    updateHeight();
+    // Init first slide
+    (slides[0] as HTMLElement).classList.add('is-active');
+
+    // Update width on load — check .complete for already-cached images
     slides.forEach((slide, i) => {
-      const img = slide.querySelector('img');
-      img?.addEventListener('load', () => { if (i === current) updateHeight(); });
+      const img = slide.querySelector('img') as HTMLImageElement;
+      if (img?.complete) {
+        if (i === current) updateWidth();
+      } else {
+        img?.addEventListener('load', () => { if (i === current) updateWidth(); });
+      }
     });
 
     prevBtn?.addEventListener('click', () => goTo(current - 1));
@@ -168,24 +184,41 @@ const photos = [
   /* Carousel */
   .carousel {
     position: relative;
-    overflow: hidden;
+    height: 560px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
     border-radius: 8px;
-    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1), height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .carousel__track {
-    display: flex;
-    align-items: flex-start;
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    height: 100%;
   }
 
   .carousel__slide {
-    min-width: 100%;
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .carousel__slide.is-active {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 1;
   }
 
   .carousel__slide img {
-    width: 100%;
-    height: auto;
+    height: 100%;
+    width: auto;
     display: block;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -193,6 +226,10 @@ const photos = [
 
   .carousel__slide img.loaded {
     opacity: 1;
+  }
+
+  @media (max-width: 640px) {
+    .carousel { height: 320px; }
   }
 
   .carousel__btn {
