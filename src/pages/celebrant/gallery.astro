@@ -37,19 +37,25 @@ const photos = [
         <p>Some moments from ceremonies I've had the honour of being part of.</p>
       </div>
 
-      <div class="carousel fade-in" data-delay="200">
-        <div class="carousel__track" id="carouselTrack">
-          {photos.map((photo, i) => (
-            <div class="carousel__slide">
-              <img
-                src={photo.src}
-                alt={photo.alt}
-                loading={i < 2 ? "eager" : "lazy"}
-                decoding="async"
-                onload="this.classList.add('loaded')"
-              />
-            </div>
-          ))}
+      <div class="carousel-frame fade-in" data-delay="200">
+        <div class="carousel">
+          <div class="carousel__track" id="carouselTrack">
+            {photos.map((photo, i) => (
+              <div class="carousel__slide">
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  loading={i < 2 ? "eager" : "lazy"}
+                  decoding="async"
+                  onload="this.classList.add('loaded')"
+                />
+              </div>
+            ))}
+          </div>
+
+          <div class="carousel__counter" id="carouselCounter">
+            <span id="currentSlide">1</span> / <span id="totalSlides">{photos.length}</span>
+          </div>
         </div>
 
         <button class="carousel__btn carousel__btn--prev" id="prevBtn" aria-label="Previous photo">
@@ -63,10 +69,6 @@ const photos = [
             <polyline points="9 18 15 12 9 6"></polyline>
           </svg>
         </button>
-
-        <div class="carousel__counter" id="carouselCounter">
-          <span id="currentSlide">1</span> / <span id="totalSlides">{photos.length}</span>
-        </div>
       </div>
 
       <div class="fade-in gallery-cta" data-delay="400">
@@ -182,6 +184,14 @@ const photos = [
   }
 
   /* Carousel */
+  .carousel-frame {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .carousel {
     position: relative;
     height: 560px;
@@ -236,10 +246,9 @@ const photos = [
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(4px);
-    border: none;
-    color: #FFF;
+    background: rgba(30, 58, 95, 0.1);
+    border: 1px solid rgba(30, 58, 95, 0.15);
+    color: var(--cel-text);
     width: 48px;
     height: 48px;
     border-radius: 50%;
@@ -249,18 +258,19 @@ const photos = [
     cursor: pointer;
     transition: background 0.2s ease;
     z-index: 10;
+    flex-shrink: 0;
   }
 
   .carousel__btn:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(30, 58, 95, 0.18);
   }
 
   .carousel__btn--prev {
-    left: 16px;
+    left: 0;
   }
 
   .carousel__btn--next {
-    right: 16px;
+    right: 0;
   }
 
   .carousel__counter {
@@ -295,14 +305,6 @@ const photos = [
     .carousel__btn {
       width: 40px;
       height: 40px;
-    }
-
-    .carousel__btn--prev {
-      left: 10px;
-    }
-
-    .carousel__btn--next {
-      right: 10px;
     }
   }
 </style>
