@@ -28,7 +28,7 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 /celebrant/about          → Celebrant-styled duplicate of /about — same content, cel-* variables, CelebrantFooter, CTA → /celebrant/enquire/
 /celebrant/mc-and-ceremonies → MC, baby namings, funerals, memorial services, rites of passage
 /celebrant/faq            → Accordion-style FAQ with internal links to pricing/how-i-work
-/celebrant/gallery        → Photo carousel (10 slides, images in public/images/celebrant/gallery/)
+/celebrant/gallery        → Photo carousel (13 slides, images in public/images/celebrant/gallery/)
 /celebrant/enquire        → Enquiry form (Formspree xgoljrve)
 /work/                    → Past projects: Good Cycles, Bellarine Fungi, Aboriginal co-op, The Farm Next Door
 /brewing/                 → Emerging ideas: Ecstatic Dance, Children's Theatre, Kids' Business School
@@ -80,19 +80,23 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 - Hub Nav.astro: "About" added to navLinks array (visible on all hub sections); active when `hubSubPage === 'about'` or `section === 'about'`
 
 ### MC & Other Ceremonies page (`/celebrant/mc-and-ceremonies/`) — layout
-- Banner: 340px height, `gallery-5.webp`, `object-position: center 15%`, warm dark overlay gradient
+- Banner: 340px height, `mc-banner.webp`, `object-position: center 15%`, warm dark overlay gradient
 - Intro paragraph (max-width 600px) followed by service list: Reception MC, Event MC, Funerals & Memorial Services, Rites of Passage, Baby Namings
 - Each service: h2 + paragraph, separated by faint pink-tinted border; last item has no border
 - CTA block at bottom: centred, faint accent background, links to `/celebrant/enquire/`
 - Nav key: `mcAndCeremonies` — "MC & More" sits between "How I Work" and "FAQ" in CelebrantNav
 
 ### Gallery page (`/celebrant/gallery/`) — carousel layout
-- Full-width carousel with prev/next buttons, keyboard arrows, and touch/swipe support
-- Counter badge bottom-right showing current slide / total
-- Photos array at top of file — edit to add/reorder images
-- Images live in `public/images/celebrant/gallery/`, named `01.webp` through `10.webp`
+- Crossfade carousel (not sliding — variable widths make sliding impractical)
+- Fixed height: `560px` desktop, `320px` mobile; width collapses to each image's natural aspect ratio
+- Prev/next buttons live outside the `.carousel` in a `.carousel-frame` wrapper — pinned at `left: 0` / `right: 0` of the full-width frame so they never move as carousel width changes
+- Counter badge bottom-right of carousel showing current slide / total
+- Keyboard arrows and touch/swipe supported
+- Photos array at top of file — edit to add/reorder images; descriptive alt text on each
+- Images live in `public/images/celebrant/gallery/`, filenames: `1.webp`, `02.webp`, `03.webp`, `4.webp`–`13.webp` (inconsistent naming — live with it or normalise if adding more)
 - Nav key: `gallery` — sits between "FAQ" and "About" in CelebrantNav
 - CTA at bottom links to `/celebrant/enquire/`
+- Image conversion: use `sharp` via Node (`node -e "require('sharp')..."`) — `cwebp` and `sips` WebP output not available on this machine. Always use `.rotate()` (no args) to auto-orient from EXIF when converting.
 
 ### Brewing page (`/brewing/`) — cover images
 - Each idea card has `.idea-cover { height: 240px }` above `.idea-body` wrapper; `padding: 0; overflow: hidden` on the card
@@ -128,6 +132,7 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 - All images are converted to WebP format and compressed for performance
 - `<img>` tags use `loading="lazy"` (except above-the-fold images which use `loading="eager"`)
 - `work/fungi/gallery-3.webp` needs rotation fix — currently displays sideways
+- WebP conversion: use `sharp` via Node — `cwebp` and `sips` WebP output unavailable on this machine. Use `.rotate()` (no args) to auto-orient from EXIF. Resize to max 1600px wide, quality 72–80.
 
 ### Forms pattern
 - Formspree handles all form submissions (no server-side code needed on Vercel)
@@ -178,8 +183,8 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 public/
   images/
     about/        → headshot.webp, about-2.webp, about-3.webp
-    celebrant/    → hero.webp, bouquet.webp, how-i-work.webp, gallery-1..5.webp, step-01..05.webp
-      gallery/    → 01.webp through 10.webp (carousel photos for /celebrant/gallery/)
+    celebrant/    → hero.webp, bouquet.webp, how-i-work.webp, gallery-1..5.webp, mc-banner.webp, step-01..05.webp
+      gallery/    → 1.webp, 02.webp, 03.webp, 4.webp–13.webp (13 carousel photos for /celebrant/gallery/)
     work/
       fungi/      → cover.webp, gallery-1..5.webp (gallery-3 is portrait — tall:true in data; NEEDS ROTATION FIX)
       worn-gundidj/ → cover.webp, gallery-1..3.webp
@@ -195,7 +200,7 @@ public/
 src/
   layouts/        → BaseLayout.astro (includes OG tags, JSON-LD)
   pages/          → All routes
-    celebrant/    → about.astro, mc-and-ceremonies.astro
+    celebrant/    → about.astro, gallery.astro, mc-and-ceremonies.astro
     brewing/      → kids-business-school.astro
     hero-options.astro  → photo feedback preview (noindex)
   components/     → Nav.astro, CelebrantNav.astro, Footer.astro
