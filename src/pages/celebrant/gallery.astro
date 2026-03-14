@@ -1,0 +1,259 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import CelebrantNav from '../../components/CelebrantNav.astro';
+import CelebrantFooter from '../../components/CelebrantFooter.astro';
+
+/*
+  To add or reorder photos, just edit this array.
+  Put your images in public/images/celebrant/gallery/
+  Use descriptive alt text for each photo.
+*/
+const photos = [
+  { src: "/images/celebrant/gallery/01.webp", alt: "Wedding ceremony moment" },
+  { src: "/images/celebrant/gallery/02.webp", alt: "Wedding ceremony moment" },
+  { src: "/images/celebrant/gallery/03.webp", alt: "Wedding ceremony moment" },
+  { src: "/images/celebrant/gallery/04.webp", alt: "Wedding ceremony moment" },
+  { src: "/images/celebrant/gallery/05.webp", alt: "Wedding ceremony moment" },
+  { src: "/images/celebrant/gallery/06.webp", alt: "Wedding ceremony moment" },
+  { src: "/images/celebrant/gallery/07.webp", alt: "Wedding ceremony moment" },
+  { src: "/images/celebrant/gallery/08.webp", alt: "Wedding ceremony moment" },
+  { src: "/images/celebrant/gallery/09.webp", alt: "Wedding ceremony moment" },
+  { src: "/images/celebrant/gallery/10.webp", alt: "Wedding ceremony moment" },
+];
+---
+
+<BaseLayout title="Gallery — Tom Allen Celebrant" description="Moments from weddings I've had the honour of being part of." section="celebrant">
+  <Nav section="celebrant" />
+  <CelebrantNav activePage="gallery" />
+
+  <main style="padding-top: 96px;">
+    <section class="gallery-page">
+      <div class="gallery-header fade-in">
+        <h1>Gallery</h1>
+        <p>Some moments from ceremonies I've had the honour of being part of.</p>
+      </div>
+
+      <div class="carousel fade-in" data-delay="200">
+        <div class="carousel__track" id="carouselTrack">
+          {photos.map((photo, i) => (
+            <div class="carousel__slide">
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                loading={i < 2 ? "eager" : "lazy"}
+                decoding="async"
+                onload="this.classList.add('loaded')"
+              />
+            </div>
+          ))}
+        </div>
+
+        <button class="carousel__btn carousel__btn--prev" id="prevBtn" aria-label="Previous photo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+
+        <button class="carousel__btn carousel__btn--next" id="nextBtn" aria-label="Next photo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+
+        <div class="carousel__counter" id="carouselCounter">
+          <span id="currentSlide">1</span> / <span id="totalSlides">{photos.length}</span>
+        </div>
+      </div>
+
+      <div class="fade-in gallery-cta" data-delay="400">
+        <p>Want to see your day here?</p>
+        <a href="/celebrant/enquire/" class="btn" style="background: var(--cel-accent); color: #FFF;">Get in Touch</a>
+      </div>
+    </section>
+
+    <CelebrantFooter />
+  </main>
+</BaseLayout>
+
+<script>
+  const track = document.getElementById('carouselTrack');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const currentDisplay = document.getElementById('currentSlide');
+  const slides = track?.querySelectorAll('.carousel__slide');
+
+  if (track && slides && slides.length > 0) {
+    let current = 0;
+    const total = slides.length;
+
+    function goTo(index: number) {
+      current = ((index % total) + total) % total;
+      track!.style.transform = `translateX(-${current * 100}%)`;
+      currentDisplay!.textContent = String(current + 1);
+    }
+
+    prevBtn?.addEventListener('click', () => goTo(current - 1));
+    nextBtn?.addEventListener('click', () => goTo(current + 1));
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') goTo(current - 1);
+      if (e.key === 'ArrowRight') goTo(current + 1);
+    });
+
+    // Touch/swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    track.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    track.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) goTo(current + 1);
+        else goTo(current - 1);
+      }
+    }, { passive: true });
+  }
+</script>
+
+<style>
+  .gallery-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 32px 80px;
+  }
+
+  .gallery-header {
+    margin-bottom: 36px;
+  }
+
+  .gallery-header h1 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 40px;
+    font-weight: 400;
+    color: var(--cel-text);
+    margin-bottom: 10px;
+  }
+
+  .gallery-header p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--cel-subtle);
+    font-weight: 300;
+  }
+
+  /* Carousel */
+  .carousel {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #000;
+    aspect-ratio: 3 / 2;
+  }
+
+  .carousel__track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .carousel__slide {
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .carousel__slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .carousel__slide img.loaded {
+    opacity: 1;
+  }
+
+  .carousel__btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(4px);
+    border: none;
+    color: #FFF;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    z-index: 10;
+  }
+
+  .carousel__btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .carousel__btn--prev {
+    left: 16px;
+  }
+
+  .carousel__btn--next {
+    right: 16px;
+  }
+
+  .carousel__counter {
+    position: absolute;
+    bottom: 16px;
+    right: 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.05em;
+    z-index: 10;
+  }
+
+  .gallery-cta {
+    text-align: center;
+    margin-top: 48px;
+  }
+
+  .gallery-cta p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 18px;
+    color: var(--cel-text);
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 640px) {
+    .gallery-page {
+      padding: 32px 16px 60px;
+    }
+
+    .carousel__btn {
+      width: 40px;
+      height: 40px;
+    }
+
+    .carousel__btn--prev {
+      left: 10px;
+    }
+
+    .carousel__btn--next {
+      right: 10px;
+    }
+  }
+</style>
