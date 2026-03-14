@@ -28,6 +28,7 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 /celebrant/about          → Celebrant-styled duplicate of /about — same content, cel-* variables, CelebrantFooter, CTA → /celebrant/enquire/
 /celebrant/mc-and-ceremonies → MC, baby namings, funerals, memorial services, rites of passage
 /celebrant/faq            → Accordion-style FAQ with internal links to pricing/how-i-work
+/celebrant/gallery        → Photo carousel (10 slides, images in public/images/celebrant/gallery/)
 /celebrant/enquire        → Enquiry form (Formspree xgoljrve)
 /work/                    → Past projects: Good Cycles, Bellarine Fungi, Aboriginal co-op, The Farm Next Door
 /brewing/                 → Emerging ideas: Ecstatic Dance, Children's Theatre, Kids' Business School
@@ -72,7 +73,7 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 
 ### Celebrant About page (`/celebrant/about/`) — layout
 - Full duplicate of `/about/` content, styled with `--cel-*` variables throughout
-- Nav key: `about` in CelebrantNav — sits after FAQ
+- Nav key: `about` in CelebrantNav — sits after Gallery
 - CelebrantNav points to `/celebrant/about/` (not `/about/`)
 - CTA links to `/celebrant/enquire/` with celebrant-appropriate copy
 - Includes the "Fungi Come From Spores" YouTube Short and Seal Prince caption/link
@@ -84,6 +85,14 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 - Each service: h2 + paragraph, separated by faint pink-tinted border; last item has no border
 - CTA block at bottom: centred, faint accent background, links to `/celebrant/enquire/`
 - Nav key: `mcAndCeremonies` — "MC & More" sits between "How I Work" and "FAQ" in CelebrantNav
+
+### Gallery page (`/celebrant/gallery/`) — carousel layout
+- Full-width carousel with prev/next buttons, keyboard arrows, and touch/swipe support
+- Counter badge bottom-right showing current slide / total
+- Photos array at top of file — edit to add/reorder images
+- Images live in `public/images/celebrant/gallery/`, named `01.webp` through `10.webp`
+- Nav key: `gallery` — sits between "FAQ" and "About" in CelebrantNav
+- CTA at bottom links to `/celebrant/enquire/`
 
 ### Brewing page (`/brewing/`) — cover images
 - Each idea card has `.idea-cover { height: 240px }` above `.idea-body` wrapper; `padding: 0; overflow: hidden` on the card
@@ -170,6 +179,7 @@ public/
   images/
     about/        → headshot.webp, about-2.webp, about-3.webp
     celebrant/    → hero.webp, bouquet.webp, how-i-work.webp, gallery-1..5.webp, step-01..05.webp
+      gallery/    → 01.webp through 10.webp (carousel photos for /celebrant/gallery/)
     work/
       fungi/      → cover.webp, gallery-1..5.webp (gallery-3 is portrait — tall:true in data; NEEDS ROTATION FIX)
       worn-gundidj/ → cover.webp, gallery-1..3.webp
