@@ -4,6 +4,15 @@ import Nav from '../../components/Nav.astro';
 import CelebrantNav from '../../components/CelebrantNav.astro';
 import CelebrantFooter from '../../components/CelebrantFooter.astro';
 
+const reviews = [
+  { quote: "It was Tom's first run as a celebrant and I already had other guests asking if he was available to do their wedding. He was truly a natural; eloquent, witty and personable with real attention to detail and great communication.", who: "Joe and Molly, Quamby Estate, TAS" },
+  { quote: "Tom was interested and interesting, attentive and so kind! He held the most amazing space full of life and energy at our wedding and included our family including two young kids in all we did. We won't forget how much he set the scene and brought us together for our wedding day. My nanna loved him and so did my aunties.", who: "Zoe and Will, Kangaroobie, VIC" },
+  { quote: "What a joy and honour it was to work with Tom to create the marriage ceremony of our dreams. Tom was instrumental in crafting the structure of our ceremony so that the magic could flow so beautifully on the day. He had such a grounding influence on us throughout the whole process, getting things organised well in advance so that we were able to 'let go' as the wedding storm swept us up.", who: "Michaela and Lachie, Stieglitz, VIC" },
+  { quote: "Tom was excellent. Punctual, efficient, laid back, funny, charming and kind. We were very satisfied with his work, would definitely recommend his services to others!", who: "Courtney and Conor, Warrnambool, VIC" },
+  { quote: "Tom was an absolute delight. From our very first meeting, we knew we wanted him to be our celebrant. Finding someone to officiate such an important moment requires a great deal of trust, and Tom exceeded our expectations. Throughout the entire process, he brought a positive, kind, and supportive energy that made everything feel easy and comfortable. He took the time to understand us and thoughtfully tailored the ceremony to suit our preferences, creating something that felt genuinely personal and perfect for us. Thank you, Tom!", who: "Cameron and Melisa, Melbourne, VIC" },
+  { quote: "Tom was fantastic for our small wedding! We wanted short and sweet and he delivered. He was super easy to work with and so relaxed. Highly recommend!!", who: "Tegan and Brendan, Warrnambool, VIC" },
+];
+
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "ProfessionalService"],
@@ -50,7 +59,7 @@ const localBusinessSchema = {
   <main style="padding-top: 96px;">
     <!-- Hero -->
     <section class="cel-hero">
-      <img src="/images/celebrant/hero.webp" alt="Wedding ceremony" class="cel-hero__img" width="1920" height="1280" loading="eager" fetchpriority="high" decoding="async" onerror="this.style.display='none'" />
+      <img src="/images/celebrant/gallery/15.webp" alt="Wedding ceremony" class="cel-hero__img" width="1920" height="1280" loading="eager" fetchpriority="high" decoding="async" onerror="this.style.display='none'" />
       <div class="cel-hero__overlay">
         <div class="cel-hero__content">
           <p class="fade-in label" style="color: #FFFFFF; margin-bottom: 16px; opacity: 0.8;">Marriage Celebrant — Darwin, NT</p>
@@ -115,20 +124,26 @@ const localBusinessSchema = {
       </div>
     </section>
 
-    <!-- Testimonials -->
+    <!-- Testimonials Carousel -->
     <section class="cel-testimonials">
-      <div class="container-narrow">
-        {[
-          { quote: "It was Tom's first run as a celebrant and I already had other guests asking if he was available to do their wedding. He was truly a natural; eloquent, witty and personable with real attention to detail and great communication.", who: "Joe and Molly, Quamby Estate, TAS" },
-          { quote: "Tom was interested and interesting, attentive and so kind! He held the most amazing space full of life and energy at our wedding and included our family including two young kids in all we did. We won't forget how much he set the scene and brought us together for our wedding day. My nanna loved him and so did my aunties.", who: "Zoe and Will, Kangaroobie, VIC" },
-          { quote: "What a joy and honour it was to work with Tom to create the marriage ceremony of our dreams. Tom was instrumental in crafting the structure of our ceremony so that the magic could flow so beautifully on the day. He had such a grounding influence on us throughout the whole process, getting things organised well in advance so that we were able to 'let go' as the wedding storm swept us up.", who: "Michaela and Lachie, Stieglitz, VIC" },
-          { quote: "Tom was excellent. Punctual, efficient, laid back, funny, charming and kind. We were very satisfied with his work, would definitely recommend his services to others!", who: "Courtney and Conor, Warrnambool, VIC" },
-        ].map((t, i) => (
-          <blockquote class="fade-in cel-quote" data-delay={String(i * 150)}>
-            <p class="cel-quote__text">"{t.quote}"</p>
-            <footer class="cel-quote__who">— {t.who}</footer>
-          </blockquote>
-        ))}
+      <div class="testimonial-viewport" id="testimonialViewport">
+        <div class="testimonial-track" id="testimonialTrack">
+          {reviews.map((t, i) => (
+            <blockquote class:list={["testimonial-card", { active: i === 0 }]}>
+              <p class="cel-quote__text">"{t.quote}"</p>
+              <footer class="cel-quote__who">— {t.who}</footer>
+            </blockquote>
+          ))}
+        </div>
+      </div>
+      <div class="testimonial-nav">
+        <button id="testimonialPrev" class="testimonial-arrow" aria-label="Previous review">&#8592;</button>
+        <div class="testimonial-dots">
+          {reviews.map((_, i) => (
+            <button class:list={["testimonial-dot", { active: i === 0 }]} data-idx={String(i)} aria-label={`Go to review ${i + 1}`}></button>
+          ))}
+        </div>
+        <button id="testimonialNext" class="testimonial-arrow" aria-label="Next review">&#8594;</button>
       </div>
     </section>
 
@@ -143,6 +158,12 @@ const localBusinessSchema = {
 
     <CelebrantFooter />
   </main>
+
+  <!-- Lightbox -->
+  <div id="cel-lightbox" class="cel-lightbox" aria-hidden="true" role="dialog" aria-modal="true">
+    <button class="cel-lightbox__close" id="cel-lightbox-close" aria-label="Close">&#215;</button>
+    <img id="cel-lightbox-img" src="" alt="" class="cel-lightbox__img" />
+  </div>
 </BaseLayout>
 
 <style>
@@ -150,7 +171,7 @@ const localBusinessSchema = {
     position: relative;
     overflow: hidden;
     min-height: max(100vh, 650px);
-    background: linear-gradient(135deg, #1E3A5F 0%, #2A4F80 40%, #0F2040 100%);
+    background: linear-gradient(135deg, #1E3A1A 0%, #2A5020 40%, #0F2010 100%);
   }
 
   .cel-hero__img {
@@ -159,17 +180,17 @@ const localBusinessSchema = {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 70%;
+    object-position: center 85%;
   }
 
   .cel-hero__overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(15,25,60,0.05) 0%, rgba(15,25,60,0.55) 100%);
+    background: linear-gradient(to bottom, rgba(10,25,10,0.05) 0%, rgba(10,25,10,0.60) 100%);
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    padding-top: 48px;
+    padding-top: 120px;
   }
 
   .cel-hero__content {
@@ -288,35 +309,168 @@ const localBusinessSchema = {
 
   .cel-testimonials {
     background: color-mix(in srgb, var(--cel-accent) 4%, transparent);
-    padding: 70px 32px;
+    padding: 70px 0 56px;
+    overflow: hidden;
   }
 
-  .cel-quote {
-    margin: 0 0 36px;
-    padding: 0 0 36px;
-    border-bottom: 1px solid color-mix(in srgb, var(--cel-accent) 8%, transparent);
+  .testimonial-viewport {
+    overflow: hidden;
+    position: relative;
   }
 
-  .cel-quote:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
+  .testimonial-track {
+    display: flex;
+    gap: 24px;
+    position: relative;
+    transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+  }
+
+  .testimonial-card {
+    flex: 0 0 min(580px, 68%);
+    margin: 0;
+    padding: 40px 44px;
+    background: #fff;
+    border-radius: 6px;
+    opacity: 0.32;
+    transform: scale(0.97);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    cursor: pointer;
+    box-shadow: 0 2px 20px rgba(30, 58, 26, 0.07);
+  }
+
+  .testimonial-card.active {
+    opacity: 1;
+    transform: scale(1);
+    cursor: default;
   }
 
   .cel-quote__text {
     font-family: 'Source Serif 4', serif;
-    font-size: 19px;
+    font-size: 18px;
     font-style: italic;
-    line-height: 1.7;
+    line-height: 1.75;
     color: var(--cel-text);
     font-weight: 400;
-    margin-bottom: 14px;
+    margin-bottom: 20px;
   }
 
   .cel-quote__who {
     font-family: 'DM Sans', sans-serif;
     font-size: 13px;
     color: var(--cel-subtle);
+  }
+
+  .testimonial-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 36px;
+    padding: 0 32px;
+  }
+
+  .testimonial-arrow {
+    background: none;
+    border: 1px solid color-mix(in srgb, var(--cel-accent) 40%, transparent);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--cel-accent);
+    font-size: 16px;
+    transition: background 0.2s, border-color 0.2s;
+    flex-shrink: 0;
+  }
+
+  .testimonial-arrow:hover {
+    background: color-mix(in srgb, var(--cel-accent) 8%, transparent);
+    border-color: var(--cel-accent);
+  }
+
+  .testimonial-dots {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .testimonial-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--cel-accent) 22%, transparent);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .testimonial-dot.active {
+    background: var(--cel-accent);
+    transform: scale(1.35);
+  }
+
+  @media (max-width: 640px) {
+    .testimonial-card {
+      flex: 0 0 82%;
+      padding: 28px 28px;
+    }
+    .cel-quote__text { font-size: 16px; }
+  }
+
+  .cel-gallery__portrait img,
+  .cel-gallery__cell img {
+    cursor: zoom-in;
+    transition: opacity 0.2s;
+  }
+
+  .cel-gallery__portrait img:hover,
+  .cel-gallery__cell img:hover {
+    opacity: 0.88;
+  }
+
+  .cel-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+  }
+
+  .cel-lightbox.active {
+    display: flex;
+  }
+
+  .cel-lightbox__img {
+    max-width: calc(100vw - 64px);
+    max-height: calc(100vh - 64px);
+    object-fit: contain;
+    border-radius: 4px;
+    cursor: default;
+  }
+
+  .cel-lightbox__close {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 32px;
+    line-height: 1;
+    padding: 4px 8px;
+    cursor: pointer;
+    opacity: 0.6;
+  }
+
+  .cel-lightbox__close:hover {
+    opacity: 1;
   }
 
   @media (max-width: 640px) {
@@ -328,3 +482,85 @@ const localBusinessSchema = {
     }
   }
 </style>
+
+<script is:inline>
+  (function () {
+    var lightbox = document.getElementById('cel-lightbox');
+    var lightboxImg = document.getElementById('cel-lightbox-img');
+    var lightboxClose = document.getElementById('cel-lightbox-close');
+
+    document.querySelectorAll('.cel-gallery img').forEach(function (img) {
+      img.addEventListener('click', function () {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add('active');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    lightbox.addEventListener('click', function (e) {
+      if (e.target !== lightboxImg) closeLightbox();
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  })();
+</script>
+
+<script is:inline>
+  (function () {
+    var viewport = document.getElementById('testimonialViewport');
+    var track = document.getElementById('testimonialTrack');
+    if (!viewport || !track) return;
+
+    var cards = Array.from(track.querySelectorAll('.testimonial-card'));
+    var dots = Array.from(document.querySelectorAll('.testimonial-dot'));
+    var current = 0;
+
+    function goTo(idx) {
+      if (idx < 0) idx = cards.length - 1;
+      if (idx >= cards.length) idx = 0;
+      current = idx;
+
+      var card = cards[current];
+      var vpW = viewport.offsetWidth;
+      var translateX = vpW / 2 - card.offsetLeft - card.offsetWidth / 2;
+      track.style.transform = 'translateX(' + translateX + 'px)';
+
+      cards.forEach(function (c, i) { c.classList.toggle('active', i === current); });
+      dots.forEach(function (d, i) { d.classList.toggle('active', i === current); });
+    }
+
+    document.getElementById('testimonialPrev').addEventListener('click', function () { goTo(current - 1); });
+    document.getElementById('testimonialNext').addEventListener('click', function () { goTo(current + 1); });
+
+    dots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () { goTo(i); });
+    });
+
+    cards.forEach(function (card, i) {
+      card.addEventListener('click', function () { if (i !== current) goTo(i); });
+    });
+
+    var startX = 0;
+    viewport.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+    viewport.addEventListener('touchend', function (e) {
+      var diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
+    });
+
+    window.addEventListener('resize', function () { goTo(current); });
+
+    goTo(0);
+  })();
+</script>
