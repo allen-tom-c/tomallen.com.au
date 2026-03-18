@@ -40,11 +40,12 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 ## Current design system
 
 ### Celebrant section colour scheme
-- Background: pale blue `#EEF4FF` (`--cel-bg`)
-- Text: deep navy `#1E3A5F` (`--cel-text`)
-- Accent (buttons, labels, links, CTAs): hot pink `#DB2777` (`--cel-accent`)
-- Secondary text: muted slate
-- Overlays: clean white text on semi-transparent gradients (not warm cream)
+- Background: pale eucalyptus sage `#E8F2E0` (`--cel-bg`)
+- Text: deep forest green `#1E3A1A` (`--cel-text`)
+- Accent (buttons, labels, links, CTAs): warm amber/ochre `#B87010` (`--cel-accent`)
+- Secondary text: muted olive `#5F7050` (`--cel-subtle`)
+- Overlays: clean white text on semi-transparent dark green gradients `rgba(10,25,10,...)`
+- Top nav bar (celebrant section): `rgba(30, 58, 26, 0.95)` forest green with white logo text
 
 ### Typography
 - **Headings and body text** (site-wide): Source Serif 4
@@ -55,7 +56,7 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 - Hub grid: `repeat(2, 1fr)` — always 2×2 on desktop, single column below 560px
 - All four home page cards use the writing palette (`--wri-*` variables) — `#FAFAFA` background, `#1A1A2E` text/accent, `#7A7A8A` subtle
 - What's Brewing card has a dashed border (signals it's still forming), same size as others
-- Celebrant hero: full viewport height (`100vh`), `object-position: center 70%`
+- Celebrant hero: full viewport height (`100vh`), `object-position: center 85%`, hero image is `gallery/15.webp` (ceremony in paddock)
 - How I Work banner: `500px` height, `object-position: 65% 25%`
 - Celebrant pricing banner: `500px` height, image `bouquet.jpg`
 - Both navs have hamburger menus for mobile
@@ -93,7 +94,7 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 - Counter badge bottom-right of carousel showing current slide / total
 - Keyboard arrows and touch/swipe supported
 - Photos array at top of file — edit to add/reorder images; descriptive alt text on each
-- Images live in `public/images/celebrant/gallery/`, filenames: `1.webp`, `02.webp`, `03.webp`, `4.webp`–`13.webp` (inconsistent naming — live with it or normalise if adding more)
+- Images live in `public/images/celebrant/gallery/`, filenames: `1.webp`, `2.webp`, `3.webp`, `4.webp`–`15.webp` (15 images total)
 - Nav key: `gallery` — sits between "FAQ" and "About" in CelebrantNav
 - CTA at bottom links to `/celebrant/enquire/`
 - Image conversion: use `sharp` via Node (`node -e "require('sharp')..."`) — `cwebp` and `sips` WebP output not available on this machine. Always use `.rotate()` (no args) to auto-orient from EXIF when converting.
@@ -134,6 +135,19 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 - `work/fungi/gallery-3.webp` needs rotation fix — currently displays sideways
 - WebP conversion: use `sharp` via Node — `cwebp` and `sips` WebP output unavailable on this machine. Use `.rotate()` (no args) to auto-orient from EXIF. Resize to max 1600px wide, quality 72–80.
 
+### Celebrant homepage testimonials — peek carousel
+- Horizontal peek carousel replacing the stacked blockquote layout
+- Active card centred, neighbours visible at 32% opacity on each side (68% card width = ~16% peek each side)
+- `reviews` array defined in frontmatter of `celebrant/index.astro` — add new reviews there
+- JS uses `card.offsetLeft` to calculate `translateX` for centring; `window resize` recalculates
+- Clicking an adjacent card navigates to it; swipe supported; dots + arrows for navigation
+- `is:inline` script; no external library
+
+### Celebrant homepage tile gallery — lightbox
+- Clicking any tile image opens it fullscreen via a lightbox overlay
+- Click outside image or press Escape to close; `is:inline` script
+- Lightbox div placed inside BaseLayout but outside `<main>`
+
 ### Forms pattern
 - Formspree handles all form submissions (no server-side code needed on Vercel)
 - Forms use `fetch` + `Accept: application/json` header for AJAX submission — no page redirect
@@ -144,6 +158,7 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 
 - **No emojis.** Never use emojis or unicode decorative symbols anywhere on the site.
 - **No AI tells.** Avoid: unattributed inspirational quotes, overly symmetrical value prop grids, identical section rhythms, overuse of small-caps labels, checkmark lists. Use em dashes for feature lists.
+- **Beija Flor backlink** in CelebrantFooter: "Planning a Top End wedding? Check out Beija Flor's comprehensive Darwin wedding directory." — exchange for directory listing at beijaflor.com.au.
 - **All body text is written by Tom.** Use `[Tom to write: description]` for any missing content. Never generate placeholder marketing copy.
 - **Don't overcorrect.** When Tom flags something, fix the specific issue. Don't introduce deliberate imperfections or asymmetry to "look less AI" — that's worse than the original problem.
 - **External org links open in new tab** (Good Cycles, Bellarine Fungi, Worn Gundidj, Tearfund).
