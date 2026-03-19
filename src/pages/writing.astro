@@ -6,7 +6,7 @@ import CrossLinks from '../components/CrossLinks.astro';
 // Fetch Substack RSS at build time
 let posts: Array<{ title: string; link: string; pubDate: string; description: string }> = [];
 try {
-  const res = await fetch('https://substack.com/@tomcraigallen/feed');
+  const res = await fetch('https://tomcraigallen.substack.com/feed');
   if (res.ok) {
     const xml = await res.text();
     // Simple XML parsing for RSS items
