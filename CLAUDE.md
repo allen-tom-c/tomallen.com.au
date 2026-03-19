@@ -14,7 +14,7 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 - **DNS:** VentraIP — using Vercel's nameservers (ns1/ns2.vercel-dns.com), not individual DNS records
 - **SSL:** Provided automatically by Vercel — no paid certificate needed
 - **Forms:** Formspree — celebrant enquiry (`xgoljrve`) and KBS EOI (`xkovlkgo`), both forwarding to allen.tom.c@gmail.com
-- **Blog:** Substack integration via RSS feed — the Writing section pulls posts automatically
+- **Blog:** Substack RSS feed at `https://tomcraigallen.substack.com/feed` — fetched at build time, displays 3 most recent posts with images on the Writing page. GitHub Actions workflow (`.github/workflows/scheduled-rebuild.yml`) triggers a Vercel rebuild daily at 6am UTC via `VERCEL_DEPLOY_HOOK` secret, keeping posts fresh without manual deploys.
 - **Content workflow:** Write in Notion → export Markdown → drop into project
 
 ## Site sections
@@ -33,7 +33,7 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 /work/                    → Past projects: Good Cycles, Bellarine Fungi, Aboriginal co-op, The Farm Next Door
 /brewing/                 → Emerging ideas: Ecstatic Dance, Children's Theatre, Kids' Business School
 /brewing/kids-business-school → Dedicated KBS page with EOI form (Formspree xkovlkgo)
-/writing                  → Substack RSS feed integration with subscribe widget
+/writing                  → Substack RSS feed integration — 3 most recent posts as full-width image cards + subscribe widget
 /hero-options             → Photo preview page (noindex) — for feedback on home hero options
 ```
 
@@ -98,6 +98,13 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 - Nav key: `gallery` — sits between "FAQ" and "About" in CelebrantNav
 - CTA at bottom links to `/celebrant/enquire/`
 - Image conversion: use `sharp` via Node (`node -e "require('sharp')..."`) — `cwebp` and `sips` WebP output not available on this machine. Always use `.rotate()` (no args) to auto-orient from EXIF when converting.
+
+### Writing page (`/writing/`) — Substack feed
+- Displays 3 most recent posts fetched from `https://tomcraigallen.substack.com/feed` at build time
+- Each post rendered as a card: full-width image (260px height, `object-fit: cover`, border-radius 6px) above title, date, excerpt, and "Read on Substack →" link
+- Images sourced from RSS `<enclosure>` tags — posts without a cover image show text only (degrades gracefully)
+- Subscribe widget above posts links to `https://substack.com/@tomcraigallen`
+- Rebuilt daily at 6am UTC by GitHub Actions (`.github/workflows/scheduled-rebuild.yml`) via `VERCEL_DEPLOY_HOOK` secret
 
 ### Brewing page (`/brewing/`) — cover images
 - Each idea card has `.idea-cover { height: 240px }` above `.idea-body` wrapper; `padding: 0; overflow: hidden` on the card
