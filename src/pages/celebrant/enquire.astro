@@ -39,6 +39,10 @@ import CelebrantFooter from '../../components/CelebrantFooter.astro';
           <label class="form-label" style="color: var(--cel-subtle);">Tell me about your day</label>
           <textarea name="message" rows="5" class="form-input" placeholder="Where you're thinking, how many guests, what vibe — or just say hello." style="border-color: color-mix(in srgb, var(--cel-accent) 15%, transparent); color: var(--cel-text); resize: vertical;"></textarea>
         </div>
+        <div class="enquiry-form__honeypot" aria-hidden="true">
+          <label>Leave this field blank</label>
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+        </div>
         <button type="submit" class="btn" style="background: var(--cel-accent); color: #FFF;">Send Enquiry</button>
       </form>
     </section>
@@ -48,15 +52,51 @@ import CelebrantFooter from '../../components/CelebrantFooter.astro';
 </BaseLayout>
 
 <script>
+  // Client-side spam filter. If a submission contains any of these phrases,
+  // we silently show the success message but don't actually POST to Formspree —
+  // the spammer thinks it worked and moves on. Honeypot catches dumb bots;
+  // this catches smarter bots and human spammers by content. List is biased
+  // toward multi-word phrases that no real wedding enquirer would ever use.
+  // Add new entries here as new spam patterns appear.
+  const SPAM_KEYWORDS = [
+    // business funding / loan spam
+    'borrowing power', 'business loan', 'business funding', 'commercial financing',
+    'credit score', 'credit application', 'loan options', 'loan rates',
+    'funding solutions', 'funding potential', 'no credit impact',
+    'hellorates',
+    // SEO / marketing / web design spam
+    'seo services', 'search engine ranking', 'rank your website', 'rank higher',
+    'improve your ranking', 'increase traffic', 'guest post', 'link exchange',
+    'lead generation', 'digital marketing services', 'web design services',
+    // crypto spam
+    'cryptocurrency', 'blockchain investment', 'nft project',
+  ];
+
+  function looksLikeSpam(data: FormData): boolean {
+    const haystack = [
+      data.get('names'), data.get('email'), data.get('date'), data.get('message'),
+    ].filter(Boolean).join(' ').toLowerCase();
+    return SPAM_KEYWORDS.some(kw => haystack.includes(kw));
+  }
+
   const form = document.getElementById('enquiry-form') as HTMLFormElement;
   const success = document.getElementById('enquiry-success') as HTMLElement;
   const intro = document.getElementById('enquiry-intro') as HTMLElement;
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    const data = new FormData(form);
+
+    if (looksLikeSpam(data)) {
+      intro.style.display = 'none';
+      form.style.display = 'none';
+      success.style.display = 'block';
+      return;
+    }
+
     const response = await fetch(form.action, {
       method: 'POST',
-      body: new FormData(form),
+      body: data,
       headers: { 'Accept': 'application/json' },
     });
     if (response.ok) {
@@ -83,6 +123,19 @@ import CelebrantFooter from '../../components/CelebrantFooter.astro';
   .enquiry-form__field {
     display: flex;
     flex-direction: column;
+  }
+
+  /* Honeypot field — visually hidden but present in the DOM. Spam bots fill in
+     every field they find; legitimate users never see this. Formspree silently
+     discards any submission where the _gotcha field contains a value. We avoid
+     display:none because some smarter bots check for it and skip the field. */
+  .enquiry-form__honeypot {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
   }
 
   .enquiry-success {

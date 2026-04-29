@@ -160,6 +160,9 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 - Forms use `fetch` + `Accept: application/json` header for AJAX submission — no page redirect
 - On success: heading/intro and form are hidden via JS, inline success message shown
 - `box-decoration-break: clone` technique used for per-line text highlights on photo backgrounds
+- **Spam defence (two layers):**
+  1. **Honeypot field** — hidden `<input name="_gotcha">` inside a `.{form}__honeypot` wrapper positioned off-screen (`left: -9999px`, NOT `display: none` — `display: none` is detectable by smarter bots and gets skipped). Real users never see it; bots fill it in and Formspree silently discards the submission.
+  2. **Client-side keyword filter** — `SPAM_KEYWORDS` array at the top of each form's `<script>` block. Submit handler runs `looksLikeSpam(formData)` before POSTing; if matched, the script silently shows the success message without sending anything (so the spammer thinks it worked and moves on). Built because Formspree's server-side keyword blocking is Gold-plan only ($15/mo). List uses multi-word phrases (e.g. 'business loan', 'borrowing power', 'seo services') to avoid catching legitimate enquiries — qualifiers matter, especially on the KBS form where the word 'business' is central to the premise. To add a new spam pattern, edit the `SPAM_KEYWORDS` array in both `celebrant/enquire.astro` and `brewing/kids-business-school.astro`.
 
 ## Key design rules
 
