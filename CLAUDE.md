@@ -13,7 +13,7 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 - **vercel.json:** Page-level redirects for tomallencelebrant.com — `/about` → `/about/`, `/contact-me` → `/celebrant/enquire/`, `/faq` → `/celebrant/faq/`, `/how-i-work` → `/celebrant/how-i-work/`, `/food-for-thought` → `/celebrant/how-i-work/`, `/pricing-and-faq` → `/celebrant/pricing/`, `/other-services` → `/celebrant/mc-and-ceremonies/` (301), root `/` → `/celebrant/`, catch-all `/:path*` → `/celebrant/:path*`. www subdomain also handled.
 - **DNS:** VentraIP — using Vercel's nameservers (ns1/ns2.vercel-dns.com), not individual DNS records
 - **SSL:** Provided automatically by Vercel — no paid certificate needed
-- **Forms:** Formspree — celebrant enquiry (`xgoljrve`) and KBS EOI (`xkovlkgo`), both forwarding to allen.tom.c@gmail.com
+- **Forms:** Formspree — celebrant enquiry (`xgoljrve`) forwarding to allen.tom.c@gmail.com. KBS registration uses a Google Form (forms.gle/ted72fbAQ86vFTce6), not Formspree.
 - **Blog:** Substack RSS feed at `https://tomcraigallen.substack.com/feed` — fetched at build time, displays 3 most recent posts with images on the Writing page. GitHub Actions workflow (`.github/workflows/scheduled-rebuild.yml`) triggers a Vercel rebuild daily at 6am UTC via `VERCEL_DEPLOY_HOOK` secret, keeping posts fresh without manual deploys.
 - **Content workflow:** Write in Notion → export Markdown → drop into project
 
@@ -31,8 +31,9 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 /celebrant/gallery        → Photo carousel (13 slides, images in public/images/celebrant/gallery/)
 /celebrant/enquire        → Enquiry form (Formspree xgoljrve)
 /work/                    → Past projects: Good Cycles, Bellarine Fungi, Aboriginal co-op, The Farm Next Door
-/brewing/                 → Emerging ideas: Ecstatic Dance, Children's Theatre, Kids' Business School
-/brewing/kids-business-school → Dedicated KBS page with EOI form (Formspree xkovlkgo)
+/brewing/                 → Emerging ideas: Ecstatic Dance, Children's Theatre, Kid Co. Business School
+/brewing/kids-business-school → Kid Co. Business School dedicated page — registration via Google Form
+/brewing/kids-business-school/privacy → Program policies: Privacy Policy, Media Consent, Proceeds Policy (three anchored sections: #privacy, #media, #proceeds)
 /writing                  → Substack RSS feed integration — 3 most recent posts as full-width image cards + subscribe widget
 /hero-options             → Photo preview page (noindex) — for feedback on home hero options
 ```
@@ -110,6 +111,23 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 - Each idea card has `.idea-cover { height: 240px }` above `.idea-body` wrapper; `padding: 0; overflow: hidden` on the card
 - KBS card renders as `<a>` (links to `/brewing/kids-business-school`), others are `<div>`
 - Hover: subtle cover image zoom (scale 1.02) on linked cards only
+- KBS card: name "Kid Co. Business School", stage "Launching"; `desc` and `thinking` fields updated May 2026 to reflect confirmed program details
+
+### Kid Co. Business School page (`/brewing/kids-business-school/`) — layout
+- Hero: full-width SVG awning banner (no photo) — amber `#D4901A` body with terra cotta `#C75B35` vertical stripes and scalloped bottom edge. ViewBox `0 0 1200 320`; amber/stripe rects at `height="270"`, scallop baseline at y=244, peaks y=198, troughs y=290. Georgia serif for all text on this page.
+- Colour palette: cream `#F5ECD7` (bg), dark brown `#2C2218` (text/dark sections), amber `#D4901A` (labels/gold), terra cotta `#C75B35` (accent/buttons), green `#3A6B3E` (market day highlights), muted `#8C7B6B` (secondary text)
+- Sections: hero awning → back link → intro + facts grid + market callout → week-by-week program (`.section--alt`) → facilitator bio + fees (two-col) → EOI (`.section--dark`, links to Google Form) → program documents (links to privacy page)
+- Facts grid: 4-cell dark-background grid (When / Where / Ages / Places) using `grid-template-columns: repeat(auto-fit, minmax(160px, 1fr))`
+- Week list: 8 rows (7 sessions + market day), terra cotta dots for sessions, green dot for market day
+- Registration: external Google Form link (`https://forms.gle/ted72fbAQ86vFTce6`), opens in new tab — no Formspree, no on-page form
+- Program documents section links to `/brewing/kids-business-school/privacy/` with three anchor links (#privacy, #media, #proceeds)
+- No `Footer` component — page ends before `</BaseLayout>` (hub pages have no footer)
+
+### Kid Co. privacy page (`/brewing/kids-business-school/privacy/`) — layout
+- Simple document page: back link → page header (kicker + h1 + version/date meta) → four sections separated by borders
+- Sections: Privacy Policy / Media Consent Policy / Proceeds Policy / Questions (contact details)
+- Each section anchored: `id="privacy"`, `id="media"`, `id="proceeds"`, `id="contact"`
+- Imports: `../../../layouts/BaseLayout.astro`, `../../../components/Nav.astro` only — no Footer
 
 ### About page (`/about/` and `/celebrant/about/`) — alternating editorial layout
 - Row 1 (240px | 1fr): headshot | "About Tom" h1 + intro paragraph
@@ -156,13 +174,14 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 - Lightbox div placed inside BaseLayout but outside `<main>`
 
 ### Forms pattern
-- Formspree handles all form submissions (no server-side code needed on Vercel)
+- Formspree handles celebrant enquiry submissions (no server-side code needed on Vercel)
 - Forms use `fetch` + `Accept: application/json` header for AJAX submission — no page redirect
 - On success: heading/intro and form are hidden via JS, inline success message shown
 - `box-decoration-break: clone` technique used for per-line text highlights on photo backgrounds
-- **Spam defence (two layers):**
+- **Spam defence (two layers, celebrant enquiry form only):**
   1. **Honeypot field** — hidden `<input name="_gotcha">` inside a `.{form}__honeypot` wrapper positioned off-screen (`left: -9999px`, NOT `display: none` — `display: none` is detectable by smarter bots and gets skipped). Real users never see it; bots fill it in and Formspree silently discards the submission.
-  2. **Client-side keyword filter** — `SPAM_KEYWORDS` array at the top of each form's `<script>` block. Submit handler runs `looksLikeSpam(formData)` before POSTing; if matched, the script silently shows the success message without sending anything (so the spammer thinks it worked and moves on). Built because Formspree's server-side keyword blocking is Gold-plan only ($15/mo). List uses multi-word phrases (e.g. 'business loan', 'borrowing power', 'seo services') to avoid catching legitimate enquiries — qualifiers matter, especially on the KBS form where the word 'business' is central to the premise. To add a new spam pattern, edit the `SPAM_KEYWORDS` array in both `celebrant/enquire.astro` and `brewing/kids-business-school.astro`.
+  2. **Client-side keyword filter** — `SPAM_KEYWORDS` array at the top of each form's `<script>` block. Submit handler runs `looksLikeSpam(formData)` before POSTing; if matched, the script silently shows the success message without sending anything. To add a new spam pattern, edit the `SPAM_KEYWORDS` array in `celebrant/enquire.astro`.
+- **KBS registration** uses an external Google Form (no on-page form, no Formspree) — just a link to `https://forms.gle/ted72fbAQ86vFTce6`
 
 ## Key design rules
 
@@ -227,8 +246,10 @@ src/
   pages/          → All routes
     celebrant/    → about.astro, gallery.astro, mc-and-ceremonies.astro
     brewing/      → kids-business-school.astro
+      kids-business-school/ → privacy.astro (program policies)
     hero-options.astro  → photo feedback preview (noindex)
-  components/     → Nav.astro, CelebrantNav.astro, Footer.astro
+  components/     → Nav.astro, CelebrantNav.astro, CelebrantFooter.astro, CrossLinks.astro
+                    (no generic Footer.astro — hub pages have no footer)
 ```
 
 ## Commands
