@@ -1,0 +1,449 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Kid Co. Business School — Tom Allen"
+  description="A 7-week hands-on program for kids aged 10–13 in Nightcliff, Darwin. Dream up a product, make it by hand, and sell it at Nightcliff Sunday Market."
+  ogImage="/images/brewing/kbs/cover.webp"
+>
+  <Nav section="brewing" />
+
+  <main>
+
+    <!-- ── HERO BANNER ──────────────────────────────────────────── -->
+    <section class="hero">
+      <div class="awning">
+        <svg width="100%" viewBox="0 0 1200 320" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="1200" height="320" fill="#F5ECD7"/>
+          <rect x="0"   y="0" width="1200" height="240" fill="#D4901A"/>
+          <rect x="0"   y="0" width="109"  height="240" fill="#C75B35"/>
+          <rect x="218" y="0" width="109"  height="240" fill="#C75B35"/>
+          <rect x="436" y="0" width="109"  height="240" fill="#C75B35"/>
+          <rect x="654" y="0" width="109"  height="240" fill="#C75B35"/>
+          <rect x="872" y="0" width="109"  height="240" fill="#C75B35"/>
+          <rect x="1090" y="0" width="110" height="240" fill="#C75B35"/>
+          <path d="M0,214 Q30,260 60,214 Q90,168 120,214 Q150,260 180,214 Q210,168 240,214 Q270,260 300,214 Q330,168 360,214 Q390,260 420,214 Q450,168 480,214 Q510,260 540,214 Q570,168 600,214 Q630,260 660,214 Q690,168 720,214 Q750,260 780,214 Q810,168 840,214 Q870,260 900,214 Q930,168 960,214 Q990,260 1020,214 Q1050,168 1080,214 Q1110,260 1140,214 Q1170,168 1200,214 L1200,240 L0,240 Z" fill="#F5ECD7"/>
+          <path d="M0,214 Q30,260 60,214 Q90,168 120,214 Q150,260 180,214 Q210,168 240,214 Q270,260 300,214 Q330,168 360,214 Q390,260 420,214 Q450,168 480,214 Q510,260 540,214 Q570,168 600,214 Q630,260 660,214 Q690,168 720,214 Q750,260 780,214 Q810,168 840,214 Q870,260 900,214 Q930,168 960,214 Q990,260 1020,214 Q1050,168 1080,214 Q1110,260 1140,214 Q1170,168 1200,214" fill="none" stroke="#C75B35" stroke-width="2"/>
+        </svg>
+        <div class="hero-text">
+          <h1>Kid Co.</h1>
+          <p class="subtitle">Business School</p>
+          <p class="tagline">A hands-on school for enterprising whippersnappers</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── BACK LINK ────────────────────────────────────────────── -->
+    <div class="back-link">
+      <a href="/brewing/">&larr; What's Brewing</a>
+    </div>
+
+    <!-- ── INTRO ────────────────────────────────────────────────── -->
+    <section class="section">
+      <div class="container">
+
+        <div class="lede">
+          <p>Make something. Sell it at the market.</p>
+        </div>
+
+        <p>Kid Co. Business School is a seven-week after-school program for children aged 10&ndash;13 in Nightcliff, Darwin. The group chooses a handmade product, figures out how to make it, sets a price, and sells it to real customers at Nightcliff Sunday Market. The final session wraps up the experience together &mdash; what worked, what didn&rsquo;t, and what everyone learned.</p>
+
+        <p>The program is grounded in inquiry-based learning. Rather than being taught how businesses work, participants work it out for themselves. It&rsquo;s hands-on, collaborative, and built around a genuine goal: a real stall, with real products, serving a real community.</p>
+
+        <!-- Quick facts -->
+        <div class="facts-grid">
+          <div class="fact">
+            <span class="fact-label">When</span>
+            <span class="fact-value">Thursdays, 3:00&ndash;4:30 pm</span>
+            <span class="fact-detail">16 July &ndash; 27 August 2026</span>
+          </div>
+          <div class="fact">
+            <span class="fact-label">Where</span>
+            <span class="fact-value">Nightcliff Uniting Church</span>
+            <span class="fact-detail">21 Cummins St, Rapid Creek</span>
+          </div>
+          <div class="fact">
+            <span class="fact-label">Ages</span>
+            <span class="fact-value">10&ndash;13 years</span>
+          </div>
+          <div class="fact">
+            <span class="fact-label">Places</span>
+            <span class="fact-value">10 only</span>
+            <span class="fact-detail">Enrol early</span>
+          </div>
+        </div>
+
+        <!-- Market day callout -->
+        <div class="market-callout">
+          <span class="market-label">Market day</span>
+          <span class="market-date">Sunday 23 August &middot; Nightcliff Sunday Market</span>
+          <span class="market-note">8 am &ndash; 2 pm &middot; come and see what we made</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── PROGRAM ───────────────────────────────────────────────── -->
+    <section class="section section--alt">
+      <div class="container">
+        <h2>The program, week by week</h2>
+
+        <div class="weeks">
+          <div class="week">
+            <div class="week-dot dot--terra"></div>
+            <div class="week-body">
+              <span class="week-title">Week 1 &middot; Finding your why</span>
+              <span class="week-date">Thu 16 July</span>
+            </div>
+          </div>
+          <div class="week">
+            <div class="week-dot dot--terra"></div>
+            <div class="week-body">
+              <span class="week-title">Week 2 &middot; Business and product development</span>
+              <span class="week-date">Thu 23 July</span>
+            </div>
+          </div>
+          <div class="week">
+            <div class="week-dot dot--terra"></div>
+            <div class="week-body">
+              <span class="week-title">Week 3 &middot; Operations and production</span>
+              <span class="week-date">Thu 30 July</span>
+            </div>
+          </div>
+          <div class="week">
+            <div class="week-dot dot--terra"></div>
+            <div class="week-body">
+              <span class="week-title">Week 4 &middot; First production run</span>
+              <span class="week-date">Thu 6 August</span>
+            </div>
+          </div>
+          <div class="week">
+            <div class="week-dot dot--terra"></div>
+            <div class="week-body">
+              <span class="week-title">Week 5 &middot; Marketing and selling</span>
+              <span class="week-date">Thu 13 August</span>
+            </div>
+          </div>
+          <div class="week">
+            <div class="week-dot dot--terra"></div>
+            <div class="week-body">
+              <span class="week-title">Week 6 &middot; Stall prep and final production run</span>
+              <span class="week-date">Thu 20 August</span>
+            </div>
+          </div>
+          <div class="week week--market">
+            <div class="week-dot dot--green"></div>
+            <div class="week-body">
+              <span class="week-title">Market day &middot; Nightcliff Sunday Market</span>
+              <span class="week-date">Sun 23 August</span>
+            </div>
+          </div>
+          <div class="week">
+            <div class="week-dot dot--terra"></div>
+            <div class="week-body">
+              <span class="week-title">Week 7 &middot; Wrap-up and celebration</span>
+              <span class="week-date">Thu 27 August</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ABOUT + FEES ──────────────────────────────────────────── -->
+    <section class="section">
+      <div class="container">
+        <div class="two-col">
+
+          <div>
+            <h2>About the facilitator</h2>
+            <p>Tom Allen has a background in social enterprise and small business, and has worked with young people across outdoor education and holiday program contexts. He holds a current NT Ochre Card (Working with Children check) and a current First Aid and CPR qualification.</p>
+          </div>
+
+          <div>
+            <h2>Fees &mdash; pay what you feel</h2>
+            <p>Kid Co. runs on a pay-what-you-feel basis. It costs roughly $175 per child to run the program. Pay more if you can, less if you need to, nothing if that&rsquo;s where you&rsquo;re at. Every child who wants a place gets one.</p>
+            <p>Any surplus from fees or market day sales goes directly into a seed fund for future rounds of the program &mdash; reducing costs for the next cohort.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── EOI ───────────────────────────────────────────────────── -->
+    <section class="section section--dark" id="enrol">
+      <div class="container container--narrow">
+        <h2>Register your interest</h2>
+        <p>Places are limited to 10 students. Fill in the form below and Tom will be in touch personally to confirm your place and answer any questions.</p>
+
+        <a href="https://forms.gle/ted72fbAQ86vFTce6" class="btn-enrol" target="_blank" rel="noopener">
+          Register your interest &rarr;
+        </a>
+
+        <p class="or-contact">Or contact Tom directly: <a href="mailto:allen.tom.c@gmail.com">allen.tom.c@gmail.com</a> &middot; <a href="tel:0421102154">0421 102 154</a></p>
+      </div>
+    </section>
+
+    <!-- ── DOCS ──────────────────────────────────────────────────── -->
+    <section class="section">
+      <div class="container">
+        <h2>Program documents</h2>
+        <p>The following documents are available for families and schools:</p>
+        <ul class="doc-list">
+          <li><a href="/brewing/kids-business-school/privacy/">Privacy Policy</a></li>
+          <li><a href="/brewing/kids-business-school/privacy/#media">Media Consent Policy</a></li>
+          <li><a href="/brewing/kids-business-school/privacy/#proceeds">Proceeds Policy</a></li>
+        </ul>
+        <p>For a copy of the full Child Safety Policy, Risk Management Plan, or Enrolment Form, contact Tom directly.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* ── Hero ─────────────────────────────────────────────────────── */
+  .hero {
+    width: 100%;
+    overflow: hidden;
+    line-height: 1;
+  }
+  .awning {
+    position: relative;
+  }
+  .awning svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    text-align: center;
+    color: #F5ECD7;
+  }
+  .hero-text h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin: 0;
+    line-height: 1;
+    color: #F5ECD7;
+  }
+  .hero-text .subtitle {
+    font-family: Georgia, serif;
+    font-size: clamp(0.8rem, 2vw, 1.1rem);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    margin: 0.4em 0 0.6em;
+    color: #F5ECD7;
+    opacity: 0.95;
+  }
+  .hero-text .tagline {
+    font-family: Georgia, serif;
+    font-size: clamp(0.65rem, 1.5vw, 0.85rem);
+    font-style: italic;
+    letter-spacing: 0.06em;
+    margin: 0;
+    color: #F5ECD7;
+    opacity: 0.9;
+  }
+
+  /* ── Back link ────────────────────────────────────────────────── */
+  .back-link {
+    padding: 1rem 2rem;
+  }
+  .back-link a {
+    font-size: 0.875rem;
+    color: #8C7B6B;
+    text-decoration: none;
+  }
+  .back-link a:hover { color: #C75B35; }
+
+  /* ── Sections ─────────────────────────────────────────────────── */
+  .section { padding: 3rem 0; }
+  .section--alt { background: #FAF6EF; }
+  .section--dark {
+    background: #2C2218;
+    color: #F5ECD7;
+  }
+  .section--dark h2 { color: #F5ECD7; }
+  .section--dark p { color: #D3C9BC; }
+
+  .container { max-width: 800px; margin: 0 auto; padding: 0 2rem; }
+  .container--narrow { max-width: 560px; }
+
+  h2 {
+    font-family: Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2C2218;
+    margin: 0 0 1rem;
+  }
+  p { line-height: 1.7; margin: 0 0 1rem; }
+
+  /* ── Lede ─────────────────────────────────────────────────────── */
+  .lede p {
+    font-family: Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #C75B35;
+    margin: 0 0 1.5rem;
+  }
+
+  /* ── Facts grid ───────────────────────────────────────────────── */
+  .facts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1px;
+    background: #2C2218;
+    border: 1px solid #2C2218;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 2rem 0;
+  }
+  .fact {
+    background: #2C2218;
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .fact-label {
+    font-family: Georgia, serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: #D4901A;
+    text-transform: uppercase;
+  }
+  .fact-value {
+    font-size: 0.95rem;
+    color: #F5ECD7;
+    font-weight: 500;
+  }
+  .fact-detail {
+    font-size: 0.8rem;
+    color: #8C7B6B;
+  }
+
+  /* ── Market callout ───────────────────────────────────────────── */
+  .market-callout {
+    background: #2C2218;
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 0;
+  }
+  .market-label {
+    font-family: Georgia, serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: #3A6B3E;
+    text-transform: uppercase;
+  }
+  .market-date {
+    font-size: 1rem;
+    color: #F5ECD7;
+    font-weight: 500;
+  }
+  .market-note {
+    font-size: 0.8rem;
+    color: #8C7B6B;
+  }
+
+  /* ── Week list ────────────────────────────────────────────────── */
+  .weeks { display: flex; flex-direction: column; gap: 0; }
+  .week {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #E8E0D5;
+  }
+  .week:last-child { border-bottom: none; }
+  .week-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot--terra { background: #C75B35; }
+  .dot--green { background: #3A6B3E; }
+  .week-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex: 1;
+    gap: 1rem;
+  }
+  .week-title {
+    font-family: Georgia, serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #2C2218;
+  }
+  .week--market .week-title { color: #3A6B3E; }
+  .week-date {
+    font-size: 0.8rem;
+    color: #8C7B6B;
+    white-space: nowrap;
+  }
+  .week--market .week-date { color: #3A6B3E; }
+
+  /* ── Two column ───────────────────────────────────────────────── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+  @media (max-width: 600px) {
+    .two-col { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  /* ── Enrol button ─────────────────────────────────────────────── */
+  .btn-enrol {
+    display: inline-block;
+    background: #C75B35;
+    color: #F5ECD7;
+    font-family: Georgia, serif;
+    font-size: 1rem;
+    padding: 0.875rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    margin: 1rem 0;
+    transition: background 0.2s;
+  }
+  .btn-enrol:hover { background: #A84828; }
+  .or-contact {
+    font-size: 0.875rem;
+    color: #8C7B6B;
+    margin-top: 0.5rem;
+  }
+  .or-contact a { color: #D4901A; text-decoration: none; }
+  .or-contact a:hover { text-decoration: underline; }
+
+  /* ── Doc list ─────────────────────────────────────────────────── */
+  .doc-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .doc-list a {
+    color: #C75B35;
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+  .doc-list a:hover { text-decoration: underline; }
+</style>
