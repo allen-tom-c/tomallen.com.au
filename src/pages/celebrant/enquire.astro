@@ -76,6 +76,9 @@ import CelebrantFooter from '../../components/CelebrantFooter.astro';
     'roku', 'hulu',
     // generic B2B sales pitch language — no wedding enquirer would write these
     'flat rate.', 'we put your', 'your customers', 'your client base',
+    // phishing / social engineering spam (workers.dev url-scan pattern, Jul 2026)
+    'url-scan', 'data-analyzer', 'workers.dev',
+    'official business page on this network', 'take a quick look at this',
   ];
 
   function looksLikeSpam(data: FormData): boolean {
