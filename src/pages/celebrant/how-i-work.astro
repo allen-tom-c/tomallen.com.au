@@ -5,7 +5,7 @@ import CelebrantNav from '../../components/CelebrantNav.astro';
 import CelebrantFooter from '../../components/CelebrantFooter.astro';
 
 const steps = [
-  { num: "01", title: "No-obligation discovery call", body: "Finding a celebrant is like dating: you need to find someone you click with, and it's nothing personal if you don't. A 15-minute discovery call is a great way for us to work out if we're a good match." },
+  { num: "01", title: "No obligation discovery chat", body: "Finding a celebrant is like dating: you need to find someone you click with, and it's nothing personal if you don't. We can catch up in person or via video call. A short meeting is usually all we'll need. If we decide to go ahead, it's up to you to decide what package you want (see the <a href='/celebrant/pricing/'>pricing page</a>) and let me know. I'll draw up a service agreement, issue an invoice for your booking fee and any upfront travel expenses, and we're away." },
   { num: "02", title: "Getting to know you", body: "You'll complete a questionnaire that gives me plenty of juicy backstory to work with, and also enlightens me about your approach to marriage because no two couples are the same. We'll meet to discuss your wishes for the ceremony and sign the Notice of Intended Marriage at least one month prior to your ceremony." },
   { num: "03", title: "Fine tuning", body: "A bit of back and forth to fine tune the ceremony is really common. I'll write it out in full and share via Google Docs so you can edit and comment to your heart's content. Once we're settled, it's go-time!" },
   { num: "04", title: "The rehearsal", body: "No matter how confident you're feeling, a rehearsal always uncovers something none of us had thought of. Maybe the sun's in your eyes at that time of day, or your future mother-in-law doesn't know how many kisses on the cheek she should give. A rehearsal is a must to create a seamless wedding ceremony where you can relax and trust the process." },
@@ -33,20 +33,20 @@ const steps = [
           <div class="hiw-step fade-in" data-delay={String(i * 100)}>
             <div class="hiw-step__visual">
               <div class={`hiw-step__circle placeholder-img placeholder-img--${i % 2 === 0 ? 'warm' : 'dark'}`}>
-                <img src={`/images/celebrant/step-${step.num}.jpg`} alt={step.title} width="240" height="240" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
+                <img src={`/images/celebrant/step-${step.num}.webp`} alt={step.title} width="240" height="240" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
               </div>
               <span class="hiw-step__num">{step.num}</span>
             </div>
             <div class="hiw-step__content">
               <h3>{step.title}</h3>
-              <p>{step.body}</p>
+              <p set:html={step.body} />
             </div>
           </div>
         ))}
       </div>
 
       <div class="fade-in" data-delay="600" style="text-align: center; margin-top: 56px;">
-        <a href="/celebrant/enquire/" class="btn" style="background: var(--cel-accent); color: #FFF;">Book a Discovery Call</a>
+        <a href="/celebrant/enquire/" class="btn" style="background: var(--cel-accent); color: #FFF;">Book a Discovery Chat</a>
       </div>
     </section>
 
@@ -147,6 +147,12 @@ const steps = [
     line-height: 1.8;
     color: var(--cel-subtle);
     font-weight: 300;
+  }
+
+  .hiw-step__content p a {
+    color: var(--cel-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 
   @media (max-width: 540px) {
