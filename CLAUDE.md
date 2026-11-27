@@ -187,7 +187,7 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 
 - **No emojis.** Never use emojis or unicode decorative symbols anywhere on the site.
 - **No AI tells.** Avoid: unattributed inspirational quotes, overly symmetrical value prop grids, identical section rhythms, overuse of small-caps labels, checkmark lists. Use em dashes for feature lists.
-- **Beija Flor backlink** in CelebrantFooter: "Planning a Top End wedding? Check out Beija Flor's comprehensive Darwin wedding directory." — exchange for directory listing at beijaflor.com.au.
+- **Beija Flor backlink** in CelebrantFooter: "Planning a Top End wedding? Check out Beija Flor's comprehensive Darwin wedding directory." — exchange for directory listing at beijaflor.com.au. Note: Tom is moving to Alice Springs Feb 2027 — may need updating once settled.
 - **All body text is written by Tom.** Use `[Tom to write: description]` for any missing content. Never generate placeholder marketing copy.
 - **Don't overcorrect.** When Tom flags something, fix the specific issue. Don't introduce deliberate imperfections or asymmetry to "look less AI" — that's worse than the original problem.
 - **External org links open in new tab** (Good Cycles, Bellarine Fungi, Worn Gundidj, Tearfund).
@@ -201,13 +201,13 @@ Personal portfolio website for Tom Allen — a hub-and-spoke ecosystem connectin
 - Open Graph tags in BaseLayout
 - Descriptive alt text on all gallery images
 - Internal cross-links between sections (about page links to celebrant, FAQ links to pricing/how-i-work)
-- Celebrant page targets "marriage celebrant Darwin" and related local terms
+- Celebrant page targets "marriage celebrant Alice Springs", "Uluru celebrant", "Central Australia wedding celebrant" and related local terms (updated from Darwin, November 2026)
 
 ## Contact details
 
 - **Email:** allen.tom.c@gmail.com (NOT tom@tomallen.com.au — no email hosting set up)
 - **Phone:** 0421 102 154
-- **Location:** Darwin, NT
+- **Location:** Alice Springs, NT (from February 2027; Darwin, NT until then)
 - **LGBTQ ally badge** displayed in celebrant footer
 
 ## Coding patterns

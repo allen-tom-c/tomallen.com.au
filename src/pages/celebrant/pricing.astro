@@ -5,7 +5,7 @@ import CelebrantNav from '../../components/CelebrantNav.astro';
 import CelebrantFooter from '../../components/CelebrantFooter.astro';
 ---
 
-<BaseLayout title="Pricing — Tom Allen Celebrant" description="Wedding ceremony packages for Darwin and the Top End." section="celebrant">
+<BaseLayout title="Pricing — Tom Allen Celebrant" description="Wedding ceremony packages for Alice Springs, Uluru/Kata Tjuta, and anywhere in Australia." section="celebrant">
   <Nav section="celebrant" />
   <CelebrantNav activePage="pricing" />
 
@@ -32,7 +32,7 @@ import CelebrantFooter from '../../components/CelebrantFooter.astro';
             <p>— Just you and your two witnesses</p>
             <p>— Minimum legal ceremony script (approx. 10 minutes)</p>
             <p>— All legal paperwork</p>
-            <p>— Travel within 50km of Darwin</p>
+            <p>— Travel within 50km of Alice Springs</p>
           </div>
         </div>
 
@@ -44,7 +44,7 @@ import CelebrantFooter from '../../components/CelebrantFooter.astro';
           <div class="pricing-card__features">
             <p>— Standard script with one meeting to fine tune</p>
             <p>— All legal paperwork</p>
-            <p>— Travel within 50km of Darwin</p>
+            <p>— Travel within 50km of Alice Springs</p>
           </div>
         </div>
 
@@ -58,7 +58,7 @@ import CelebrantFooter from '../../components/CelebrantFooter.astro';
             <p>— Full ceremony script written from scratch</p>
             <p>— 3+ meetings to plan and refine</p>
             <p>— All legal paperwork</p>
-            <p>— Travel within 50km of Darwin</p>
+            <p>— Travel within 50km of Alice Springs</p>
           </div>
         </div>
       </div>
@@ -72,6 +72,12 @@ import CelebrantFooter from '../../components/CelebrantFooter.astro';
           <p>— Arbour</p>
           <p>— Extra travel and accommodation expenses</p>
         </div>
+      </div>
+
+      <!-- Travel note -->
+      <div class="pricing-travel fade-in" data-delay="460">
+        <h3>Travel</h3>
+        <p>All packages include travel within 50km of Alice Springs. For ceremonies further afield — including Uluru/Kata Tjuta, elsewhere in the NT, or anywhere else in Australia — travel and accommodation expenses are negotiated case by case. Flights from Alice Springs are available for interstate weddings. Get in touch to talk through the details.</p>
       </div>
 
       <!-- Payment note -->
@@ -194,6 +200,29 @@ import CelebrantFooter from '../../components/CelebrantFooter.astro';
     font-size: 14px;
     line-height: 2;
     color: var(--cel-text);
+    font-weight: 300;
+  }
+
+  .pricing-travel {
+    margin-top: 32px;
+    margin-bottom: 8px;
+    padding: 28px 32px;
+    border-top: 1px solid color-mix(in srgb, var(--cel-accent) 8%, transparent);
+  }
+
+  .pricing-travel h3 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--cel-text);
+    margin-bottom: 10px;
+  }
+
+  .pricing-travel p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--cel-subtle);
     font-weight: 300;
   }
 

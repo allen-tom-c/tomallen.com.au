@@ -17,24 +17,27 @@ const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "ProfessionalService"],
   "name": "Tom Allen — Marriage Celebrant",
-  "description": "Wedding ceremonies that feel like you. Darwin-based Authorised Marriage Celebrant serving the Northern Territory and Australia-wide.",
+  "description": "Wedding ceremonies that feel like you. Alice Springs-based Authorised Marriage Celebrant serving Central Australia, Uluru/Kata Tjuta, and Australia-wide.",
   "url": "https://tomallen.com.au/celebrant/",
   "telephone": "+61421102154",
   "email": "allen.tom.c@gmail.com",
   "image": "https://tomallen.com.au/images/celebrant/hero.webp",
   "address": {
     "@type": "PostalAddress",
-    "addressLocality": "Darwin",
+    "addressLocality": "Alice Springs",
     "addressRegion": "Northern Territory",
     "addressCountry": "AU"
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": -12.4634,
-    "longitude": 130.8456
+    "latitude": -23.6980,
+    "longitude": 133.8807
   },
   "areaServed": [
-    { "@type": "City", "name": "Darwin" },
+    { "@type": "City", "name": "Alice Springs" },
+    { "@type": "AdministrativeArea", "name": "Central Australia" },
+    { "@type": "TouristAttraction", "name": "Uluru" },
+    { "@type": "TouristAttraction", "name": "Kata Tjuta" },
     { "@type": "AdministrativeArea", "name": "Northern Territory" },
     { "@type": "Country", "name": "Australia" }
   ],
@@ -51,7 +54,7 @@ const localBusinessSchema = {
 };
 ---
 
-<BaseLayout title="Tom Allen — Marriage Celebrant, Darwin NT" description="Wedding ceremonies that feel like you. Marriage celebrant based in Darwin, Northern Territory." section="celebrant" preloadImage="/images/celebrant/hero.webp">
+<BaseLayout title="Tom Allen — Marriage Celebrant, Alice Springs NT" description="Wedding ceremonies that feel like you. Marriage celebrant based in Alice Springs, Northern Territory — serving Central Australia, Uluru, and Australia-wide." section="celebrant" preloadImage="/images/celebrant/hero.webp">
   <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
   <Nav section="celebrant" />
   <CelebrantNav activePage="home" />
@@ -62,7 +65,7 @@ const localBusinessSchema = {
       <img src="/images/celebrant/gallery/15.webp" alt="Wedding ceremony" class="cel-hero__img" width="1920" height="1280" loading="eager" fetchpriority="high" decoding="async" onerror="this.style.display='none'" />
       <div class="cel-hero__overlay">
         <div class="cel-hero__content">
-          <p class="fade-in label" style="color: #FFFFFF; margin-bottom: 16px; opacity: 0.8;">Marriage Celebrant — Darwin, NT</p>
+          <p class="fade-in label" style="color: #FFFFFF; margin-bottom: 16px; opacity: 0.8;">Marriage Celebrant — Alice Springs, NT</p>
           <h1 class="fade-in cel-hero__title" data-delay="200">Ceremonies that<br />feel like you</h1>
         </div>
       </div>
@@ -78,6 +81,7 @@ const localBusinessSchema = {
           <a href="/celebrant/enquire/" class="btn" style="background: var(--cel-accent); color: #FFFFFF; font-weight: 600;">Get in Touch</a>
           <a href="/celebrant/how-i-work/" class="btn btn-outline">How I Work</a>
         </div>
+        <p class="cel-intro__location-note">Based in Alice Springs from February 2027 — taking bookings now.</p>
       </div>
     </section>
 
@@ -234,6 +238,15 @@ const localBusinessSchema = {
     gap: 16px;
     justify-content: center;
     flex-wrap: wrap;
+  }
+
+  .cel-intro__location-note {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--cel-subtle);
+    font-weight: 300;
+    margin-top: 20px;
+    margin-bottom: 0;
   }
 
   .cel-values {
